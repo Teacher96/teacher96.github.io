@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="FUN ZONE - Play quick games, challenges and fun tests online.">
+
+<title>FUN ZONE 🎮</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080912;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Animated background */
+
+body:before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#7c3aed;
+    filter:blur(160px);
+    opacity:.18;
+    top:-250px;
+    left:-180px;
+    z-index:-2;
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#ec4899;
+    filter:blur(170px);
+    opacity:.15;
+    bottom:-250px;
+    right:-180px;
+    z-index:-2;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:72px;
+    padding:0 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+
+    background:rgba(8,9,18,.72);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#f472b6;
+}
+
+.logo-dot{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    background:#a78bfa;
+    border-radius:50%;
+    margin-left:3px;
+    box-shadow:0 0 15px #a78bfa;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 80px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:9px 16px;
+    border-radius:50px;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+
+    color:#d4d4d8;
+    font-size:13px;
+
+    margin-bottom:28px;
+
+    animation:fadeUp .8s ease both;
+}
+
+.hero h1{
+    font-size:clamp(55px,10vw,110px);
+    line-height:.9;
+    font-weight:1000;
+    letter-spacing:-5px;
+
+    background:linear-gradient(
+        100deg,
+        #fff 10%,
+        #f9a8d4 45%,
+        #a78bfa 80%
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:fadeUp .9s .1s ease both;
+}
+
+.hero h1 small{
+    display:block;
+    font-size:.3em;
+    letter-spacing:4px;
+    margin-top:20px;
+
+    background:linear-gradient(
+        90deg,
+        #f472b6,
+        #a78bfa
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:600px;
+    margin:32px auto;
+
+    color:#999;
+    font-size:17px;
+    line-height:1.7;
+
+    animation:fadeUp 1s .2s ease both;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+
+    animation:fadeUp 1s .3s ease both;
+}
+
+.primary-btn{
+    border:none;
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #ec4899,
+        #7c3aed
+    );
+
+    box-shadow:
+        0 12px 35px rgba(139,92,246,.25);
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 18px 45px rgba(139,92,246,.35);
+}
+
+.secondary-btn{
+    border:1px solid rgba(255,255,255,.12);
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.04);
+    color:#ddd;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.secondary-btn:hover{
+    background:rgba(255,255,255,.09);
+}
+
+/* Floating emojis */
+
+.float{
+    position:absolute;
+    font-size:35px;
+    opacity:.5;
+    animation:float 5s ease-in-out infinite;
+}
+
+.f1{top:25%;left:8%;}
+.f2{top:30%;right:9%;animation-delay:1s;}
+.f3{bottom:20%;left:15%;animation-delay:2s;}
+.f4{bottom:25%;right:14%;animation-delay:3s;}
+
+/* =========================================================
+   GAMES SECTION
+========================================================= */
+
+.games-section{
+    width:min(1150px,90%);
+    margin:auto;
+    padding:100px 0;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-head .mini{
+    color:#f472b6;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+
+.section-head h2{
+    font-size:42px;
+    margin-top:10px;
+}
+
+.section-head p{
+    color:#888;
+    margin-top:12px;
+}
+
+/* Cards */
+
+.games-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.game-card{
+    position:relative;
+
+    min-height:260px;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+        transform .4s,
+        border .4s,
+        background .4s;
+}
+
+.game-card:before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+
+    background:#7c3aed;
+    border-radius:50%;
+
+    filter:blur(80px);
+    opacity:.15;
+
+    right:-50px;
+    top:-50px;
+
+    transition:.4s;
+}
+
+.game-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(244,114,182,.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.035)
+        );
+}
+
+.game-card:hover:before{
+    opacity:.3;
+}
+
+.game-icon{
+    font-size:46px;
+    margin-bottom:20px;
+
+    display:inline-block;
+
+    transition:.4s;
+}
+
+.game-card:hover .game-icon{
+    transform:scale(1.15) rotate(-5deg);
+}
+
+.game-card h3{
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.game-card p{
+    color:#92929d;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.play-label{
+    position:absolute;
+    bottom:25px;
+
+    color:#f472b6;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* =========================================================
+   GAME MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.78);
+
+    backdrop-filter:blur(12px);
+
+    z-index:2000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+    animation:fade .3s ease;
+}
+
+.modal-box{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    background:#11121e;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.6);
+
+    position:relative;
+
+    animation:modalIn .35s ease;
+}
+
+.close{
+    position:absolute;
+    top:18px;
+    right:20px;
+
+    width:35px;
+    height:35px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#aaa;
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.close:hover{
+    color:#fff;
+}
+
+.modal-title{
+    text-align:center;
+    font-size:30px;
+}
+
+.modal-subtitle{
+    text-align:center;
+    color:#888;
+    margin:10px auto 30px;
+    line-height:1.6;
+}
+
+.game-content{
+    text-align:center;
+}
+
+/* Inputs */
+
+.game-input{
+    width:100%;
+    max-width:300px;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:#191a28;
+
+    border:1px solid #333;
+
+    color:#fff;
+
+    outline:none;
+
+    margin:6px;
+}
+
+.game-input:focus{
+    border-color:#a78bfa;
+}
+
+/* Game button */
+
+.game-button{
+    border:none;
+
+    padding:13px 20px;
+
+    margin:6px;
+
+    border-radius:12px;
+
+    background:#7c3aed;
+
+    color:#fff;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.game-button:hover{
+    transform:translateY(-2px);
+    background:#8b5cf6;
+}
+
+/* Results */
+
+.game-result{
+    min-height:45px;
+
+    margin-top:25px;
+
+    font-size:18px;
+
+    color:#f9a8d4;
+
+    font-weight:bold;
+
+    line-height:1.6;
+}
+
+/* =========================================================
+   ROCK PAPER SCISSORS
+========================================================= */
+
+.rps-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.rps-button{
+    width:90px;
+    height:90px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:#191a28;
+
+    color:#fff;
+
+    font-size:35px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.rps-button:hover{
+    transform:translateY(-6px);
+    border-color:#a78bfa;
+}
+
+/* =========================================================
+   MEMORY GAME
+========================================================= */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+
+    max-width:380px;
+    margin:auto;
+}
+
+.memory-card{
+    aspect-ratio:1;
+
+    border:none;
+    border-radius:14px;
+
+    background:#1c1d2b;
+
+    color:transparent;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.memory-card.flipped,
+.memory-card.matched{
+    color:#fff;
+    background:#292a40;
+}
+
+.memory-card.matched{
+    box-shadow:
+        0 0 0 2px rgba(244,114,182,.4);
+}
+
+/* =========================================================
+   REACTION GAME
+========================================================= */
+
+.reaction-area{
+    height:220px;
+
+    border-radius:20px;
+
+    background:#191a28;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    margin-bottom:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-size:20px;
+    font-weight:bold;
+}
+
+.reaction-area.ready{
+    background:#312e81;
+}
+
+.reaction-area.go{
+    background:#166534;
+}
+
+.reaction-area.too-soon{
+    background:#7f1d1d;
+}
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+.score-board{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.score-pill{
+    background:#191a28;
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:9px 15px;
+
+    border-radius:30px;
+
+    color:#aaa;
+    font-size:13px;
+}
+
+.score-pill strong{
+    color:#fff;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.07);
+
+    padding:45px 20px;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:13px;
+}
+
+footer .footer-logo{
+    color:#fff;
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+footer span{
+    color:#f472b6;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+    50%{
+        transform:translateY(-18px) rotate(5deg);
+    }
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .games-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:58px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .games-grid{
+        grid-template-columns:1fr;
+    }
+
+    .games-section{
+        padding:70px 0;
+    }
+
+    .section-head h2{
+        font-size:32px;
+    }
+
+    .modal-box{
+        padding:28px 18px;
+    }
+
+    .memory-grid{
+        max-width:300px;
+    }
+
+    .float{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header>
+
+    <div class="logo">
+        FUN<span>ZONE</span><i class="logo-dot"></i> 🎮
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+    </nav>
+
+</header>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="float f1">🎮</div>
+    <div class="float f2">✨</div>
+    <div class="float f3">😂</div>
+    <div class="float f4">⚡</div>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✨ No account. No stress. Just fun.
+        </div>
+
+        <h1>
+            FUN
+            <br>
+            ZONE
+
+            <small>
+                PLAY • LAUGH • CHALLENGE
+            </small>
+        </h1>
+
+        <p>
+            Welcome to your little corner of the internet.
+            Play quick games, challenge yourself,
+            compete with friends and discover something unexpected.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="scrollToGames()">
+                🎮 PLAY NOW
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="randomGame()">
+                ✨ SURPRISE ME
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     GAMES
+====================================================== -->
+
+<section class="games-section" id="games">
+
+    <div class="section-head">
+
+        <div class="mini">
+            PICK YOUR GAME
+        </div>
+
+        <h2>
+            What are you in the mood for?
+        </h2>
+
+        <p>
+            Five quick games. Zero downloads. Instant fun.
+        </p>
+
+    </div>
+
+
+    <div class="games-grid">
+
+
+        <!-- REACTION -->
+
+        <div
+            class="game-card"
+            onclick="openGame('reaction')">
+
+            <div class="game-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Reaction Rush
+            </h3>
+
+            <p>
+                How fast are you really?
+                Wait for the signal and click as quickly as possible.
+            </p>
+
+            <div class="play-label">
+                TEST YOUR SPEED →
+            </div>
+
+        </div>
+
+
+        <!-- NUMBER -->
+
+        <div
+            class="game-card"
+            onclick="openGame('guess')">
+
+            <div class="game-icon">
+                🔢
+            </div>
+
+            <h3>
+                Guess The Number
+            </h3>
+
+            <p>
+                A secret number is hiding between 1 and 100.
+                Can you find it?
+            </p>
+
+            <div class="play-label">
+                START GUESSING →
+            </div>
+
+        </div>
+
+
+        <!-- RPS -->
+
+        <div
+            class="game-card"
+            onclick="openGame('rps')">
+
+            <div class="game-icon">
+                ✊
+            </div>
+
+            <h3>
+                Rock Paper Scissors
+            </h3>
+
+            <p>
+                Challenge the computer.
+                First to reach 5 wins takes the match.
+            </p>
+
+            <div class="play-label">
+                CHALLENGE COMPUTER →
+            </div>
+
+        </div>
+
+
+        <!-- MEMORY -->
+
+        <div
+            class="game-card"
+            onclick="openGame('memory')">
+
+            <div class="game-icon">
+                🧠
+            </div>
+
+            <h3>
+                Memory Match
+            </h3>
+
+            <p>
+                Flip the cards and find all the matching emoji pairs.
+            </p>
+
+            <div class="play-label">
+                TEST YOUR MEMORY →
+            </div>
+
+        </div>
+
+
+        <!-- FRIENDSHIP -->
+
+        <div
+            class="game-card"
+            onclick="openGame('friendship')">
+
+            <div class="game-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Friendship Meter
+            </h3>
+
+            <p>
+                Enter two names and discover your completely
+                unofficial friendship score.
+            </p>
+
+            <div class="play-label">
+                CHECK YOUR SCORE →
+            </div>
+
+        </div>
+
+
+        <!-- SURPRISE -->
+
+        <div
+            class="game-card"
+            onclick="randomGame()">
+
+            <div class="game-icon">
+                🎁
+            </div>
+
+            <h3>
+                Random Game
+            </h3>
+
+            <p>
+                Can't decide?
+                Let FUN ZONE choose something for you.
+            </p>
+
+            <div class="play-label">
+                SURPRISE ME →
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     MODAL
+====================================================== -->
+
+<div class="modal" id="gameModal">
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeGame()">
+            ×
+        </button>
+
+        <h2
+            class="modal-title"
+            id="modalTitle">
+            Game
+        </h2>
+
+        <p
+            class="modal-subtitle"
+            id="modalSubtitle">
+            Let's play!
+        </p>
+
+        <div
+            class="game-content"
+            id="gameContent">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        FUN<span>ZONE</span> 🎮
+    </div>
+
+    <p>
+        Made for fun. Built for everyone.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 FUN ZONE
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   BASIC FUNCTIONS
+========================================================= */
+
+const modal =
+    document.getElementById("gameModal");
+
+const title =
+    document.getElementById("modalTitle");
+
+const subtitle =
+    document.getElementById("modalSubtitle");
+
+const content =
+    document.getElementById("gameContent");
+
+
+function scrollToGames(){
+
+    document
+        .getElementById("games")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+function closeGame(){
+
+    modal.classList.remove("active");
+
+}
+
+
+function openGame(game){
+
+    modal.classList.add("active");
+
+    if(game==="reaction"){
+        reactionGame();
+    }
+
+    if(game==="guess"){
+        guessGame();
+    }
+
+    if(game==="rps"){
+        rpsGame();
+    }
+
+    if(game==="memory"){
+        memoryGame();
+    }
+
+    if(game==="friendship"){
+        friendshipGame();
+    }
+
+}
+
+
+modal.addEventListener("click",function(e){
+
+    if(e.target===modal){
+        closeGame();
+    }
+
+});
+
+
+/* =========================================================
+   RANDOM GAME
+========================================================= */
+
+function randomGame(){
+
+    const games=[
+        "reaction",
+        "guess",
+        "rps",
+        "memory",
+        "friendship"
+    ];
+
+    const random=
+        games[Math.floor(Math.random()*games.length)];
+
+    openGame(random);
+
+}
+
+
+/* =========================================================
+   REACTION RUSH
+========================================================= */
+
+let reactionTimer;
+let reactionStart;
+let reactionWaiting=false;
+
+
+function reactionGame(){
+
+    title.innerHTML="⚡ Reaction Rush";
+
+    subtitle.innerHTML=
+        "Wait for green. Then click as fast as you can!";
+
+    content.innerHTML=`
+
+        <div class="score-board">
+
+            <div class="score-pill">
+                Best:
+                <strong id="bestReaction">—</strong>
+            </div>
+
+        </div>
+
+        <div
+            id="reactionArea"
+            class="reaction-area">
+
+            Click START below
+
+        </div>
+
+        <button
+            class="game-button"
+            onclick="startReaction()">
+
+            START TEST
+
+        </button>
+
+        <div
+            class="game-result"
+            id="reactionResult">
+        </div>
+    `;
+
+
+    const saved=
+        localStorage.getItem("reactionBest");
+
+    if(saved){
+
+        document
+            .getElementById("bestReaction")
+            .innerText=saved+" ms";
+
+    }
+
+}
+
+
+function startReaction(){
+
+    const area=
+        document.getElementById("reactionArea");
+
+    const result=
+        document.getElementById("reactionResult");
+
+    clearTimeout(reactionTimer);
+
+    reactionWaiting=true;
+
+    area.className="reaction-area ready";
+
+    area.innerText="WAIT...";
+
+    result.innerText="";
+
+    const delay=
+        Math.floor(Math.random()*3500)+1500;
+
+
+    reactionTimer=setTimeout(()=>{
+
+        reactionStart=Date.now();
+
+        area.className=
+            "reaction-area go";
+
+        area.innerText=
+            "CLICK NOW! ⚡";
+
+    },delay);
+
+
+    area.onclick=function(){
+
+        if(!reactionWaiting){
+            return;
+        }
+
+        if(area.classList.contains("ready")){
+
+            clearTimeout(reactionTimer);
+
+            reactionWaiting=false;
+
+            area.className=
+                "reaction-area too-soon";
+
+            area.innerText=
+                "TOO SOON!";
+
+            result.innerText=
+                "😂 You clicked before the signal!";
+
+            return;
+
+        }
+
+
+        if(area.classList.contains("go")){
+
+            const time=
+                Date.now()-reactionStart;
+
+            reactionWaiting=false;
+
+            area.className=
+                "reaction-area";
+
+            area.innerText=
+                "TRY AGAIN";
+
+            result.innerText=
+                "⚡ Your reaction time: "+
+                time+
+                " ms";
+
+            const old=
+                localStorage.getItem("reactionBest");
+
+            if(!old || time<Number(old)){
+
+                localStorage.setItem(
+                    "reactionBest",
+                    time
+                );
+
+                document
+                    .getElementById("bestReaction")
+                    .innerText=
+                    time+" ms";
+
+                result.innerHTML+=
+                    "<br>🏆 NEW BEST SCORE!";
+
+            }
+
+        }
+
+    };
+
+}
+
+
+/* =========================================================
+   GUESS THE NUMBER
+========================================================= */
+
+let secretNumber;
+let guesses;
+
+
+function guessGame(){
+
+    secretNumber=
+        Math.floor(Math.random()*100)+1;
+
+    guesses=0;
+
+
+    title.innerHTML=
+        "🔢 Guess The Number";
+
+    subtitle.innerHTML=
+        "Find the secret number between 1 and 100.";
+
+    content.innerHTML=`
+
+        <div class="score-board">
+
+            <div class="score-pill">
+                Attempts:
+                <strong id="guessCount">0</strong>
+            </div>
+
+        </div>
+
+        <input
+            class="game-input"
+            id="guessInput"
+            type="number"
+            min="1"
+            max="100"
+            placeholder="Enter 1–100">
+
+        <br>
+
+        <button
+            class="game-button"
+            onclick="makeGuess()">
+
+            GUESS
+
+        </button>
+
+        <button
+            class="game-button"
+            onclick="guessGame()">
+
+            NEW NUMBER
+
+        </button>
+
+        <div
+            class="game-result"
+            id="guessResult">
+        </div>
+    `;
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("guessInput")
+            ?.focus();
+
+    },100);
+
+}
+
+
+function makeGuess(){
+
+    const input=
+        document.getElementById("guessInput");
+
+    const result=
+        document.getElementById("guessResult");
+
+    const count=
+        document.getElementById("guessCount");
+
+    const value=
+        Number(input.value);
+
+
+    if(value<1 || value>100){
+
+        result.innerText=
+            "⚠️ Enter a number from 1 to 100.";
+
+        return;
+
+    }
+
+
+    guesses++;
+
+    count.innerText=guesses;
+
+
+    if(value===secretNumber){
+
+        result.innerHTML=
+            "🎉 CORRECT!<br>"+
+            "You found it in "+
+            guesses+
+            " attempts!";
+
+        return;
+
+    }
+
+
+    if(value<secretNumber){
+
+        result.innerText=
+            "📈 Too low! Go higher.";
+
+    }else{
+
+        result.innerText=
+            "📉 Too high! Go lower.";
+
+    }
+
+}
+
+
+/* =========================================================
+   ROCK PAPER SCISSORS
+========================================================= */
+
+let playerScore=0;
+let computerScore=0;
+
+
+function rpsGame(){
+
+    playerScore=0;
+    computerScore=0;
+
+
+    title.innerHTML=
+        "✊ Rock Paper Scissors";
+
+    subtitle.innerHTML=
+        "First to 5 wins the match.";
+
+    content.innerHTML=`
+
+        <div class="score-board">
+
+            <div class="score-pill">
+                You:
+                <strong id="playerScore">0</strong>
+            </div>
+
+            <div class="score-pill">
+                Computer:
+                <strong id="computerScore">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="rps-buttons">
+
+            <button
+                class="rps-button"
+                onclick="playRPS('rock')">
+                ✊
+            </button>
+
+            <button
+                class="rps-button"
+                onclick="playRPS('paper')">
+                ✋
+            </button>
+
+            <button
+                class="rps-button"
+                onclick="playRPS('scissors')">
+                ✌️
+            </button>
+
+        </div>
+
+
+        <div
+            class="game-result"
+            id="rpsResult">
+
+            Choose your weapon!
+
+        </div>
+
+    `;
+
+}
+
+
+function playRPS(player){
+
+    if(playerScore>=5 || computerScore>=5){
+        return;
+    }
+
+
+    const choices=[
+        "rock",
+        "paper",
+        "scissors"
+    ];
+
+    const computer=
+        choices[
+            Math.floor(
+                Math.random()*choices.length
+            )
+        ];
+
+
+    let result;
+
+
+    if(player===computer){
+
+        result="🤝 DRAW!";
+
+    }
+
+    else if(
+
+        (player==="rock" && computer==="scissors") ||
+        (player==="paper" && computer==="rock") ||
+        (player==="scissors" && computer==="paper")
+
+    ){
+
+        playerScore++;
+
+        result="🎉 YOU WIN THIS ROUND!";
+
+    }
+
+    else{
+
+        computerScore++;
+
+        result="🤖 COMPUTER WINS THIS ROUND!";
+
+    }
+
+
+    document
+        .getElementById("playerScore")
+        .innerText=playerScore;
+
+    document
+        .getElementById("computerScore")
+        .innerText=computerScore;
+
+
+    const icons={
+        rock:"✊",
+        paper:"✋",
+        scissors:"✌️"
+    };
+
+
+    document
+        .getElementById("rpsResult")
+        .innerHTML=
+
+        result+
+        "<br><br>"+
+        "You "+icons[player]+
+        " vs "+
+        icons[computer]+" Computer";
+
+
+    if(playerScore===5){
+
+        document
+            .getElementById("rpsResult")
+            .innerHTML+=
+            "<br><br>🏆 YOU WON THE MATCH!";
+
+    }
+
+
+    if(computerScore===5){
+
+        document
+            .getElementById("rpsResult")
+            .innerHTML+=
+            "<br><br>🤖 COMPUTER WON THE MATCH!";
+
+    }
+
+}
+
+
+/* =========================================================
+   MEMORY MATCH
+========================================================= */
+
+let memoryFirst=null;
+let memorySecond=null;
+let memoryLock=false;
+let memoryMatches=0;
+
+
+function memoryGame(){
+
+    const emojis=[
+        "🍕",
+        "🚀",
+        "🎮",
+        "😂",
+        "🐱",
+        "🍔",
+        "⚡",
+        "🎁"
+    ];
+
+    const cards=
+        [...emojis,...emojis]
+        .sort(()=>Math.random()-.5);
+
+
+    memoryFirst=null;
+    memorySecond=null;
+    memoryLock=false;
+    memoryMatches=0;
+
+
+    title.innerHTML=
+        "🧠 Memory Match";
+
+    subtitle.innerHTML=
+        "Find all 8 matching pairs.";
+
+    content.innerHTML=`
+
+        <div class="score-board">
+
+            <div class="score-pill">
+                Matches:
+                <strong id="memoryScore">0 / 8</strong>
+            </div>
+
+        </div>
+
+        <div
+            class="memory-grid"
+            id="memoryGrid">
+        </div>
+
+        <div
+            class="game-result"
+            id="memoryResult">
+        </div>
+
+        <button
+            class="game-button"
+            onclick="memoryGame()">
+
+            🔄 NEW GAME
+
+        </button>
+
+    `;
+
+
+    const grid=
+        document.getElementById("memoryGrid");
+
+
+    cards.forEach((emoji,index)=>{
+
+        const card=
+            document.createElement("button");
+
+        card.className=
+            "memory-card";
+
+        card.dataset.emoji=emoji;
+
+        card.dataset.index=index;
+
+        card.innerText=emoji;
+
+
+        card.onclick=function(){
+
+            flipMemory(card);
+
+        };
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+function flipMemory(card){
+
+    if(
+        memoryLock ||
+        card.classList.contains("flipped") ||
+        card.classList.contains("matched")
+    ){
+
+        return;
+
+    }
+
+
+    card.classList.add("flipped");
+
+
+    if(!memoryFirst){
+
+        memoryFirst=card;
+
+        return;
+
+    }
+
+
+    memorySecond=card;
+
+    memoryLock=true;
+
+
+    if(
+        memoryFirst.dataset.emoji===
+        memorySecond.dataset.emoji
+    ){
+
+        memoryFirst.classList.add("matched");
+        memorySecond.classList.add("matched");
+
+        memoryMatches++;
+
+
+        document
+            .getElementById("memoryScore")
+            .innerText=
+            memoryMatches+" / 8";
+
+
+        memoryFirst=null;
+        memorySecond=null;
+
+        memoryLock=false;
+
+
+        if(memoryMatches===8){
+
+            document
+                .getElementById("memoryResult")
+                .innerHTML=
+                "🏆 AMAZING! You found them all!";
+
+        }
+
+    }
+
+    else{
+
+        setTimeout(()=>{
+
+            memoryFirst.classList.remove("flipped");
+            memorySecond.classList.remove("flipped");
+
+            memoryFirst=null;
+            memorySecond=null;
+
+            memoryLock=false;
+
+        },800);
+
+    }
+
+}
+
+
+/* =========================================================
+   FRIENDSHIP METER
+========================================================= */
+
+function friendshipGame(){
+
+    title.innerHTML=
+        "❤️ Friendship Meter";
+
+    subtitle.innerHTML=
+        "A completely unofficial scientific friendship test.";
+
+    content.innerHTML=`
+
+        <input
+            class="game-input"
+            id="friend1"
+            placeholder="Your name">
+
+        <input
+            class="game-input"
+            id="friend2"
+            placeholder="Friend's name">
+
+        <br>
+
+        <button
+            class="game-button"
+            onclick="calculateFriendship()">
+
+            ❤️ CALCULATE
+
+        </button>
+
+        <div
+            class="game-result"
+            id="friendResult">
+        </div>
+
+    `;
+
+}
+
+
+function calculateFriendship(){
+
+    const a=
+        document
+        .getElementById("friend1")
+        .value
+        .trim();
+
+    const b=
+        document
+        .getElementById("friend2")
+        .value
+        .trim();
+
+
+    const result=
+        document.getElementById("friendResult");
+
+
+    if(!a || !b){
+
+        result.innerText=
+            "⚠️ Please enter both names.";
+
+        return;
+
+    }
+
+
+    let total=0;
+
+    const combined=
+        (a+b).toLowerCase();
+
+
+    for(let i=0;i<combined.length;i++){
+
+        total+=combined.charCodeAt(i);
+
+    }
+
+
+    let score=
+        (total%51)+50;
+
+
+    let message;
+
+
+    if(score>=95){
+
+        message=
+            "🔥 LEGENDARY FRIENDSHIP!";
+
+    }
+
+    else if(score>=85){
+
+        message=
+            "💖 Best friends material!";
+
+    }
+
+    else if(score>=75){
+
+        message=
+            "😍 Very strong friendship!";
+
+    }
+
+    else if(score>=65){
+
+        message=
+            "😊 Pretty good friendship!";
+
+    }
+
+    else{
+
+        message=
+            "😏 Hmm... friendship needs some work!";
+
+    }
+
+
+    result.innerHTML=
+        `${a} ❤️ ${b}<br><br>
+        Friendship Score: ${score}%<br>
+        ${message}`;
+
+}
+
+
+/* =========================================================
+   KEYBOARD SUPPORT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            e.key==="Escape" &&
+            modal.classList.contains("active")
+        ){
+
+            closeGame();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
