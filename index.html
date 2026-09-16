@@ -1,2086 +1,1700 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="FUN ZONE - Play quick games, challenges and fun tests online.">
-
-<title>FUN ZONE 🎮</title>
+<title>Veloura Bakery | Made With Love</title>
+<meta name="description" content="Homemade cakes and bakery treats, freshly baked for your special moments.">
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+  --cream: #fffaf5;
+  --cream-dark: #f5e8df;
+  --brown: #2d211e;
+  --muted: #806f67;
+  --rose: #c9827c;
+  --rose-light: #efd0c8;
+  --line: #eadbd3;
+  --white: #fff;
 }
 
-html{
-    scroll-behavior:smooth;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#080912;
-    color:#fff;
-    overflow-x:hidden;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Animated background */
-
-body:before{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:#7c3aed;
-    filter:blur(160px);
-    opacity:.18;
-    top:-250px;
-    left:-180px;
-    z-index:-2;
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: "Inter", Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-body:after{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:#ec4899;
-    filter:blur(170px);
-    opacity:.15;
-    bottom:-250px;
-    right:-180px;
-    z-index:-2;
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+
+  z-index: 100;
+
+  background: rgba(255,250,245,0.72);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(234,219,211,0.7);
 }
 
-button{
-    font-family:inherit;
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 31px;
+  font-weight: 600;
+  letter-spacing: .04em;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:72px;
-    padding:0 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
-
-    background:rgba(8,9,18,.72);
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(255,255,255,.06);
+.logo span {
+  color: var(--rose);
 }
 
-.logo{
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:1px;
+.nav-links a {
+  color: var(--brown);
+  text-decoration: none;
+
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+
+  margin-left: 30px;
+
+  transition: color .3s ease;
 }
 
-.logo span{
-    color:#f472b6;
+.nav-links a:hover {
+  color: var(--rose);
 }
 
-.logo-dot{
-    display:inline-block;
-    width:7px;
-    height:7px;
-    background:#a78bfa;
-    border-radius:50%;
-    margin-left:3px;
-    box-shadow:0 0 15px #a78bfa;
-}
-
-nav{
-    display:flex;
-    gap:30px;
-}
-
-nav a{
-    color:#aaa;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#fff;
-}
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 20px 80px;
-    position:relative;
+.hero {
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+
+  padding: 130px 7vw 80px;
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-.hero-content{
-    max-width:900px;
-}
+.hero-glow {
+  position: absolute;
 
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
+  width: 65vw;
+  height: 65vw;
 
-    padding:9px 16px;
-    border-radius:50px;
+  max-width: 850px;
+  max-height: 850px;
 
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.1);
+  border-radius: 50%;
 
-    color:#d4d4d8;
-    font-size:13px;
-
-    margin-bottom:28px;
-
-    animation:fadeUp .8s ease both;
-}
-
-.hero h1{
-    font-size:clamp(55px,10vw,110px);
-    line-height:.9;
-    font-weight:1000;
-    letter-spacing:-5px;
-
-    background:linear-gradient(
-        100deg,
-        #fff 10%,
-        #f9a8d4 45%,
-        #a78bfa 80%
+  background:
+    radial-gradient(
+      circle,
+      #f2d2ca 0%,
+      #f9e9e2 42%,
+      transparent 70%
     );
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:fadeUp .9s .1s ease both;
+  opacity: .85;
 }
 
-.hero h1 small{
-    display:block;
-    font-size:.3em;
-    letter-spacing:4px;
-    margin-top:20px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 
-    background:linear-gradient(
-        90deg,
-        #f472b6,
-        #a78bfa
+.eyebrow {
+  color: var(--rose);
+
+  font-size: 10px;
+  letter-spacing: .32em;
+
+  text-transform: uppercase;
+
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(70px, 11vw, 150px);
+
+  font-weight: 500;
+
+  line-height: .76;
+
+  margin: 0;
+}
+
+.hero h1 em {
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.hero p {
+  max-width: 580px;
+
+  margin: 38px auto 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.scroll-hint {
+  position: absolute;
+
+  bottom: 28px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #9b8880;
+
+  font-size: 9px;
+
+  letter-spacing: .25em;
+
+  text-transform: uppercase;
+}
+
+.scroll-hint::after {
+  content: "";
+
+  display: block;
+
+  width: 1px;
+  height: 45px;
+
+  background: var(--rose);
+
+  margin: 13px auto 0;
+}
+
+/* =========================
+   CINEMATIC STORY
+========================= */
+
+.story {
+  height: 430vh;
+
+  position: relative;
+}
+
+.story-sticky {
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.product-stage {
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+
+  place-items: center;
+}
+
+.cake {
+  position: relative;
+
+  width: min(42vw, 520px);
+
+  aspect-ratio: 1;
+
+  transform:
+    translate3d(0,0,0)
+    scale(1);
+
+  filter:
+    drop-shadow(
+      0 35px 30px rgba(65,37,30,.17)
     );
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+  will-change: transform;
 }
 
-.hero p{
-    max-width:600px;
-    margin:32px auto;
+/* Plate */
 
-    color:#999;
-    font-size:17px;
-    line-height:1.7;
+.cake-plate {
+  position: absolute;
 
-    animation:fadeUp 1s .2s ease both;
+  width: 94%;
+  height: 13%;
+
+  left: 3%;
+  bottom: 9%;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 18px 30px rgba(50,30,25,.13);
 }
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
+/* Cake body */
 
-    animation:fadeUp 1s .3s ease both;
-}
+.cake-base {
+  position: absolute;
 
-.primary-btn{
-    border:none;
-    padding:15px 28px;
+  width: 76%;
+  height: 43%;
 
-    border-radius:50px;
+  left: 12%;
+  bottom: 18%;
 
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
+  border-radius:
+    18px
+    18px
+    35px
+    35px;
 
-    background:linear-gradient(
-        135deg,
-        #ec4899,
-        #7c3aed
+  background:
+    linear-gradient(
+      #e5aaa0,
+      #c5746c
     );
 
-    box-shadow:
-        0 12px 35px rgba(139,92,246,.25);
-
-    transition:.3s;
+  box-shadow:
+    inset 0 -15px 0 rgba(110,50,45,.12);
 }
 
-.primary-btn:hover{
-    transform:translateY(-4px);
-    box-shadow:
-        0 18px 45px rgba(139,92,246,.35);
+/* Cream layer */
+
+.cake-cream {
+  position: absolute;
+
+  width: 78%;
+  height: 19%;
+
+  left: 11%;
+  bottom: 47%;
+
+  border-radius: 50%;
+
+  background: #fff6ef;
+
+  box-shadow:
+    0 11px 0 #e1a097;
 }
 
-.secondary-btn{
-    border:1px solid rgba(255,255,255,.12);
-    padding:15px 28px;
+/* Top */
 
-    border-radius:50px;
+.cake-top {
+  position: absolute;
 
-    background:rgba(255,255,255,.04);
-    color:#ddd;
+  width: 75%;
+  height: 22%;
 
-    cursor:pointer;
-    transition:.3s;
+  left: 12.5%;
+  bottom: 59%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff9f3,
+      #d9887e 70%
+    );
+
+  box-shadow:
+    0 12px 20px rgba(70,40,34,.12);
 }
 
-.secondary-btn:hover{
-    background:rgba(255,255,255,.09);
+/* Cherry */
+
+.cherry {
+  position: absolute;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: #9b3e43;
+
+  bottom: 72%;
+  left: 48%;
+
+  box-shadow:
+    inset -7px -5px 0 rgba(0,0,0,.13);
 }
 
-/* Floating emojis */
+/* Leaf */
 
-.float{
-    position:absolute;
-    font-size:35px;
-    opacity:.5;
-    animation:float 5s ease-in-out infinite;
+.leaf {
+  position: absolute;
+
+  width: 42px;
+  height: 19px;
+
+  border-radius: 100% 0;
+
+  background: #71815d;
+
+  bottom: 76%;
+  left: 55%;
+
+  transform: rotate(-22deg);
 }
 
-.f1{top:25%;left:8%;}
-.f2{top:30%;right:9%;animation-delay:1s;}
-.f3{bottom:20%;left:15%;animation-delay:2s;}
-.f4{bottom:25%;right:14%;animation-delay:3s;}
+/* Decorative sprinkles */
 
-/* =========================================================
-   GAMES SECTION
-========================================================= */
+.sprinkle {
+  position: absolute;
 
-.games-section{
-    width:min(1150px,90%);
-    margin:auto;
-    padding:100px 0;
+  width: 8px;
+  height: 22px;
+
+  border-radius: 8px;
+
+  background: #fff0d7;
+
+  bottom: 68%;
+  left: 30%;
+
+  transform: rotate(35deg);
 }
 
-.section-head{
-    text-align:center;
-    margin-bottom:45px;
+.sprinkle.two {
+  left: 67%;
+  bottom: 67%;
+
+  transform: rotate(-35deg);
 }
 
-.section-head .mini{
-    color:#f472b6;
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    font-weight:bold;
+.sprinkle.three {
+  left: 42%;
+  bottom: 64%;
+
+  transform: rotate(75deg);
 }
 
-.section-head h2{
-    font-size:42px;
-    margin-top:10px;
+/* =========================
+   FEATURE TEXT
+========================= */
+
+.feature {
+  position: absolute;
+
+  width: min(340px, 30vw);
+
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  will-change:
+    transform,
+    opacity;
 }
 
-.section-head p{
-    color:#888;
-    margin-top:12px;
+.feature-number {
+  color: var(--rose);
+
+  font-size: 9px;
+
+  letter-spacing: .3em;
+
+  margin-bottom: 14px;
+}
+
+.feature h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(48px, 5vw, 76px);
+
+  font-weight: 500;
+
+  line-height: .85;
+
+  margin: 0 0 18px;
+}
+
+.feature p {
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.9;
+}
+
+.feature-one {
+  left: 8vw;
+  top: 27%;
+}
+
+.feature-two {
+  right: 8vw;
+  top: 24%;
+}
+
+.feature-three {
+  left: 8vw;
+  top: 61%;
+}
+
+.feature-four {
+  right: 8vw;
+  top: 62%;
+}
+
+/* Progress */
+
+.scroll-progress {
+  position: absolute;
+
+  right: 28px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 2px;
+  height: 120px;
+
+  background: #e7d9d2;
+}
+
+.scroll-progress span {
+  display: block;
+
+  width: 100%;
+  height: 0%;
+
+  background: var(--rose);
+
+  transform-origin: top;
+}
+
+/* =========================
+   WHY HOMEMADE
+========================= */
+
+.section {
+  padding: 135px 7vw;
+}
+
+.section-heading {
+  max-width: 700px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(55px, 7vw, 95px);
+
+  font-weight: 500;
+
+  line-height: .85;
+
+  margin: 12px 0 25px;
+}
+
+.section-heading p {
+  color: var(--muted);
+
+  line-height: 1.9;
+
+  font-size: 14px;
 }
 
 /* Cards */
 
-.games-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin-top: 70px;
 }
 
-.game-card{
-    position:relative;
+.card {
+  padding: 38px;
 
-    min-height:260px;
+  min-height: 270px;
 
-    padding:30px;
+  background: #fffdf9;
 
-    border-radius:25px;
+  border: 1px solid var(--line);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.025)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    cursor:pointer;
-
-    overflow:hidden;
-
-    transition:
-        transform .4s,
-        border .4s,
-        background .4s;
+  transition:
+    transform .5s ease,
+    box-shadow .5s ease;
 }
 
-.game-card:before{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
+.card:hover {
+  transform: translateY(-9px);
 
-    background:#7c3aed;
-    border-radius:50%;
-
-    filter:blur(80px);
-    opacity:.15;
-
-    right:-50px;
-    top:-50px;
-
-    transition:.4s;
+  box-shadow:
+    0 25px 50px rgba(65,40,30,.07);
 }
 
-.game-card:hover{
-    transform:translateY(-10px);
-    border-color:rgba(244,114,182,.3);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.09),
-            rgba(255,255,255,.035)
-        );
+.card-icon {
+  font-size: 34px;
 }
 
-.game-card:hover:before{
-    opacity:.3;
+.card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 31px;
+
+  font-weight: 500;
+
+  margin: 24px 0 10px;
 }
 
-.game-icon{
-    font-size:46px;
-    margin-bottom:20px;
+.card p {
+  color: var(--muted);
 
-    display:inline-block;
+  font-size: 13px;
 
-    transition:.4s;
+  line-height: 1.8;
 }
 
-.game-card:hover .game-icon{
-    transform:scale(1.15) rotate(-5deg);
+/* =========================
+   MENU
+========================= */
+
+.menu {
+  background: var(--cream-dark);
 }
 
-.game-card h3{
-    font-size:21px;
-    margin-bottom:10px;
+.products {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin-top: 65px;
 }
 
-.game-card p{
-    color:#92929d;
-    font-size:14px;
-    line-height:1.6;
+.product {
+  background: var(--cream);
+
+  border: 1px solid var(--line);
+
+  overflow: hidden;
 }
 
-.play-label{
-    position:absolute;
-    bottom:25px;
+/* Demo cake image */
 
-    color:#f472b6;
-    font-size:13px;
-    font-weight:bold;
+.product-image {
+  height: 300px;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    radial-gradient(
+      circle,
+      #f4d2ca,
+      transparent 63%
+    );
 }
 
-/* =========================================================
-   GAME MODAL
-========================================================= */
+.mini-cake {
+  width: 180px;
+  height: 130px;
 
-.modal{
-    position:fixed;
-    inset:0;
+  position: relative;
 
-    background:rgba(0,0,0,.78);
+  border-radius:
+    0 0 35px 35px;
 
-    backdrop-filter:blur(12px);
+  background:
+    linear-gradient(
+      #dda097,
+      #b96962
+    );
 
-    z-index:2000;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
+  box-shadow:
+    0 25px 35px rgba(70,38,30,.16);
 }
 
-.modal.active{
-    display:flex;
-    animation:fade .3s ease;
+.mini-cake::before {
+  content: "";
+
+  position: absolute;
+
+  width: 190px;
+  height: 55px;
+
+  left: -5px;
+  top: -25px;
+
+  border-radius: 50%;
+
+  background: #fff7ef;
+
+  box-shadow:
+    0 10px 0 #d99188;
 }
 
-.modal-box{
-    width:min(650px,100%);
-    max-height:90vh;
-    overflow:auto;
-
-    padding:35px;
-
-    border-radius:28px;
-
-    background:#11121e;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.6);
-
-    position:relative;
-
-    animation:modalIn .35s ease;
+.product-body {
+  padding: 25px;
 }
 
-.close{
-    position:absolute;
-    top:18px;
-    right:20px;
+.product-body h3 {
+  font-family: "Cormorant Garamond", serif;
 
-    width:35px;
-    height:35px;
+  font-size: 31px;
 
-    border:none;
-    border-radius:50%;
+  font-weight: 500;
 
-    background:rgba(255,255,255,.08);
-
-    color:#aaa;
-    font-size:20px;
-
-    cursor:pointer;
+  margin: 0 0 7px;
 }
 
-.close:hover{
-    color:#fff;
+.product-body p {
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.8;
 }
 
-.modal-title{
-    text-align:center;
-    font-size:30px;
+.product-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 20px;
 }
 
-.modal-subtitle{
-    text-align:center;
-    color:#888;
-    margin:10px auto 30px;
-    line-height:1.6;
+.price {
+  font-weight: 600;
+
+  font-size: 13px;
 }
 
-.game-content{
-    text-align:center;
+.button {
+  display: inline-block;
+
+  background: var(--brown);
+
+  color: white;
+
+  text-decoration: none;
+
+  padding: 13px 20px;
+
+  border-radius: 100px;
+
+  font-size: 10px;
+
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
 }
 
-/* Inputs */
+/* =========================
+   FINAL CTA
+========================= */
 
-.game-input{
-    width:100%;
-    max-width:300px;
+.cta {
+  padding: 155px 7vw;
 
-    padding:14px 16px;
+  background: var(--brown);
 
-    border-radius:12px;
+  color: #fff8f2;
 
-    background:#191a28;
-
-    border:1px solid #333;
-
-    color:#fff;
-
-    outline:none;
-
-    margin:6px;
+  text-align: center;
 }
 
-.game-input:focus{
-    border-color:#a78bfa;
+.cta .eyebrow {
+  color: #e8b1a8;
 }
 
-/* Game button */
+.cta h2 {
+  font-family: "Cormorant Garamond", serif;
 
-.game-button{
-    border:none;
+  font-size: clamp(65px, 10vw, 140px);
 
-    padding:13px 20px;
+  font-weight: 500;
 
-    margin:6px;
+  line-height: .77;
 
-    border-radius:12px;
-
-    background:#7c3aed;
-
-    color:#fff;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
+  margin: 12px 0 35px;
 }
 
-.game-button:hover{
-    transform:translateY(-2px);
-    background:#8b5cf6;
+.cta p {
+  max-width: 550px;
+
+  margin: auto;
+
+  color: #c9b8b0;
+
+  line-height: 1.9;
+
+  font-size: 14px;
 }
 
-/* Results */
+.cta .button {
+  margin-top: 35px;
 
-.game-result{
-    min-height:45px;
+  background: white;
 
-    margin-top:25px;
-
-    font-size:18px;
-
-    color:#f9a8d4;
-
-    font-weight:bold;
-
-    line-height:1.6;
+  color: var(--brown);
 }
 
-/* =========================================================
-   ROCK PAPER SCISSORS
-========================================================= */
-
-.rps-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.rps-button{
-    width:90px;
-    height:90px;
-
-    border-radius:20px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    background:#191a28;
-
-    color:#fff;
-
-    font-size:35px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.rps-button:hover{
-    transform:translateY(-6px);
-    border-color:#a78bfa;
-}
-
-/* =========================================================
-   MEMORY GAME
-========================================================= */
-
-.memory-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-
-    max-width:380px;
-    margin:auto;
-}
-
-.memory-card{
-    aspect-ratio:1;
-
-    border:none;
-    border-radius:14px;
-
-    background:#1c1d2b;
-
-    color:transparent;
-
-    font-size:30px;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.memory-card.flipped,
-.memory-card.matched{
-    color:#fff;
-    background:#292a40;
-}
-
-.memory-card.matched{
-    box-shadow:
-        0 0 0 2px rgba(244,114,182,.4);
-}
-
-/* =========================================================
-   REACTION GAME
-========================================================= */
-
-.reaction-area{
-    height:220px;
-
-    border-radius:20px;
-
-    background:#191a28;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    user-select:none;
-
-    margin-bottom:20px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    font-size:20px;
-    font-weight:bold;
-}
-
-.reaction-area.ready{
-    background:#312e81;
-}
-
-.reaction-area.go{
-    background:#166534;
-}
-
-.reaction-area.too-soon{
-    background:#7f1d1d;
-}
-
-/* =========================================================
-   SCORE
-========================================================= */
-
-.score-board{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-bottom:25px;
-    flex-wrap:wrap;
-}
-
-.score-pill{
-    background:#191a28;
-    border:1px solid rgba(255,255,255,.08);
-
-    padding:9px 15px;
-
-    border-radius:30px;
-
-    color:#aaa;
-    font-size:13px;
-}
-
-.score-pill strong{
-    color:#fff;
-}
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
-footer{
-    border-top:1px solid rgba(255,255,255,.07);
+footer {
+  padding: 38px 7vw;
 
-    padding:45px 20px;
+  display: flex;
 
-    text-align:center;
+  justify-content: space-between;
 
-    color:#666;
+  gap: 20px;
 
-    font-size:13px;
+  color: #8b7770;
+
+  font-size: 10px;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
 }
 
-footer .footer-logo{
-    color:#fff;
-    font-weight:bold;
-    font-size:18px;
-    margin-bottom:10px;
+/* =========================
+   REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
-footer span{
-    color:#f472b6;
+.reveal.visible {
+  opacity: 1;
+
+  transform: translateY(0);
 }
 
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-    50%{
-        transform:translateY(-18px) rotate(5deg);
-    }
-}
-
-@keyframes fade{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-@keyframes modalIn{
-    from{
-        opacity:0;
-        transform:translateY(25px) scale(.96);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media(max-width:850px){
+@media (max-width: 800px) {
 
-    nav{
-        display:none;
-    }
+  nav {
+    height: 65px;
 
-    .hero h1{
-        letter-spacing:-3px;
-    }
+    padding: 0 22px;
+  }
 
-    .games-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+  .logo {
+    font-size: 27px;
+  }
 
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding:
+      110px 24px
+      70px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .story {
+    height: 330vh;
+  }
+
+  .cake {
+    width: 76vw;
+  }
+
+  .feature {
+    width: 70vw;
+
+    left: 15vw !important;
+    right: auto !important;
+
+    text-align: center;
+  }
+
+  .feature-one {
+    top: 9%;
+  }
+
+  .feature-two {
+    top: 66%;
+  }
+
+  .feature-three {
+    top: 12%;
+  }
+
+  .feature-four {
+    top: 68%;
+  }
+
+  .scroll-progress {
+    right: 12px;
+
+    height: 90px;
+  }
+
+  .section {
+    padding:
+      95px 22px;
+  }
+
+  .cards,
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    gap: 14px;
+  }
+
+  .product-image {
+    height: 260px;
+  }
+
+  footer {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding:
+      35px 22px;
+  }
 }
-
-@media(max-width:600px){
-
-    .hero{
-        padding-top:120px;
-    }
-
-    .hero h1{
-        font-size:58px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .games-grid{
-        grid-template-columns:1fr;
-    }
-
-    .games-section{
-        padding:70px 0;
-    }
-
-    .section-head h2{
-        font-size:32px;
-    }
-
-    .modal-box{
-        padding:28px 18px;
-    }
-
-    .memory-grid{
-        max-width:300px;
-    }
-
-    .float{
-        display:none;
-    }
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
+<nav>
 
-<header>
+  <div class="logo">
+    Veloura<span>.</span>
+  </div>
 
-    <div class="logo">
-        FUN<span>ZONE</span><i class="logo-dot"></i> 🎮
+  <div class="nav-links">
+    <a href="#story">Experience</a>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+  </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      Homemade · Fresh · Beautiful
     </div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-    </nav>
+    <h1>
+      Made With<br>
+      <em>Love.</em>
+    </h1>
+
+    <p>
+      Handcrafted cakes and bakery treats,
+      freshly baked for birthdays,
+      celebrations and the little moments
+      that deserve something sweet.
+    </p>
+
+  </div>
+
+  <div class="scroll-hint">
+    Scroll to discover
+  </div>
 
 </header>
 
 
-<!-- ======================================================
-     HERO
-====================================================== -->
+<!-- =========================
+     CINEMATIC STORY
+========================= -->
 
-<section class="hero" id="home">
+<section class="story" id="story">
 
-    <div class="float f1">🎮</div>
-    <div class="float f2">✨</div>
-    <div class="float f3">😂</div>
-    <div class="float f4">⚡</div>
+  <div class="story-sticky">
 
-    <div class="hero-content">
+    <div class="product-stage">
 
-        <div class="badge">
-            ✨ No account. No stress. Just fun.
-        </div>
+      <div class="cake" id="cake">
 
-        <h1>
-            FUN
-            <br>
-            ZONE
+        <div class="cake-plate"></div>
 
-            <small>
-                PLAY • LAUGH • CHALLENGE
-            </small>
-        </h1>
+        <div class="cake-base"></div>
 
-        <p>
-            Welcome to your little corner of the internet.
-            Play quick games, challenge yourself,
-            compete with friends and discover something unexpected.
-        </p>
+        <div class="cake-cream"></div>
 
-        <div class="hero-buttons">
+        <div class="cake-top"></div>
 
-            <button
-                class="primary-btn"
-                onclick="scrollToGames()">
-                🎮 PLAY NOW
-            </button>
+        <div class="cherry"></div>
 
-            <button
-                class="secondary-btn"
-                onclick="randomGame()">
-                ✨ SURPRISE ME
-            </button>
+        <div class="leaf"></div>
 
-        </div>
+        <div class="sprinkle"></div>
+
+        <div class="sprinkle two"></div>
+
+        <div class="sprinkle three"></div>
+
+      </div>
 
     </div>
+
+
+    <!-- FEATURE 1 -->
+
+    <div class="feature feature-one" id="feature1">
+
+      <div class="feature-number">
+        01 / THE BEGINNING
+      </div>
+
+      <h2>
+        Baked<br>
+        Fresh.
+      </h2>
+
+      <p>
+        Every order starts with a fresh bake,
+        carefully prepared in small batches
+        for that comforting homemade taste.
+      </p>
+
+    </div>
+
+
+    <!-- FEATURE 2 -->
+
+    <div class="feature feature-two" id="feature2">
+
+      <div class="feature-number">
+        02 / THE CRAFT
+      </div>
+
+      <h2>
+        Hand<br>
+        Finished.
+      </h2>
+
+      <p>
+        From the sponge to the final swirl,
+        every detail is finished with patience,
+        creativity and care.
+      </p>
+
+    </div>
+
+
+    <!-- FEATURE 3 -->
+
+    <div class="feature feature-three" id="feature3">
+
+      <div class="feature-number">
+        03 / THE DETAIL
+      </div>
+
+      <h2>
+        Made for<br>
+        your moment.
+      </h2>
+
+      <p>
+        Choose your flavors, colors,
+        decorations and message to create
+        something truly personal.
+      </p>
+
+    </div>
+
+
+    <!-- FEATURE 4 -->
+
+    <div class="feature feature-four" id="feature4">
+
+      <div class="feature-number">
+        04 / THE REVEAL
+      </div>
+
+      <h2>
+        Sweet<br>
+        Memories.
+      </h2>
+
+      <p>
+        A beautiful centerpiece,
+        a delicious bite and a moment
+        worth remembering.
+      </p>
+
+    </div>
+
+
+    <div class="scroll-progress">
+      <span id="progress"></span>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- ======================================================
-     GAMES
-====================================================== -->
+<!-- =========================
+     WHY HOMEMADE
+========================= -->
 
-<section class="games-section" id="games">
+<section class="section">
 
-    <div class="section-head">
+  <div class="section-heading reveal">
 
-        <div class="mini">
-            PICK YOUR GAME
-        </div>
-
-        <h2>
-            What are you in the mood for?
-        </h2>
-
-        <p>
-            Five quick games. Zero downloads. Instant fun.
-        </p>
-
+    <div class="eyebrow">
+      Why homemade?
     </div>
 
+    <h2>
+      The difference is
+      in the details.
+    </h2>
 
-    <div class="games-grid">
+    <p>
+      Small-batch baking means more attention
+      at every stage — from mixing and baking
+      to decorating and packing.
+    </p>
 
-
-        <!-- REACTION -->
-
-        <div
-            class="game-card"
-            onclick="openGame('reaction')">
-
-            <div class="game-icon">
-                ⚡
-            </div>
-
-            <h3>
-                Reaction Rush
-            </h3>
-
-            <p>
-                How fast are you really?
-                Wait for the signal and click as quickly as possible.
-            </p>
-
-            <div class="play-label">
-                TEST YOUR SPEED →
-            </div>
-
-        </div>
+  </div>
 
 
-        <!-- NUMBER -->
+  <div class="cards">
 
-        <div
-            class="game-card"
-            onclick="openGame('guess')">
+    <article class="card reveal">
 
-            <div class="game-icon">
-                🔢
-            </div>
+      <div class="card-icon">
+        ✦
+      </div>
 
-            <h3>
-                Guess The Number
-            </h3>
+      <h3>
+        Freshly Baked
+      </h3>
 
-            <p>
-                A secret number is hiding between 1 and 100.
-                Can you find it?
-            </p>
+      <p>
+        Prepared close to your celebration
+        so every slice feels fresh, soft
+        and delicious.
+      </p>
 
-            <div class="play-label">
-                START GUESSING →
-            </div>
-
-        </div>
+    </article>
 
 
-        <!-- RPS -->
+    <article class="card reveal">
 
-        <div
-            class="game-card"
-            onclick="openGame('rps')">
+      <div class="card-icon">
+        ♡
+      </div>
 
-            <div class="game-icon">
-                ✊
-            </div>
+      <h3>
+        Made With Care
+      </h3>
 
-            <h3>
-                Rock Paper Scissors
-            </h3>
+      <p>
+        Thoughtful decoration and careful
+        finishing give every order
+        its own character.
+      </p>
 
-            <p>
-                Challenge the computer.
-                First to reach 5 wins takes the match.
-            </p>
-
-            <div class="play-label">
-                CHALLENGE COMPUTER →
-            </div>
-
-        </div>
+    </article>
 
 
-        <!-- MEMORY -->
+    <article class="card reveal">
 
-        <div
-            class="game-card"
-            onclick="openGame('memory')">
+      <div class="card-icon">
+        ✧
+      </div>
 
-            <div class="game-icon">
-                🧠
-            </div>
+      <h3>
+        Made For You
+      </h3>
 
-            <h3>
-                Memory Match
-            </h3>
+      <p>
+        Choose your flavor, size, colors
+        and message for a cake that
+        fits your occasion.
+      </p>
 
-            <p>
-                Flip the cards and find all the matching emoji pairs.
-            </p>
+    </article>
 
-            <div class="play-label">
-                TEST YOUR MEMORY →
-            </div>
-
-        </div>
-
-
-        <!-- FRIENDSHIP -->
-
-        <div
-            class="game-card"
-            onclick="openGame('friendship')">
-
-            <div class="game-icon">
-                ❤️
-            </div>
-
-            <h3>
-                Friendship Meter
-            </h3>
-
-            <p>
-                Enter two names and discover your completely
-                unofficial friendship score.
-            </p>
-
-            <div class="play-label">
-                CHECK YOUR SCORE →
-            </div>
-
-        </div>
-
-
-        <!-- SURPRISE -->
-
-        <div
-            class="game-card"
-            onclick="randomGame()">
-
-            <div class="game-icon">
-                🎁
-            </div>
-
-            <h3>
-                Random Game
-            </h3>
-
-            <p>
-                Can't decide?
-                Let FUN ZONE choose something for you.
-            </p>
-
-            <div class="play-label">
-                SURPRISE ME →
-            </div>
-
-        </div>
-
-
-    </div>
+  </div>
 
 </section>
 
 
-<!-- ======================================================
-     MODAL
-====================================================== -->
+<!-- =========================
+     MENU
+========================= -->
 
-<div class="modal" id="gameModal">
+<section class="section menu" id="menu">
 
-    <div class="modal-box">
+  <div class="section-heading reveal">
 
-        <button
-            class="close"
-            onclick="closeGame()">
-            ×
-        </button>
-
-        <h2
-            class="modal-title"
-            id="modalTitle">
-            Game
-        </h2>
-
-        <p
-            class="modal-subtitle"
-            id="modalSubtitle">
-            Let's play!
-        </p>
-
-        <div
-            class="game-content"
-            id="gameContent">
-        </div>
-
+    <div class="eyebrow">
+      Our Little Menu
     </div>
 
-</div>
+    <h2>
+      Something for
+      every celebration.
+    </h2>
+
+    <p>
+      These are demo products for now.
+      Later we can replace them with
+      your actual cakes and bakery items.
+    </p>
+
+  </div>
 
 
-<!-- ======================================================
+  <div class="products">
+
+    <!-- PRODUCT 1 -->
+
+    <article class="product reveal">
+
+      <div class="product-image">
+
+        <div class="mini-cake"></div>
+
+      </div>
+
+      <div class="product-body">
+
+        <h3>
+          Classic Celebration
+        </h3>
+
+        <p>
+          Soft vanilla sponge,
+          creamy frosting and a clean,
+          elegant finish.
+        </p>
+
+        <div class="product-bottom">
+
+          <span class="price">
+            PKR 2,500
+          </span>
+
+          <a href="#order" class="button">
+            Order
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PRODUCT 2 -->
+
+    <article class="product reveal">
+
+      <div class="product-image">
+
+        <div class="mini-cake"></div>
+
+      </div>
+
+      <div class="product-body">
+
+        <h3>
+          Chocolate Dream
+        </h3>
+
+        <p>
+          Rich chocolate layers
+          with a smooth chocolate
+          finish.
+        </p>
+
+        <div class="product-bottom">
+
+          <span class="price">
+            PKR 2,800
+          </span>
+
+          <a href="#order" class="button">
+            Order
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PRODUCT 3 -->
+
+    <article class="product reveal">
+
+      <div class="product-image">
+
+        <div class="mini-cake"></div>
+
+      </div>
+
+      <div class="product-body">
+
+        <h3>
+          Custom Creation
+        </h3>
+
+        <p>
+          Your idea, your colors,
+          your message — made
+          especially for you.
+        </p>
+
+        <div class="product-bottom">
+
+          <span class="price">
+            From PKR 3,000
+          </span>
+
+          <a href="#order" class="button">
+            Order
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="cta" id="order">
+
+  <div class="eyebrow">
+    Let's make something sweet
+  </div>
+
+  <h2>
+    Your moment.<br>
+    Our cake.
+  </h2>
+
+  <p>
+    Tell us what you are celebrating
+    and we'll help turn the idea
+    into a beautiful homemade bake.
+  </p>
+
+  <a
+    class="button"
+    href="mailto:hello@example.com"
+  >
+    Start an Order
+  </a>
+
+</section>
+
+
+<!-- =========================
      FOOTER
-====================================================== -->
+========================= -->
 
 <footer>
 
-    <div class="footer-logo">
-        FUN<span>ZONE</span> 🎮
-    </div>
+  <span>
+    © 2026 Veloura Bakery
+  </span>
 
-    <p>
-        Made for fun. Built for everyone.
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 FUN ZONE
-    </p>
+  <span>
+    Handmade with love · Freshly baked
+  </span>
 
 </footer>
 
 
 <script>
 
-/* =========================================================
-   BASIC FUNCTIONS
-========================================================= */
+/* =========================================
+   CINEMATIC SCROLL ENGINE
+========================================= */
 
-const modal =
-    document.getElementById("gameModal");
+const story =
+  document.querySelector(".story");
 
-const title =
-    document.getElementById("modalTitle");
+const cake =
+  document.querySelector("#cake");
 
-const subtitle =
-    document.getElementById("modalSubtitle");
+const progress =
+  document.querySelector("#progress");
 
-const content =
-    document.getElementById("gameContent");
-
-
-function scrollToGames(){
-
-    document
-        .getElementById("games")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
+const features = [
+  document.querySelector("#feature1"),
+  document.querySelector("#feature2"),
+  document.querySelector("#feature3"),
+  document.querySelector("#feature4")
+];
 
 
-function closeGame(){
+/* Clamp value */
 
-    modal.classList.remove("active");
+function clamp(value, min = 0, max = 1) {
+
+  return Math.max(
+    min,
+    Math.min(max, value)
+  );
 
 }
 
 
-function openGame(game){
+/* Smooth easing */
 
-    modal.classList.add("active");
+function ease(value) {
 
-    if(game==="reaction"){
-        reactionGame();
-    }
+  return value < .5
 
-    if(game==="guess"){
-        guessGame();
-    }
+    ? 2 * value * value
 
-    if(game==="rps"){
-        rpsGame();
-    }
-
-    if(game==="memory"){
-        memoryGame();
-    }
-
-    if(game==="friendship"){
-        friendshipGame();
-    }
+    : 1 -
+      Math.pow(
+        -2 * value + 2,
+        2
+      ) / 2;
 
 }
 
 
-modal.addEventListener("click",function(e){
+/* Main animation */
 
-    if(e.target===modal){
-        closeGame();
-    }
+function animateStory() {
 
-});
+  const rect =
+    story.getBoundingClientRect();
 
+  const total =
+    story.offsetHeight -
+    window.innerHeight;
 
-/* =========================================================
-   RANDOM GAME
-========================================================= */
-
-function randomGame(){
-
-    const games=[
-        "reaction",
-        "guess",
-        "rps",
-        "memory",
-        "friendship"
-    ];
-
-    const random=
-        games[Math.floor(Math.random()*games.length)];
-
-    openGame(random);
-
-}
+  const scroll =
+    clamp(
+      -rect.top / total
+    );
 
 
-/* =========================================================
-   REACTION RUSH
-========================================================= */
+  /* Progress bar */
 
-let reactionTimer;
-let reactionStart;
-let reactionWaiting=false;
+  progress.style.height =
+    (scroll * 100) + "%";
 
 
-function reactionGame(){
+  /*
+     CAKE MOVEMENT
+  */
 
-    title.innerHTML="⚡ Reaction Rush";
+  let scale = 1;
 
-    subtitle.innerHTML=
-        "Wait for green. Then click as fast as you can!";
+  let x = 0;
 
-    content.innerHTML=`
+  let y = 0;
 
-        <div class="score-board">
+  let rotation = 0;
 
-            <div class="score-pill">
-                Best:
-                <strong id="bestReaction">—</strong>
-            </div>
 
-        </div>
+  /* Scene 1 */
 
-        <div
-            id="reactionArea"
-            class="reaction-area">
+  if (scroll < .25) {
 
-            Click START below
+    const p =
+      ease(scroll / .25);
 
-        </div>
+    scale =
+      1 + p * .12;
 
-        <button
-            class="game-button"
-            onclick="startReaction()">
+    x =
+      p * -7;
 
-            START TEST
+    y =
+      p * 4;
 
-        </button>
+    rotation =
+      p * -3;
 
-        <div
-            class="game-result"
-            id="reactionResult">
-        </div>
+  }
+
+
+  /* Scene 2 */
+
+  else if (scroll < .50) {
+
+    const p =
+      ease(
+        (scroll - .25) / .25
+      );
+
+    scale =
+      1.12 + p * .55;
+
+    x =
+      -7 + p * 24;
+
+    y =
+      4 + p * 10;
+
+    rotation =
+      -3 + p * 7;
+
+  }
+
+
+  /* Scene 3 */
+
+  else if (scroll < .75) {
+
+    const p =
+      ease(
+        (scroll - .50) / .25
+      );
+
+    scale =
+      1.67 + p * .80;
+
+    x =
+      17 + p * -35;
+
+    y =
+      14 + p * -2;
+
+    rotation =
+      4 + p * -2;
+
+  }
+
+
+  /* Scene 4 */
+
+  else {
+
+    const p =
+      ease(
+        (scroll - .75) / .25
+      );
+
+    scale =
+      2.47 - p * 1.42;
+
+    x =
+      -18 + p * 18;
+
+    y =
+      12 + p * -12;
+
+    rotation =
+      2 + p * -2;
+
+  }
+
+
+  cake.style.transform =
+    `
+      translate3d(
+        ${x}vw,
+        ${y}vh,
+        0
+      )
+      scale(${scale})
+      rotate(${rotation}deg)
     `;
 
 
-    const saved=
-        localStorage.getItem("reactionBest");
+  /*
+     FEATURE TEXT
+  */
 
-    if(saved){
+  features.forEach(
+    (feature, index) => {
 
-        document
-            .getElementById("bestReaction")
-            .innerText=saved+" ms";
+      const center =
+        (index + .5) / 4;
+
+      const distance =
+        Math.abs(
+          scroll - center
+        );
+
+      const opacity =
+        clamp(
+          1 - distance / .18
+        );
+
+      feature.style.opacity =
+        opacity;
+
+      feature.style.transform =
+        `
+          translateY(
+            ${(1 - opacity) * 35}px
+          )
+        `;
 
     }
+  );
 
 }
 
 
-function startReaction(){
-
-    const area=
-        document.getElementById("reactionArea");
-
-    const result=
-        document.getElementById("reactionResult");
-
-    clearTimeout(reactionTimer);
-
-    reactionWaiting=true;
-
-    area.className="reaction-area ready";
-
-    area.innerText="WAIT...";
-
-    result.innerText="";
-
-    const delay=
-        Math.floor(Math.random()*3500)+1500;
-
-
-    reactionTimer=setTimeout(()=>{
-
-        reactionStart=Date.now();
-
-        area.className=
-            "reaction-area go";
-
-        area.innerText=
-            "CLICK NOW! ⚡";
-
-    },delay);
-
-
-    area.onclick=function(){
-
-        if(!reactionWaiting){
-            return;
-        }
-
-        if(area.classList.contains("ready")){
-
-            clearTimeout(reactionTimer);
-
-            reactionWaiting=false;
-
-            area.className=
-                "reaction-area too-soon";
-
-            area.innerText=
-                "TOO SOON!";
-
-            result.innerText=
-                "😂 You clicked before the signal!";
-
-            return;
-
-        }
-
-
-        if(area.classList.contains("go")){
-
-            const time=
-                Date.now()-reactionStart;
-
-            reactionWaiting=false;
-
-            area.className=
-                "reaction-area";
-
-            area.innerText=
-                "TRY AGAIN";
-
-            result.innerText=
-                "⚡ Your reaction time: "+
-                time+
-                " ms";
-
-            const old=
-                localStorage.getItem("reactionBest");
-
-            if(!old || time<Number(old)){
-
-                localStorage.setItem(
-                    "reactionBest",
-                    time
-                );
-
-                document
-                    .getElementById("bestReaction")
-                    .innerText=
-                    time+" ms";
-
-                result.innerHTML+=
-                    "<br>🏆 NEW BEST SCORE!";
-
-            }
-
-        }
-
-    };
-
-}
-
-
-/* =========================================================
-   GUESS THE NUMBER
-========================================================= */
-
-let secretNumber;
-let guesses;
-
-
-function guessGame(){
-
-    secretNumber=
-        Math.floor(Math.random()*100)+1;
-
-    guesses=0;
-
-
-    title.innerHTML=
-        "🔢 Guess The Number";
-
-    subtitle.innerHTML=
-        "Find the secret number between 1 and 100.";
-
-    content.innerHTML=`
-
-        <div class="score-board">
-
-            <div class="score-pill">
-                Attempts:
-                <strong id="guessCount">0</strong>
-            </div>
-
-        </div>
-
-        <input
-            class="game-input"
-            id="guessInput"
-            type="number"
-            min="1"
-            max="100"
-            placeholder="Enter 1–100">
-
-        <br>
-
-        <button
-            class="game-button"
-            onclick="makeGuess()">
-
-            GUESS
-
-        </button>
-
-        <button
-            class="game-button"
-            onclick="guessGame()">
-
-            NEW NUMBER
-
-        </button>
-
-        <div
-            class="game-result"
-            id="guessResult">
-        </div>
-    `;
-
-
-    setTimeout(()=>{
-
-        document
-            .getElementById("guessInput")
-            ?.focus();
-
-    },100);
-
-}
-
-
-function makeGuess(){
-
-    const input=
-        document.getElementById("guessInput");
-
-    const result=
-        document.getElementById("guessResult");
-
-    const count=
-        document.getElementById("guessCount");
-
-    const value=
-        Number(input.value);
-
-
-    if(value<1 || value>100){
-
-        result.innerText=
-            "⚠️ Enter a number from 1 to 100.";
-
-        return;
-
-    }
-
-
-    guesses++;
-
-    count.innerText=guesses;
-
-
-    if(value===secretNumber){
-
-        result.innerHTML=
-            "🎉 CORRECT!<br>"+
-            "You found it in "+
-            guesses+
-            " attempts!";
-
-        return;
-
-    }
-
-
-    if(value<secretNumber){
-
-        result.innerText=
-            "📈 Too low! Go higher.";
-
-    }else{
-
-        result.innerText=
-            "📉 Too high! Go lower.";
-
-    }
-
-}
-
-
-/* =========================================================
-   ROCK PAPER SCISSORS
-========================================================= */
-
-let playerScore=0;
-let computerScore=0;
-
-
-function rpsGame(){
-
-    playerScore=0;
-    computerScore=0;
-
-
-    title.innerHTML=
-        "✊ Rock Paper Scissors";
-
-    subtitle.innerHTML=
-        "First to 5 wins the match.";
-
-    content.innerHTML=`
-
-        <div class="score-board">
-
-            <div class="score-pill">
-                You:
-                <strong id="playerScore">0</strong>
-            </div>
-
-            <div class="score-pill">
-                Computer:
-                <strong id="computerScore">0</strong>
-            </div>
-
-        </div>
-
-
-        <div class="rps-buttons">
-
-            <button
-                class="rps-button"
-                onclick="playRPS('rock')">
-                ✊
-            </button>
-
-            <button
-                class="rps-button"
-                onclick="playRPS('paper')">
-                ✋
-            </button>
-
-            <button
-                class="rps-button"
-                onclick="playRPS('scissors')">
-                ✌️
-            </button>
-
-        </div>
-
-
-        <div
-            class="game-result"
-            id="rpsResult">
-
-            Choose your weapon!
-
-        </div>
-
-    `;
-
-}
-
-
-function playRPS(player){
-
-    if(playerScore>=5 || computerScore>=5){
-        return;
-    }
-
-
-    const choices=[
-        "rock",
-        "paper",
-        "scissors"
-    ];
-
-    const computer=
-        choices[
-            Math.floor(
-                Math.random()*choices.length
-            )
-        ];
-
-
-    let result;
-
-
-    if(player===computer){
-
-        result="🤝 DRAW!";
-
-    }
-
-    else if(
-
-        (player==="rock" && computer==="scissors") ||
-        (player==="paper" && computer==="rock") ||
-        (player==="scissors" && computer==="paper")
-
-    ){
-
-        playerScore++;
-
-        result="🎉 YOU WIN THIS ROUND!";
-
-    }
-
-    else{
-
-        computerScore++;
-
-        result="🤖 COMPUTER WINS THIS ROUND!";
-
-    }
-
-
-    document
-        .getElementById("playerScore")
-        .innerText=playerScore;
-
-    document
-        .getElementById("computerScore")
-        .innerText=computerScore;
-
-
-    const icons={
-        rock:"✊",
-        paper:"✋",
-        scissors:"✌️"
-    };
-
-
-    document
-        .getElementById("rpsResult")
-        .innerHTML=
-
-        result+
-        "<br><br>"+
-        "You "+icons[player]+
-        " vs "+
-        icons[computer]+" Computer";
-
-
-    if(playerScore===5){
-
-        document
-            .getElementById("rpsResult")
-            .innerHTML+=
-            "<br><br>🏆 YOU WON THE MATCH!";
-
-    }
-
-
-    if(computerScore===5){
-
-        document
-            .getElementById("rpsResult")
-            .innerHTML+=
-            "<br><br>🤖 COMPUTER WON THE MATCH!";
-
-    }
-
-}
-
-
-/* =========================================================
-   MEMORY MATCH
-========================================================= */
-
-let memoryFirst=null;
-let memorySecond=null;
-let memoryLock=false;
-let memoryMatches=0;
-
-
-function memoryGame(){
-
-    const emojis=[
-        "🍕",
-        "🚀",
-        "🎮",
-        "😂",
-        "🐱",
-        "🍔",
-        "⚡",
-        "🎁"
-    ];
-
-    const cards=
-        [...emojis,...emojis]
-        .sort(()=>Math.random()-.5);
-
-
-    memoryFirst=null;
-    memorySecond=null;
-    memoryLock=false;
-    memoryMatches=0;
-
-
-    title.innerHTML=
-        "🧠 Memory Match";
-
-    subtitle.innerHTML=
-        "Find all 8 matching pairs.";
-
-    content.innerHTML=`
-
-        <div class="score-board">
-
-            <div class="score-pill">
-                Matches:
-                <strong id="memoryScore">0 / 8</strong>
-            </div>
-
-        </div>
-
-        <div
-            class="memory-grid"
-            id="memoryGrid">
-        </div>
-
-        <div
-            class="game-result"
-            id="memoryResult">
-        </div>
-
-        <button
-            class="game-button"
-            onclick="memoryGame()">
-
-            🔄 NEW GAME
-
-        </button>
-
-    `;
-
-
-    const grid=
-        document.getElementById("memoryGrid");
-
-
-    cards.forEach((emoji,index)=>{
-
-        const card=
-            document.createElement("button");
-
-        card.className=
-            "memory-card";
-
-        card.dataset.emoji=emoji;
-
-        card.dataset.index=index;
-
-        card.innerText=emoji;
-
-
-        card.onclick=function(){
-
-            flipMemory(card);
-
-        };
-
-
-        grid.appendChild(card);
-
-    });
-
-}
-
-
-function flipMemory(card){
-
-    if(
-        memoryLock ||
-        card.classList.contains("flipped") ||
-        card.classList.contains("matched")
-    ){
-
-        return;
-
-    }
-
-
-    card.classList.add("flipped");
-
-
-    if(!memoryFirst){
-
-        memoryFirst=card;
-
-        return;
-
-    }
-
-
-    memorySecond=card;
-
-    memoryLock=true;
-
-
-    if(
-        memoryFirst.dataset.emoji===
-        memorySecond.dataset.emoji
-    ){
-
-        memoryFirst.classList.add("matched");
-        memorySecond.classList.add("matched");
-
-        memoryMatches++;
-
-
-        document
-            .getElementById("memoryScore")
-            .innerText=
-            memoryMatches+" / 8";
-
-
-        memoryFirst=null;
-        memorySecond=null;
-
-        memoryLock=false;
-
-
-        if(memoryMatches===8){
-
-            document
-                .getElementById("memoryResult")
-                .innerHTML=
-                "🏆 AMAZING! You found them all!";
-
-        }
-
-    }
-
-    else{
-
-        setTimeout(()=>{
-
-            memoryFirst.classList.remove("flipped");
-            memorySecond.classList.remove("flipped");
-
-            memoryFirst=null;
-            memorySecond=null;
-
-            memoryLock=false;
-
-        },800);
-
-    }
-
-}
-
-
-/* =========================================================
-   FRIENDSHIP METER
-========================================================= */
-
-function friendshipGame(){
-
-    title.innerHTML=
-        "❤️ Friendship Meter";
-
-    subtitle.innerHTML=
-        "A completely unofficial scientific friendship test.";
-
-    content.innerHTML=`
-
-        <input
-            class="game-input"
-            id="friend1"
-            placeholder="Your name">
-
-        <input
-            class="game-input"
-            id="friend2"
-            placeholder="Friend's name">
-
-        <br>
-
-        <button
-            class="game-button"
-            onclick="calculateFriendship()">
-
-            ❤️ CALCULATE
-
-        </button>
-
-        <div
-            class="game-result"
-            id="friendResult">
-        </div>
-
-    `;
-
-}
-
-
-function calculateFriendship(){
-
-    const a=
-        document
-        .getElementById("friend1")
-        .value
-        .trim();
-
-    const b=
-        document
-        .getElementById("friend2")
-        .value
-        .trim();
-
-
-    const result=
-        document.getElementById("friendResult");
-
-
-    if(!a || !b){
-
-        result.innerText=
-            "⚠️ Please enter both names.";
-
-        return;
-
-    }
-
-
-    let total=0;
-
-    const combined=
-        (a+b).toLowerCase();
-
-
-    for(let i=0;i<combined.length;i++){
-
-        total+=combined.charCodeAt(i);
-
-    }
-
-
-    let score=
-        (total%51)+50;
-
-
-    let message;
-
-
-    if(score>=95){
-
-        message=
-            "🔥 LEGENDARY FRIENDSHIP!";
-
-    }
-
-    else if(score>=85){
-
-        message=
-            "💖 Best friends material!";
-
-    }
-
-    else if(score>=75){
-
-        message=
-            "😍 Very strong friendship!";
-
-    }
-
-    else if(score>=65){
-
-        message=
-            "😊 Pretty good friendship!";
-
-    }
-
-    else{
-
-        message=
-            "😏 Hmm... friendship needs some work!";
-
-    }
-
-
-    result.innerHTML=
-        `${a} ❤️ ${b}<br><br>
-        Friendship Score: ${score}%<br>
-        ${message}`;
-
-}
-
-
-/* =========================================================
-   KEYBOARD SUPPORT
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(
-            e.key==="Escape" &&
-            modal.classList.contains("active")
-        ){
-
-            closeGame();
-
-        }
-
-    }
+/* Run animation */
+
+window.addEventListener(
+  "scroll",
+  animateStory,
+  { passive: true }
 );
+
+animateStory();
+
+
+/* =========================================
+   NORMAL SECTION REVEALS
+========================================= */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        entry => {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            entry.target.classList.add(
+              "visible"
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: .15
+    }
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(
+    element =>
+      observer.observe(element)
+  );
 
 </script>
 
 </body>
 </html>
+```
