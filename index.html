@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Laiba's Cakery — Crafted With Love</title>
+<title>Laiba's Cakery — The Art of Something Sweet</title>
 
 <meta name="description"
-content="A handcrafted bakery experience where every creation is made with care, imagination and love.">
+content="Laiba's Cakery — handcrafted cakes and bakery creations made with care, imagination and love.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +16,9 @@ content="A handcrafted bakery experience where every creation is made with care,
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 *{
     margin:0;
@@ -42,103 +42,198 @@ img{
     display:block;
 }
 
-button{
+button,
+input,
+textarea,
+select{
     font-family:inherit;
 }
 
-/* =========================
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 .nav{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:78px;
+    height:82px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6vw;
+
+    padding:0 5vw;
+
     z-index:1000;
 
     background:rgba(248,244,238,.78);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
     border-bottom:1px solid rgba(60,40,30,.08);
+
+    transition:.4s ease;
 }
 
-.logo{
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    min-width:0;
+}
+
+.brand-logo{
+    width:48px;
+    height:48px;
+
+    display:none;
+
+    object-fit:contain;
+}
+
+.brand-name{
     font-family:"Cormorant Garamond",serif;
     font-size:30px;
-    letter-spacing:3px;
-    font-weight:600;
+    line-height:1;
+    letter-spacing:1.5px;
+    white-space:nowrap;
 }
 
 .nav-links{
     display:flex;
-    gap:35px;
+    align-items:center;
+    gap:32px;
 }
 
 .nav-links a{
-    text-decoration:none;
     color:#332821;
-    font-size:12px;
-    letter-spacing:1.8px;
+    text-decoration:none;
+
+    font-size:10px;
+    letter-spacing:2px;
     text-transform:uppercase;
+
+    opacity:.8;
+    transition:.3s ease;
 }
 
-/* =========================
+.nav-links a:hover{
+    opacity:1;
+}
+
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
     min-height:100vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
-    padding:120px 25px 80px;
+
+    padding:140px 25px 90px;
+
     position:relative;
 }
 
-.hero-small{
-    font-size:11px;
+.hero-content{
+    max-width:1000px;
+}
+
+.hero-logo{
+    width:110px;
+    height:110px;
+
+    object-fit:contain;
+
+    margin:0 auto 30px;
+
+    display:none;
+}
+
+.eyebrow{
+    font-size:10px;
     letter-spacing:5px;
     text-transform:uppercase;
+
+    opacity:.55;
+
     margin-bottom:25px;
-    opacity:.65;
 }
 
 .hero h1{
     font-family:"Cormorant Garamond",serif;
-    font-size:clamp(70px,12vw,170px);
+
+    font-size:clamp(72px,13vw,180px);
+
     font-weight:400;
-    line-height:.8;
+
+    line-height:.78;
+
+    letter-spacing:-3px;
 }
 
-.hero p{
-    max-width:600px;
-    margin:40px auto 0;
-    font-size:15px;
+.hero-subtitle{
+    max-width:620px;
+
+    margin:45px auto 0;
+
+    font-size:14px;
     line-height:1.9;
-    opacity:.7;
+
+    opacity:.68;
 }
 
-/* =========================
+.scroll-hint{
+    position:absolute;
+
+    bottom:35px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    opacity:.45;
+}
+
+.scroll-line{
+    width:1px;
+    height:40px;
+
+    background:#5e4435;
+
+    margin:12px auto 0;
+
+    opacity:.35;
+}
+
+
+/* =========================================================
    CINEMATIC STORY
-========================= */
+========================================================= */
 
 .story{
     height:430vh;
+
     position:relative;
 }
 
 .story-sticky{
-    height:100vh;
     position:sticky;
     top:0;
+
+    height:100vh;
+
     overflow:hidden;
 
     display:flex;
@@ -146,125 +241,113 @@ button{
     justify-content:center;
 }
 
-.story-bg{
+.story-background{
     position:absolute;
     inset:0;
+
     background:
-        radial-gradient(circle at 50% 45%,#fffaf5 0%,#f8f4ee 45%,#eee7de 100%);
+        radial-gradient(
+            circle at 50% 45%,
+            #fffdf9 0%,
+            #f8f4ee 45%,
+            #ebe1d6 100%
+        );
 }
 
-.cake-stage{
-    width:min(500px,70vw);
-    aspect-ratio:1;
+.story-glow{
     position:absolute;
+
+    width:55vw;
+    height:55vw;
+
+    max-width:700px;
+    max-height:700px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    filter:blur(70px);
+
+    opacity:.7;
+}
+
+
+/* =========================================================
+   CINEMATIC IMAGE
+========================================================= */
+
+.featured-stage{
+    position:absolute;
+
     left:50%;
     top:50%;
 
+    width:min(650px,72vw);
+    height:min(650px,72vw);
+
     transform:
         translate(-50%,-50%)
-        scale(.65);
+        scale(.72);
 
-    transition:transform .08s linear;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:3;
+
+    will-change:transform;
 }
 
-.cake-image{
+.featured-image{
     width:100%;
     height:100%;
+
     object-fit:contain;
 
     filter:
-        drop-shadow(0 35px 35px rgba(50,30,20,.18));
+        drop-shadow(
+            0 35px 40px rgba(60,35,20,.20)
+        );
+
+    will-change:transform;
 }
 
-.cake-placeholder{
-    width:100%;
-    height:100%;
-    position:relative;
+.featured-placeholder{
+    text-align:center;
+
+    opacity:.3;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:35px;
 }
 
-.cake-base{
-    position:absolute;
-    width:62%;
-    height:34%;
-    left:19%;
-    bottom:20%;
 
-    background:linear-gradient(
-        180deg,
-        #8d5235,
-        #5a301e
-    );
-
-    border-radius:50% 50% 20% 20%;
-    box-shadow:0 30px 35px rgba(60,30,15,.22);
-}
-
-.cake-cream{
-    position:absolute;
-    width:64%;
-    height:18%;
-    left:18%;
-    bottom:45%;
-
-    background:#fff8ef;
-    border-radius:50%;
-
-    box-shadow:
-        0 5px 0 #ead7c3,
-        0 13px 0 #fff8ef;
-}
-
-.cake-top{
-    position:absolute;
-    width:62%;
-    height:22%;
-    left:19%;
-    bottom:53%;
-
-    background:#713d27;
-    border-radius:50%;
-
-    box-shadow:
-        inset 0 -8px 0 rgba(0,0,0,.08);
-}
-
-.cherry{
-    position:absolute;
-    width:9%;
-    height:9%;
-    background:#9d2431;
-    border-radius:50%;
-    left:45%;
-    bottom:69%;
-    box-shadow:inset -5px -5px 5px rgba(0,0,0,.15);
-}
-
-.leaf{
-    position:absolute;
-    width:14%;
-    height:6%;
-    background:#65714c;
-    border-radius:100%;
-    transform:rotate(-25deg);
-    left:53%;
-    bottom:75%;
-}
+/* =========================================================
+   STORY TEXT
+========================================================= */
 
 .story-copy{
     position:absolute;
-    width:100%;
-    padding:0 8vw;
-    z-index:5;
+    inset:0;
+
+    z-index:6;
+
     pointer-events:none;
 }
 
 .story-text{
-    max-width:430px;
+    position:absolute;
+
+    width:min(420px,40vw);
+
     opacity:0;
-    transform:translateY(40px);
+
+    transform:translateY(35px);
+
     transition:
-        opacity .35s ease,
-        transform .35s ease;
+        opacity .45s ease,
+        transform .65s cubic-bezier(.2,.7,.2,1);
 }
 
 .story-text.active{
@@ -272,82 +355,103 @@ button{
     transform:translateY(0);
 }
 
-.story-text h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(48px,6vw,90px);
-    font-weight:400;
-    line-height:.9;
-    margin-bottom:20px;
-}
-
-.story-text p{
-    font-size:14px;
-    line-height:1.9;
-    opacity:.7;
-}
-
-.story-text:nth-child(1){
-    position:absolute;
+.story-text.left{
     left:7vw;
+}
+
+.story-text.right{
+    right:7vw;
+}
+
+.story-text.top{
     top:24vh;
 }
 
-.story-text:nth-child(2){
-    position:absolute;
-    right:7vw;
-    top:32vh;
+.story-text.bottom{
+    bottom:20vh;
 }
 
-.story-text:nth-child(3){
+.story-text h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(55px,6vw,90px);
+
+    font-weight:400;
+
+    line-height:.85;
+
+    letter-spacing:-1px;
+
+    margin-bottom:25px;
+}
+
+.story-text p{
+    font-size:13px;
+
+    line-height:1.9;
+
+    opacity:.65;
+
+    max-width:370px;
+}
+
+
+/* =========================================================
+   STORY LABEL
+========================================================= */
+
+.story-counter{
     position:absolute;
+
+    bottom:35px;
     left:7vw;
-    bottom:22vh;
+
+    z-index:10;
+
+    font-size:9px;
+    letter-spacing:3px;
+
+    opacity:.4;
 }
 
-.story-text:nth-child(4){
-    position:absolute;
-    right:7vw;
-    bottom:17vh;
-}
 
-/* =========================
-   INTRO SECTIONS
-========================= */
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
 
 .section{
     padding:150px 8vw;
 }
 
 .section-header{
-    max-width:700px;
-    margin-bottom:80px;
-}
+    max-width:720px;
 
-.eyebrow{
-    font-size:11px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    opacity:.55;
-    margin-bottom:20px;
+    margin-bottom:85px;
 }
 
 .section h2{
     font-family:"Cormorant Garamond",serif;
-    font-size:clamp(55px,7vw,100px);
+
+    font-size:clamp(55px,7vw,105px);
+
     font-weight:400;
-    line-height:.9;
+
+    line-height:.86;
+
+    letter-spacing:-1px;
 }
 
 .section-header p{
     margin-top:30px;
-    line-height:1.9;
-    max-width:600px;
-    opacity:.7;
-}
 
-/* =========================
-   PHILOSOPHY
-========================= */
+    max-width:610px;
+
+    font-size:14px;
+
+    line-height:1.9;
+
+    opacity:.65;
+}
 
 .philosophy{
     background:#30231c;
@@ -356,38 +460,54 @@ button{
 
 .philosophy-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:2px;
+
+    gap:1px;
+
+    background:rgba(255,255,255,.12);
 }
 
 .philosophy-card{
-    padding:60px 40px;
-    border:1px solid rgba(255,255,255,.12);
-    min-height:300px;
+    min-height:330px;
+
+    padding:55px 40px;
+
+    background:#30231c;
+
+    border:1px solid rgba(255,255,255,.05);
 }
 
-.philosophy-card span{
+.philosophy-card-number{
     font-family:"Cormorant Garamond",serif;
-    font-size:60px;
-    opacity:.3;
+
+    font-size:55px;
+
+    opacity:.25;
 }
 
 .philosophy-card h3{
     font-family:"Cormorant Garamond",serif;
+
     font-size:38px;
+
     font-weight:400;
+
     margin:30px 0 15px;
 }
 
 .philosophy-card p{
-    font-size:13px;
+    font-size:12px;
+
     line-height:1.9;
-    opacity:.65;
+
+    opacity:.6;
 }
 
-/* =========================
+
+/* =========================================================
    COLLECTION
-========================= */
+========================================================= */
 
 .collection{
     background:#fffaf5;
@@ -395,8 +515,10 @@ button{
 
 .products{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:45px;
+
+    gap:55px 38px;
 }
 
 .product{
@@ -404,9 +526,14 @@ button{
 }
 
 .product-image{
+    width:100%;
+
     aspect-ratio:4/5;
+
     overflow:hidden;
-    background:#eee6dc;
+
+    background:#eee5db;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -415,154 +542,224 @@ button{
 .product-image img{
     width:100%;
     height:100%;
+
     object-fit:contain;
-    transition:transform .8s cubic-bezier(.2,.7,.2,1);
+
+    transition:
+        transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
 .product:hover .product-image img{
     transform:scale(1.045);
 }
 
-.product-placeholder{
-    font-family:"Cormorant Garamond",serif;
-    font-size:35px;
-    opacity:.3;
+.product-info{
+    padding:22px 5px;
 }
 
-.product-info{
-    padding:20px 5px;
+.product-info .eyebrow{
+    margin-bottom:10px;
 }
 
 .product-info h3{
     font-family:"Cormorant Garamond",serif;
+
     font-size:32px;
+
     font-weight:500;
 }
 
 .product-info p{
+    margin-top:7px;
+
     font-size:12px;
+
     line-height:1.7;
-    opacity:.6;
-    margin-top:6px;
+
+    opacity:.58;
 }
 
-/* =========================
-   BRAND STORY
-========================= */
+.empty-collection{
+    grid-column:1/-1;
 
-.brand-story{
-    min-height:90vh;
-    display:flex;
-    align-items:center;
-}
+    padding:100px 20px;
 
-.brand-inner{
-    max-width:850px;
-}
+    text-align:center;
 
-.brand-inner p{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(32px,4vw,62px);
-    line-height:1.05;
-}
-
-.brand-inner em{
     opacity:.45;
 }
 
-/* =========================
+
+/* =========================================================
+   BRAND STORY
+========================================================= */
+
+.brand-story{
+    min-height:90vh;
+
+    display:flex;
+    align-items:center;
+
+    background:#f4ece3;
+}
+
+.brand-inner{
+    max-width:950px;
+}
+
+.brand-inner .large-copy{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(38px,5vw,70px);
+
+    line-height:1.02;
+}
+
+.brand-inner em{
+    opacity:.42;
+}
+
+
+/* =========================================================
    FINAL
-========================= */
+========================================================= */
 
 .final{
-    min-height:80vh;
+    min-height:85vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
-    background:#eadfd3;
+
+    background:#e8dbce;
 }
 
 .final h2{
-    font-size:clamp(70px,12vw,170px);
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(75px,12vw,175px);
+
+    font-weight:400;
+
+    line-height:.78;
+
+    letter-spacing:-4px;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer{
     background:#241914;
+
     color:#eee5dc;
-    padding:70px 8vw 30px;
+
+    padding:80px 8vw 30px;
 }
 
 .footer-top{
     display:flex;
+
     justify-content:space-between;
-    gap:40px;
-    padding-bottom:70px;
+
+    gap:50px;
+
+    padding-bottom:75px;
 }
 
-.footer-logo{
+.footer-brand{
     font-family:"Cormorant Garamond",serif;
-    font-size:45px;
+
+    font-size:48px;
 }
 
 .footer p{
+    max-width:360px;
+
     font-size:12px;
-    opacity:.6;
-    max-width:350px;
+
     line-height:1.8;
+
+    opacity:.55;
+
+    margin-top:10px;
 }
 
 .footer-bottom{
     border-top:1px solid rgba(255,255,255,.1);
-    padding-top:20px;
+
+    padding-top:22px;
+
     font-size:10px;
-    opacity:.45;
+
+    opacity:.4;
 }
 
-/* =========================
+
+/* =========================================================
    ADMIN BUTTON
-========================= */
+========================================================= */
 
 .admin-trigger{
     position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:2000;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:2500;
 
     width:45px;
     height:45px;
+
     border-radius:50%;
-    border:1px solid rgba(0,0,0,.15);
+
+    border:1px solid rgba(50,35,25,.15);
 
     background:#fffaf5;
+
     color:#332821;
 
     cursor:pointer;
-    font-size:16px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    font-size:17px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.14);
+
+    transition:.3s ease;
 }
 
-/* =========================
+.admin-trigger:hover{
+    transform:rotate(20deg) scale(1.06);
+}
+
+
+/* =========================================================
    ADMIN OVERLAY
-========================= */
+========================================================= */
 
 .admin-overlay{
     position:fixed;
+
     inset:0;
-    background:rgba(20,12,8,.55);
-    backdrop-filter:blur(10px);
-    z-index:3000;
+
+    z-index:4000;
+
+    background:rgba(20,12,8,.58);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    overflow-y:auto;
 
     opacity:0;
     visibility:hidden;
-    transition:.35s ease;
 
-    overflow-y:auto;
+    transition:.35s ease;
 }
 
 .admin-overlay.open{
@@ -571,73 +768,278 @@ button{
 }
 
 .admin-panel{
-    width:min(900px,94vw);
-    margin:50px auto;
+    width:min(960px,95vw);
+
+    margin:35px auto;
+
     background:#fffaf5;
-    min-height:calc(100vh - 100px);
-    padding:40px;
-    border-radius:5px;
-    box-shadow:0 30px 100px rgba(0,0,0,.3);
+
+    border-radius:6px;
+
+    min-height:calc(100vh - 70px);
+
+    padding:42px;
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.35);
 }
 
 .admin-header{
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
-    margin-bottom:40px;
+    justify-content:space-between;
+
+    margin-bottom:42px;
 }
 
 .admin-header h2{
     font-family:"Cormorant Garamond",serif;
-    font-size:45px;
+
+    font-size:48px;
+
     font-weight:400;
 }
 
 .close-admin{
+    width:42px;
+    height:42px;
+
     border:0;
+
+    background:#eee3d8;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:25px;
+}
+
+
+/* =========================================================
+   ADMIN TABS
+========================================================= */
+
+.admin-tabs{
+    display:flex;
+
+    border-bottom:1px solid #dfd1c5;
+
+    margin-bottom:35px;
+}
+
+.admin-tab{
+    border:0;
+
     background:none;
-    font-size:28px;
+
+    padding:15px 22px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    opacity:.45;
+}
+
+.admin-tab.active{
+    opacity:1;
+
+    border-bottom:2px solid #332821;
+}
+
+.admin-section{
+    display:none;
+}
+
+.admin-section.active{
+    display:block;
+}
+
+
+/* =========================================================
+   LOGO STUDIO
+========================================================= */
+
+.logo-studio{
+    display:grid;
+
+    grid-template-columns:200px 1fr;
+
+    gap:35px;
+
+    align-items:center;
+}
+
+.logo-preview-box{
+    width:200px;
+    height:200px;
+
+    background:#f0e7de;
+
+    border:1px dashed #cdbbad;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.logo-preview{
+    max-width:85%;
+    max-height:85%;
+
+    object-fit:contain;
+
+    display:none;
+}
+
+.logo-empty{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:24px;
+
+    opacity:.3;
+
+    text-align:center;
+}
+
+.admin-label{
+    display:block;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    opacity:.58;
+
+    margin-bottom:9px;
+}
+
+.file-input{
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #daccc0;
+
+    background:#fff;
+
     cursor:pointer;
 }
 
-.admin-form{
-    display:grid;
-    gap:18px;
+.admin-buttons{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:18px;
+
+    flex-wrap:wrap;
 }
 
-.admin-form label{
-    font-size:11px;
-    letter-spacing:1px;
+.admin-btn{
+    border:0;
+
+    padding:14px 23px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
     text-transform:uppercase;
-    opacity:.65;
+}
+
+.btn-dark{
+    background:#30231c;
+
+    color:white;
+}
+
+.btn-light{
+    background:#e9ded4;
+
+    color:#30231c;
+}
+
+.btn-danger{
+    background:#ead1ca;
+
+    color:#5c2920;
+}
+
+
+/* =========================================================
+   PRODUCT FORM
+========================================================= */
+
+.admin-form{
+    display:grid;
+
+    gap:18px;
 }
 
 .admin-form input,
 .admin-form textarea,
 .admin-form select{
     width:100%;
-    border:1px solid #ddd0c3;
-    background:#fff;
+
+    border:1px solid #daccc0;
+
+    background:white;
+
     padding:14px;
-    font-family:Inter,sans-serif;
+
     outline:none;
+
+    font-size:13px;
 }
 
 .admin-form textarea{
     min-height:120px;
+
     resize:vertical;
 }
 
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus{
+    border-color:#8e705d;
+}
+
+
+/* =========================================================
+   IMAGE UPLOAD
+========================================================= */
+
 .upload-box{
-    border:1px dashed #cbb9a9;
-    min-height:220px;
+    min-height:280px;
+
+    border:1px dashed #cdbbad;
+
+    background:#fdf8f3;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     padding:20px;
+
     cursor:pointer;
-    background:#fdf8f2;
+
+    position:relative;
 }
 
 .upload-box input{
@@ -645,177 +1047,262 @@ button{
 }
 
 .upload-preview{
-    max-height:220px;
     max-width:100%;
+    max-height:250px;
+
     object-fit:contain;
-    margin:auto;
+
+    display:none;
 }
 
-.admin-actions{
-    display:flex;
-    gap:12px;
-    margin-top:15px;
-}
-
-.admin-btn{
-    border:0;
-    padding:14px 25px;
-    cursor:pointer;
-    letter-spacing:1px;
-    text-transform:uppercase;
+.upload-text{
     font-size:11px;
+
+    line-height:1.9;
+
+    opacity:.55;
 }
 
-.admin-save{
-    background:#30231c;
-    color:#fff;
+.upload-text strong{
+    display:block;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:30px;
+
+    font-weight:400;
+
+    opacity:1;
+
+    color:#332821;
 }
 
-.admin-clear{
-    background:#e9ded3;
-    color:#30231c;
+
+/* =========================================================
+   FEATURED SELECT
+========================================================= */
+
+.featured-note{
+    padding:15px 18px;
+
+    background:#f0e5da;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    opacity:.75;
 }
+
+
+/* =========================================================
+   ADMIN COLLECTION
+========================================================= */
 
 .admin-products{
-    margin-top:60px;
+    margin-top:55px;
 }
 
-.admin-products h3{
+.admin-products-title{
     font-family:"Cormorant Garamond",serif;
-    font-size:35px;
+
+    font-size:38px;
+
     font-weight:400;
-    margin-bottom:20px;
+
+    margin-bottom:18px;
 }
 
 .admin-item{
     display:flex;
+
     align-items:center;
-    gap:15px;
+
+    gap:16px;
+
     padding:15px 0;
-    border-bottom:1px solid #e4d9cf;
+
+    border-bottom:1px solid #e5d9cf;
 }
 
-.admin-item img{
-    width:70px;
-    height:70px;
+.admin-item-image{
+    width:75px;
+    height:75px;
+
     object-fit:contain;
+
     background:#eee5dc;
+
+    flex-shrink:0;
 }
 
 .admin-item-info{
     flex:1;
 }
 
-.admin-item-info strong{
+.admin-item-name{
     font-family:"Cormorant Garamond",serif;
-    font-size:24px;
-    font-weight:500;
+
+    font-size:25px;
 }
 
-.admin-item-info small{
-    display:block;
-    opacity:.55;
-}
+.admin-item-category{
+    font-size:10px;
 
-.admin-item button{
-    border:0;
-    background:none;
-    cursor:pointer;
-    font-size:12px;
-}
-
-.empty-products{
-    padding:30px 0;
     opacity:.5;
+
+    margin-top:3px;
 }
 
-/* =========================
-   SCROLL PROGRESS
-========================= */
+.featured-badge{
+    display:inline-block;
 
-.progress{
-    position:fixed;
-    top:0;
-    left:0;
-    height:3px;
-    background:#8c6248;
-    width:0%;
-    z-index:5000;
+    margin-top:7px;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    padding:5px 8px;
+
+    background:#30231c;
+
+    color:#fff;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.admin-item-actions{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    border:0;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    padding:8px;
+}
+
+.small-btn:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:800px){
 
     .nav{
-        height:65px;
-        padding:0 20px;
+        height:67px;
+
+        padding:0 18px;
     }
 
-    .logo{
-        font-size:25px;
+    .brand-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-name{
+        font-size:24px;
     }
 
     .nav-links{
-        gap:14px;
+        gap:12px;
     }
 
     .nav-links a{
-        font-size:9px;
+        font-size:8px;
+
         letter-spacing:1px;
     }
 
+    .hero{
+        padding-top:120px;
+    }
+
     .hero h1{
-        font-size:70px;
+        font-size:72px;
+
+        letter-spacing:-2px;
+    }
+
+    .hero-subtitle{
+        font-size:12px;
+
+        margin-top:35px;
     }
 
     .story{
-        height:360vh;
+        height:380vh;
     }
 
-    .cake-stage{
-        width:85vw;
+    .featured-stage{
+        width:92vw;
+        height:92vw;
     }
 
     .story-text{
         width:80%;
-        text-align:center;
+
         left:10%!important;
         right:auto!important;
+
+        text-align:center;
     }
 
-    .story-text:nth-child(1){
+    .story-text.top{
         top:14vh;
     }
 
-    .story-text:nth-child(2){
-        top:72vh;
-    }
-
-    .story-text:nth-child(3){
-        bottom:30vh;
-    }
-
-    .story-text:nth-child(4){
-        bottom:8vh;
+    .story-text.bottom{
+        bottom:11vh;
     }
 
     .story-text h2{
-        font-size:50px;
+        font-size:52px;
+    }
+
+    .story-text p{
+        margin:auto;
+    }
+
+    .story-counter{
+        left:50%;
+
+        transform:translateX(-50%);
     }
 
     .section{
-        padding:100px 25px;
+        padding:100px 24px;
     }
 
     .philosophy-grid{
         grid-template-columns:1fr;
     }
 
+    .philosophy-card{
+        min-height:270px;
+    }
+
     .products{
         grid-template-columns:1fr;
+
         gap:55px;
     }
 
@@ -823,29 +1310,58 @@ button{
         aspect-ratio:1/1.15;
     }
 
+    .brand-story{
+        min-height:75vh;
+    }
+
     .footer-top{
         flex-direction:column;
     }
 
     .admin-panel{
-        padding:25px;
-        margin:15px auto;
         width:96vw;
+
+        margin:15px auto;
+
+        padding:25px;
+    }
+
+    .admin-header h2{
+        font-size:38px;
+    }
+
+    .logo-studio{
+        grid-template-columns:1fr;
+    }
+
+    .logo-preview-box{
+        width:170px;
+        height:170px;
+    }
+
+    .admin-item{
+        align-items:flex-start;
+    }
+
+    .admin-item-actions{
+        flex-direction:column;
     }
 
 }
 
-/* =========================
+
+/* =========================================================
    REDUCED MOTION
-========================= */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
     *::after{
-        scroll-behavior:auto!important;
+        animation:none!important;
         transition:none!important;
+        scroll-behavior:auto!important;
     }
 
 }
@@ -853,35 +1369,64 @@ button{
 </style>
 </head>
 
+
 <body>
 
-<div class="progress" id="progress"></div>
 
-<!-- NAV -->
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
 <nav class="nav">
 
-    <div class="logo">
-        Laiba's Cakery
+    <div class="brand">
+
+        <img
+            id="navLogo"
+            class="brand-logo"
+            alt="Laiba's Cakery Logo">
+
+        <div class="brand-name">
+            Laiba's Cakery
+        </div>
+
     </div>
 
+
     <div class="nav-links">
-        <a href="#story">Experience</a>
-        <a href="#collection">Collection</a>
-        <a href="#story-brand">Our Story</a>
+
+        <a href="#experience">
+            Experience
+        </a>
+
+        <a href="#collection">
+            Collection
+        </a>
+
+        <a href="#our-story">
+            Our Story
+        </a>
+
     </div>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <header class="hero">
 
-    <div>
+    <div class="hero-content">
 
-        <div class="hero-small">
-            Handmade Bakery
+        <img
+            id="heroLogo"
+            class="hero-logo"
+            alt="Laiba's Cakery Logo">
+
+        <div class="eyebrow">
+            Laiba's Cakery
         </div>
 
         <h1>
@@ -889,44 +1434,72 @@ button{
             With Love.
         </h1>
 
-        <p>
-            Where simple ingredients become beautiful memories.
-            Discover the art, craft and emotion behind every creation.
+        <p class="hero-subtitle">
+            Where handcrafted creations become beautiful memories.
+            Discover the art, imagination and care behind every
+            creation from Laiba's Cakery.
         </p>
+
+    </div>
+
+
+    <div class="scroll-hint">
+
+        Scroll to discover
+
+        <div class="scroll-line"></div>
 
     </div>
 
 </header>
 
 
-<!-- CINEMATIC STORY -->
+<!-- =======================================================
+     CINEMATIC STORY
+======================================================= -->
 
-<section class="story" id="story">
+<section
+    class="story"
+    id="experience">
 
     <div class="story-sticky">
 
-        <div class="story-bg"></div>
+        <div class="story-background"></div>
 
-        <div class="cake-stage" id="cakeStage">
+        <div class="story-glow"></div>
 
-            <!-- Replace this placeholder later with your uploaded hero image -->
 
-            <div class="cake-placeholder">
+        <!-- REAL UPLOADED FEATURED IMAGE -->
 
-                <div class="cake-base"></div>
-                <div class="cake-cream"></div>
-                <div class="cake-top"></div>
-                <div class="cherry"></div>
-                <div class="leaf"></div>
+        <div
+            class="featured-stage"
+            id="featuredStage">
+
+            <div
+                class="featured-placeholder"
+                id="featuredPlaceholder">
+
+                Your Featured Creation
 
             </div>
+
+            <img
+                id="featuredImage"
+                class="featured-image"
+                alt=""
+                style="display:none;">
 
         </div>
 
 
+        <!-- STORY TEXT -->
+
         <div class="story-copy">
 
-            <div class="story-text active">
+
+            <div
+                class="story-text left top active"
+                data-scene="0">
 
                 <div class="eyebrow">
                     The Beginning
@@ -939,14 +1512,16 @@ button{
 
                 <p>
                     Every creation begins with carefully selected
-                    ingredients and the simple belief that fresh is
-                    always better.
+                    ingredients and the simple belief that fresh
+                    is always better.
                 </p>
 
             </div>
 
 
-            <div class="story-text">
+            <div
+                class="story-text right top"
+                data-scene="1">
 
                 <div class="eyebrow">
                     The Craft
@@ -959,13 +1534,16 @@ button{
 
                 <p>
                     From the first layer to the final detail,
-                    every creation receives the attention it deserves.
+                    every creation receives the attention
+                    it deserves.
                 </p>
 
             </div>
 
 
-            <div class="story-text">
+            <div
+                class="story-text left bottom"
+                data-scene="2">
 
                 <div class="eyebrow">
                     The Detail
@@ -977,30 +1555,44 @@ button{
                 </h2>
 
                 <p>
-                    We believe beauty lives in the little things.
-                    Texture, balance, colour and finishing touches.
+                    Texture, balance, colour and finishing
+                    touches come together to create something
+                    truly memorable.
                 </p>
 
             </div>
 
 
-            <div class="story-text">
+            <div
+                class="story-text right bottom"
+                data-scene="3">
 
                 <div class="eyebrow">
                     The Memory
                 </div>
 
                 <h2>
-                    Sweet<br>
+                    Made For<br>
                     Memories.
                 </h2>
 
                 <p>
-                    Because a beautiful cake is never just a cake.
-                    It becomes part of someone's story.
+                    Because a beautiful creation is never
+                    just a dessert. It becomes part of
+                    someone's story.
                 </p>
 
             </div>
+
+
+        </div>
+
+
+        <div
+            class="story-counter"
+            id="storyCounter">
+
+            01 / 04
 
         </div>
 
@@ -1009,7 +1601,9 @@ button{
 </section>
 
 
-<!-- PHILOSOPHY -->
+<!-- =======================================================
+     PHILOSOPHY
+======================================================= -->
 
 <section class="section philosophy">
 
@@ -1026,8 +1620,9 @@ button{
         </h2>
 
         <p>
-            We don't believe in making ordinary things look expensive.
-            We believe in making beautiful things honestly.
+            We believe the most memorable creations don't need
+            to be complicated. They simply need to be made with
+            patience, imagination and genuine care.
         </p>
 
     </div>
@@ -1035,17 +1630,20 @@ button{
 
     <div class="philosophy-grid">
 
+
         <div class="philosophy-card">
 
-            <span>01</span>
+            <div class="philosophy-card-number">
+                01
+            </div>
 
             <h3>
                 Fresh
             </h3>
 
             <p>
-                Thoughtfully selected ingredients and freshly prepared
-                creations made with care.
+                Carefully selected ingredients and freshly
+                prepared creations made with attention.
             </p>
 
         </div>
@@ -1053,15 +1651,17 @@ button{
 
         <div class="philosophy-card">
 
-            <span>02</span>
+            <div class="philosophy-card-number">
+                02
+            </div>
 
             <h3>
                 Handmade
             </h3>
 
             <p>
-                Every finishing touch is created by hand,
-                giving every piece its own personality.
+                Every finishing touch receives the human
+                attention that makes a creation special.
             </p>
 
         </div>
@@ -1069,27 +1669,34 @@ button{
 
         <div class="philosophy-card">
 
-            <span>03</span>
+            <div class="philosophy-card-number">
+                03
+            </div>
 
             <h3>
                 Personal
             </h3>
 
             <p>
-                Because celebrations are personal,
-                our creations should feel personal too.
+                Every celebration has its own feeling,
+                and every creation should carry that feeling.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- COLLECTION -->
+<!-- =======================================================
+     COLLECTION
+======================================================= -->
 
-<section class="section collection" id="collection">
+<section
+    class="section collection"
+    id="collection">
 
     <div class="section-header">
 
@@ -1103,25 +1710,35 @@ button{
         </h2>
 
         <p>
-            A curated collection of handcrafted cakes and bakery
-            creations. Each piece has its own character and story.
+            Explore a curated collection of handcrafted
+            cakes and bakery creations from Laiba's Cakery.
         </p>
 
     </div>
 
 
-    <div class="products" id="products">
+    <div
+        class="products"
+        id="products">
 
-        <!-- PRODUCTS ARE LOADED HERE -->
+        <div class="empty-collection">
+
+            Your creations will appear here.
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- BRAND STORY -->
+<!-- =======================================================
+     BRAND STORY
+======================================================= -->
 
-<section class="section brand-story" id="story-brand">
+<section
+    class="section brand-story"
+    id="our-story">
 
     <div class="brand-inner">
 
@@ -1129,11 +1746,23 @@ button{
             Our Story
         </div>
 
-        <p>
+        <p class="large-copy">
+
             It started with a simple idea:
-            <em>make something beautiful,
-            make it with care,
-            and let people remember it.</em>
+
+            <em>
+                make something beautiful,
+                make it with care,
+                and let people remember it.
+            </em>
+
+            <br><br>
+
+            That idea became
+            <strong>
+                Laiba's Cakery.
+            </strong>
+
         </p>
 
     </div>
@@ -1141,14 +1770,16 @@ button{
 </section>
 
 
-<!-- FINAL -->
+<!-- =======================================================
+     FINAL
+======================================================= -->
 
 <section class="final">
 
     <div>
 
         <div class="eyebrow">
-            A Little Sweetness
+            Laiba's Cakery
         </div>
 
         <h2>
@@ -1161,7 +1792,9 @@ button{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer class="footer">
 
@@ -1169,22 +1802,23 @@ button{
 
         <div>
 
-            <div class="footer-logo">
+            <div class="footer-brand">
                 Laiba's Cakery
             </div>
 
             <p>
-                A handcrafted bakery experience,
-                created with imagination, patience and love.
+                A handcrafted bakery experience created
+                with imagination, patience and love.
             </p>
 
         </div>
 
+
         <div>
 
             <p>
-                Handmade Bakery<br>
-                Crafted with Love
+                Handcrafted Bakery<br>
+                Crafted With Love
             </p>
 
         </div>
@@ -1193,27 +1827,39 @@ button{
 
 
     <div class="footer-bottom">
+
         © 2026 Laiba's Cakery. All rights reserved.
+
     </div>
 
 </footer>
 
 
-<!-- ADMIN TRIGGER -->
+<!-- =======================================================
+     ADMIN BUTTON
+======================================================= -->
 
 <button
     class="admin-trigger"
     id="adminTrigger"
     title="Content Studio">
+
     ✦
+
 </button>
 
 
-<!-- ADMIN PANEL -->
+<!-- =======================================================
+     ADMIN CONTENT STUDIO
+======================================================= -->
 
-<div class="admin-overlay" id="adminOverlay">
+<div
+    class="admin-overlay"
+    id="adminOverlay">
+
 
     <div class="admin-panel">
+
 
         <div class="admin-header">
 
@@ -1224,157 +1870,318 @@ button{
             <button
                 class="close-admin"
                 id="closeAdmin">
+
                 ×
+
             </button>
 
         </div>
 
 
-        <form class="admin-form" id="productForm">
+        <!-- TABS -->
 
-            <input
-                type="hidden"
-                id="editingId">
+        <div class="admin-tabs">
 
+            <button
+                class="admin-tab active"
+                data-tab="brandTab">
 
-            <label>
-                Creation Name
-            </label>
+                Brand
 
-            <input
-                id="productName"
-                type="text"
-                placeholder="Chocolate Truffle"
-                required>
+            </button>
 
+            <button
+                class="admin-tab"
+                data-tab="creationTab">
 
-            <label>
-                Category
-            </label>
+                Creations
 
-            <select id="productCategory">
+            </button>
 
-                <option>
-                    Signature Cakes
-                </option>
-
-                <option>
-                    Celebration Cakes
-                </option>
-
-                <option>
-                    Pastries
-                </option>
-
-                <option>
-                    Desserts
-                </option>
-
-                <option>
-                    Bakery
-                </option>
-
-            </select>
+        </div>
 
 
-            <label>
-                Short Description
-            </label>
+        <!-- =================================================
+             BRAND TAB
+        ================================================== -->
 
-            <input
-                id="productShort"
-                type="text"
-                placeholder="Rich chocolate cake finished by hand.">
-
-
-            <label>
-                Full Story
-            </label>
-
-            <textarea
-                id="productStory"
-                placeholder="Tell the story behind this creation..."></textarea>
+        <section
+            class="admin-section active"
+            id="brandTab">
 
 
-            <label>
-                Flavour
-            </label>
-
-            <input
-                id="productFlavor"
-                type="text"
-                placeholder="Dark Chocolate">
+            <div class="logo-studio">
 
 
-            <label>
-                Product Image
-            </label>
+                <div class="logo-preview-box">
 
+                    <div
+                        class="logo-empty"
+                        id="logoEmpty">
 
-            <label class="upload-box">
+                        Your Logo
 
-                <input
-                    id="productImage"
-                    type="file"
-                    accept="image/*">
+                    </div>
 
-                <div id="uploadText">
-
-                    <strong>
-                        Click to choose image
-                    </strong>
-
-                    <br><br>
-
-                    JPG · JPEG · PNG · WEBP
-
-                    <br>
-
-                    Any size or dimensions
+                    <img
+                        id="logoPreview"
+                        class="logo-preview"
+                        alt="Logo Preview">
 
                 </div>
 
-                <img
-                    id="uploadPreview"
-                    class="upload-preview"
-                    style="display:none;">
 
-            </label>
+                <div>
+
+                    <label class="admin-label">
+                        Laiba's Cakery Logo
+                    </label>
+
+                    <input
+                        type="file"
+                        id="logoInput"
+                        class="file-input"
+                        accept="image/*">
 
 
-            <div class="admin-actions">
+                    <div class="admin-buttons">
 
-                <button
-                    class="admin-btn admin-save"
-                    type="submit">
+                        <button
+                            class="admin-btn btn-dark"
+                            id="saveLogo">
 
-                    Save Creation
+                            Save Logo
 
-                </button>
+                        </button>
 
-                <button
-                    class="admin-btn admin-clear"
-                    type="button"
-                    id="clearForm">
+                        <button
+                            class="admin-btn btn-light"
+                            id="removeLogo">
 
-                    Clear
+                            Remove Logo
 
-                </button>
+                        </button>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
-        </form>
+        </section>
 
 
-        <div class="admin-products">
+        <!-- =================================================
+             CREATIONS TAB
+        ================================================== -->
 
-            <h3>
-                Your Collection
-            </h3>
+        <section
+            class="admin-section"
+            id="creationTab">
 
-            <div id="adminProducts"></div>
 
-        </div>
+            <form
+                class="admin-form"
+                id="productForm">
+
+
+                <input
+                    type="hidden"
+                    id="editingId">
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Creation Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Chocolate Dream"
+                        required>
+
+                </div>
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Category
+                    </label>
+
+                    <select id="productCategory">
+
+                        <option>
+                            Signature Cakes
+                        </option>
+
+                        <option>
+                            Celebration Cakes
+                        </option>
+
+                        <option>
+                            Wedding Cakes
+                        </option>
+
+                        <option>
+                            Pastries
+                        </option>
+
+                        <option>
+                            Desserts
+                        </option>
+
+                        <option>
+                            Bakery
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Flavour
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productFlavor"
+                        placeholder="Dark Chocolate">
+
+                </div>
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Short Description
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productShort"
+                        placeholder="A rich handcrafted chocolate creation.">
+
+                </div>
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Full Story
+                    </label>
+
+                    <textarea
+                        id="productStory"
+                        placeholder="Tell the story behind this creation..."></textarea>
+
+                </div>
+
+
+                <div>
+
+                    <label class="admin-label">
+                        Creation Image
+                    </label>
+
+
+                    <label class="upload-box">
+
+                        <input
+                            type="file"
+                            id="productImage"
+                            accept="image/*">
+
+
+                        <div
+                            class="upload-text"
+                            id="uploadText">
+
+                            <strong>
+                                Upload Creation
+                            </strong>
+
+                            JPG · JPEG · PNG · WEBP
+
+                            <br>
+
+                            Portrait · Landscape · Square · Custom
+
+                        </div>
+
+
+                        <img
+                            id="uploadPreview"
+                            class="upload-preview"
+                            alt="Creation Preview">
+
+                    </label>
+
+                </div>
+
+
+                <div class="featured-note">
+
+                    <strong>
+                        Cinematic Featured Creation
+                    </strong>
+
+                    <br>
+
+                    The featured creation becomes the hero image
+                    in the cinematic scroll experience at the top
+                    of the website.
+
+                </div>
+
+
+                <div class="admin-buttons">
+
+                    <button
+                        type="submit"
+                        class="admin-btn btn-dark">
+
+                        Save Creation
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="admin-btn btn-light"
+                        id="clearForm">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- ADMIN COLLECTION -->
+
+            <div class="admin-products">
+
+                <div class="admin-products-title">
+                    Your Creations
+                </div>
+
+                <div id="adminProducts"></div>
+
+            </div>
+
+
+        </section>
+
 
     </div>
 
@@ -1384,18 +2191,19 @@ button{
 <script>
 
 /* =========================================================
-   PRODUCT DATABASE
+   DATABASE
 ========================================================= */
 
-const DB_NAME = "Laiba's CakeryBakeryDB";
+const DB_NAME = "LaibasCakeryStudio";
 const DB_VERSION = 1;
-const STORE_NAME = "products";
+const PRODUCT_STORE = "products";
+const SETTINGS_STORE = "settings";
 
 let db;
 
 
 /* =========================================================
-   OPEN DATABASE
+   OPEN INDEXED DB
 ========================================================= */
 
 function openDatabase(){
@@ -1405,22 +2213,42 @@ function openDatabase(){
         const request =
             indexedDB.open(DB_NAME,DB_VERSION);
 
-        request.onupgradeneeded = function(event){
 
-            const database = event.target.result;
+        request.onupgradeneeded = event => {
 
-            if(!database.objectStoreNames.contains(STORE_NAME)){
+            const database =
+                event.target.result;
+
+
+            if(
+                !database.objectStoreNames
+                    .contains(PRODUCT_STORE)
+            ){
 
                 database.createObjectStore(
-                    STORE_NAME,
+                    PRODUCT_STORE,
                     {keyPath:"id"}
+                );
+
+            }
+
+
+            if(
+                !database.objectStoreNames
+                    .contains(SETTINGS_STORE)
+            ){
+
+                database.createObjectStore(
+                    SETTINGS_STORE,
+                    {keyPath:"key"}
                 );
 
             }
 
         };
 
-        request.onsuccess = function(event){
+
+        request.onsuccess = event => {
 
             db = event.target.result;
 
@@ -1428,7 +2256,8 @@ function openDatabase(){
 
         };
 
-        request.onerror = function(){
+
+        request.onerror = () => {
 
             reject(request.error);
 
@@ -1440,7 +2269,7 @@ function openDatabase(){
 
 
 /* =========================================================
-   GET ALL PRODUCTS
+   PRODUCT FUNCTIONS
 ========================================================= */
 
 function getProducts(){
@@ -1448,21 +2277,28 @@ function getProducts(){
     return new Promise((resolve,reject)=>{
 
         const transaction =
-            db.transaction(STORE_NAME,"readonly");
+            db.transaction(
+                PRODUCT_STORE,
+                "readonly"
+            );
 
         const store =
-            transaction.objectStore(STORE_NAME);
+            transaction.objectStore(
+                PRODUCT_STORE
+            );
 
         const request =
             store.getAll();
 
-        request.onsuccess = ()=>{
+
+        request.onsuccess = () => {
 
             resolve(request.result);
 
         };
 
-        request.onerror = ()=>{
+
+        request.onerror = () => {
 
             reject(request.error);
 
@@ -1473,27 +2309,652 @@ function getProducts(){
 }
 
 
-/* =========================================================
-   SAVE PRODUCT
-========================================================= */
-
 function saveProduct(product){
 
     return new Promise((resolve,reject)=>{
 
         const transaction =
-            db.transaction(STORE_NAME,"readwrite");
+            db.transaction(
+                PRODUCT_STORE,
+                "readwrite"
+            );
 
         const store =
-            transaction.objectStore(STORE_NAME);
+            transaction.objectStore(
+                PRODUCT_STORE
+            );
 
         const request =
             store.put(product);
 
-        request.onsuccess = ()=>resolve();
-        request.onerror = ()=>reject(request.error);
+
+        request.onsuccess = () => resolve();
+
+        request.onerror = () =>
+            reject(request.error);
 
     });
+
+}
+
+
+function deleteProduct(id){
+
+    return new Promise((resolve,reject)=>{
+
+        const transaction =
+            db.transaction(
+                PRODUCT_STORE,
+                "readwrite"
+            );
+
+        const store =
+            transaction.objectStore(
+                PRODUCT_STORE
+            );
+
+        const request =
+            store.delete(id);
+
+
+        request.onsuccess = () => resolve();
+
+        request.onerror = () =>
+            reject(request.error);
+
+    });
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function getSetting(key){
+
+    return new Promise((resolve,reject)=>{
+
+        const transaction =
+            db.transaction(
+                SETTINGS_STORE,
+                "readonly"
+            );
+
+        const store =
+            transaction.objectStore(
+                SETTINGS_STORE
+            );
+
+        const request =
+            store.get(key);
+
+
+        request.onsuccess = () => {
+
+            resolve(
+                request.result
+                ? request.result.value
+                : null
+            );
+
+        };
+
+
+        request.onerror = () =>
+            reject(request.error);
+
+    });
+
+}
+
+
+function saveSetting(key,value){
+
+    return new Promise((resolve,reject)=>{
+
+        const transaction =
+            db.transaction(
+                SETTINGS_STORE,
+                "readwrite"
+            );
+
+        const store =
+            transaction.objectStore(
+                SETTINGS_STORE
+            );
+
+        const request =
+            store.put({
+                key:key,
+                value:value
+            });
+
+
+        request.onsuccess = () => resolve();
+
+        request.onerror = () =>
+            reject(request.error);
+
+    });
+
+}
+
+
+/* =========================================================
+   FILE -> BLOB
+========================================================= */
+
+function fileToBlob(file){
+
+    return new Promise((resolve,reject)=>{
+
+        if(!file){
+
+            resolve(null);
+
+            return;
+
+        }
+
+
+        if(!file.type.startsWith("image/")){
+
+            alert(
+                "Please select an image file."
+            );
+
+            resolve(null);
+
+            return;
+
+        }
+
+
+        resolve(file);
+
+    });
+
+}
+
+
+/* =========================================================
+   BLOB -> OBJECT URL
+========================================================= */
+
+function blobURL(blob){
+
+    if(!blob) return "";
+
+    return URL.createObjectURL(blob);
+
+}
+
+
+/* =========================================================
+   LOAD LOGO
+========================================================= */
+
+async function loadLogo(){
+
+    const logo =
+        await getSetting("logo");
+
+
+    const navLogo =
+        document.getElementById("navLogo");
+
+    const heroLogo =
+        document.getElementById("heroLogo");
+
+    const preview =
+        document.getElementById("logoPreview");
+
+    const empty =
+        document.getElementById("logoEmpty");
+
+
+    if(logo){
+
+        const url =
+            blobURL(logo);
+
+
+        navLogo.src=url;
+
+        navLogo.style.display="block";
+
+
+        heroLogo.src=url;
+
+        heroLogo.style.display="block";
+
+
+        preview.src=url;
+
+        preview.style.display="block";
+
+
+        empty.style.display="none";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGO UPLOAD PREVIEW
+========================================================= */
+
+document
+    .getElementById("logoInput")
+    .addEventListener(
+        "change",
+        function(){
+
+            const file=this.files[0];
+
+            if(!file) return;
+
+
+            const url =
+                URL.createObjectURL(file);
+
+
+            const preview =
+                document.getElementById(
+                    "logoPreview"
+                );
+
+
+            preview.src=url;
+
+            preview.style.display="block";
+
+
+            document.getElementById(
+                "logoEmpty"
+            ).style.display="none";
+
+        }
+    );
+
+
+/* =========================================================
+   SAVE LOGO
+========================================================= */
+
+document
+    .getElementById("saveLogo")
+    .addEventListener(
+        "click",
+        async function(){
+
+            const input =
+                document.getElementById(
+                    "logoInput"
+                );
+
+
+            const file =
+                input.files[0];
+
+
+            if(!file){
+
+                alert(
+                    "Please choose a logo image first."
+                );
+
+                return;
+
+            }
+
+
+            await saveSetting(
+                "logo",
+                await fileToBlob(file)
+            );
+
+
+            await loadLogo();
+
+
+            alert(
+                "Laiba's Cakery logo saved."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   REMOVE LOGO
+========================================================= */
+
+document
+    .getElementById("removeLogo")
+    .addEventListener(
+        "click",
+        async function(){
+
+            await saveSetting(
+                "logo",
+                null
+            );
+
+
+            document.getElementById(
+                "navLogo"
+            ).style.display="none";
+
+
+            document.getElementById(
+                "heroLogo"
+            ).style.display="none";
+
+
+            document.getElementById(
+                "logoPreview"
+            ).style.display="none";
+
+
+            document.getElementById(
+                "logoEmpty"
+            ).style.display="block";
+
+
+            document.getElementById(
+                "logoInput"
+            ).value="";
+
+
+            alert(
+                "Logo removed."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   PRODUCT IMAGE PREVIEW
+========================================================= */
+
+document
+    .getElementById("productImage")
+    .addEventListener(
+        "change",
+        function(){
+
+            const file=this.files[0];
+
+            if(!file) return;
+
+
+            const url =
+                URL.createObjectURL(file);
+
+
+            const preview =
+                document.getElementById(
+                    "uploadPreview"
+                );
+
+
+            preview.src=url;
+
+            preview.style.display="block";
+
+
+            document.getElementById(
+                "uploadText"
+            ).style.display="none";
+
+        }
+    );
+
+
+/* =========================================================
+   SAVE PRODUCT FORM
+========================================================= */
+
+document
+    .getElementById("productForm")
+    .addEventListener(
+        "submit",
+        async function(event){
+
+            event.preventDefault();
+
+
+            const editingId =
+                document.getElementById(
+                    "editingId"
+                ).value;
+
+
+            const products =
+                await getProducts();
+
+
+            const existing =
+                products.find(
+                    p=>p.id===editingId
+                );
+
+
+            const file =
+                document.getElementById(
+                    "productImage"
+                ).files[0];
+
+
+            let image =
+                existing
+                ?
+                existing.image
+                :
+                null;
+
+
+            if(file){
+
+                image =
+                    await fileToBlob(file);
+
+            }
+
+
+            if(!image){
+
+                alert(
+                    "Please upload a creation image."
+                );
+
+                return;
+
+            }
+
+
+            const product={
+
+                id:
+                    editingId
+                    ||
+                    Date.now().toString(),
+
+                name:
+                    document.getElementById(
+                        "productName"
+                    ).value.trim(),
+
+                category:
+                    document.getElementById(
+                        "productCategory"
+                    ).value,
+
+                flavor:
+                    document.getElementById(
+                        "productFlavor"
+                    ).value.trim(),
+
+                short:
+                    document.getElementById(
+                        "productShort"
+                    ).value.trim(),
+
+                story:
+                    document.getElementById(
+                        "productStory"
+                    ).value.trim(),
+
+                image:image,
+
+                featured:
+                    existing
+                    ?
+                    existing.featured
+                    :
+                    false
+
+            };
+
+
+            await saveProduct(product);
+
+
+            clearForm();
+
+
+            await renderAdminProducts();
+
+            await renderProducts();
+
+            await renderFeatured();
+
+
+            alert(
+                editingId
+                ?
+                "Creation updated successfully."
+                :
+                "Creation added successfully."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CLEAR FORM
+========================================================= */
+
+function clearForm(){
+
+    document
+        .getElementById("productForm")
+        .reset();
+
+
+    document.getElementById(
+        "editingId"
+    ).value="";
+
+
+    document.getElementById(
+        "uploadPreview"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "uploadText"
+    ).style.display="block";
+
+}
+
+
+/* =========================================================
+   EDIT PRODUCT
+========================================================= */
+
+async function editProduct(id){
+
+    const products =
+        await getProducts();
+
+
+    const product =
+        products.find(
+            p=>p.id===id
+        );
+
+
+    if(!product) return;
+
+
+    document.getElementById(
+        "editingId"
+    ).value=product.id;
+
+
+    document.getElementById(
+        "productName"
+    ).value=product.name;
+
+
+    document.getElementById(
+        "productCategory"
+    ).value=product.category;
+
+
+    document.getElementById(
+        "productFlavor"
+    ).value=product.flavor || "";
+
+
+    document.getElementById(
+        "productShort"
+    ).value=product.short || "";
+
+
+    document.getElementById(
+        "productStory"
+    ).value=product.story || "";
+
+
+    if(product.image){
+
+        const preview =
+            document.getElementById(
+                "uploadPreview"
+            );
+
+
+        preview.src =
+            blobURL(product.image);
+
+
+        preview.style.display="block";
+
+
+        document.getElementById(
+            "uploadText"
+        ).style.display="none";
+
+    }
+
+
+    document.querySelector(
+        '[data-tab="creationTab"]'
+    ).click();
+
+
+    document
+        .getElementById("creationTab")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
 }
 
@@ -1502,66 +2963,184 @@ function saveProduct(product){
    DELETE PRODUCT
 ========================================================= */
 
-function deleteProduct(id){
+async function removeProduct(id){
 
-    return new Promise((resolve,reject)=>{
+    if(
+        !confirm(
+            "Delete this creation?"
+        )
+    ){
 
-        const transaction =
-            db.transaction(STORE_NAME,"readwrite");
+        return;
 
-        const store =
-            transaction.objectStore(STORE_NAME);
+    }
 
-        const request =
-            store.delete(id);
 
-        request.onsuccess = ()=>resolve();
-        request.onerror = ()=>reject(request.error);
+    await deleteProduct(id);
 
-    });
+
+    await renderAdminProducts();
+
+    await renderProducts();
+
+    await renderFeatured();
 
 }
 
 
 /* =========================================================
-   IMAGE READER
+   MAKE FEATURED
 ========================================================= */
 
-function readImage(file){
+async function makeFeatured(id){
 
-    return new Promise((resolve,reject)=>{
+    const products =
+        await getProducts();
 
-        if(!file){
 
-            resolve(null);
-            return;
+    for(const product of products){
 
-        }
+        product.featured =
+            product.id===id;
 
-        if(!file.type.startsWith("image/")){
 
-            alert("Please select an image file.");
+        await saveProduct(product);
 
-            resolve(null);
-            return;
+    }
 
-        }
 
-        const reader = new FileReader();
+    await renderAdminProducts();
 
-        reader.onload = ()=>{
+    await renderFeatured();
 
-            resolve(reader.result);
+}
 
-        };
 
-        reader.onerror = ()=>{
+/* =========================================================
+   RENDER ADMIN PRODUCTS
+========================================================= */
 
-            reject(reader.error);
+async function renderAdminProducts(){
 
-        };
+    const products =
+        await getProducts();
 
-        reader.readAsDataURL(file);
+
+    const container =
+        document.getElementById(
+            "adminProducts"
+        );
+
+
+    container.innerHTML="";
+
+
+    if(products.length===0){
+
+        container.innerHTML=`
+
+            <div style="
+                padding:30px 0;
+                opacity:.5;
+            ">
+                No creations yet.
+                Upload your first creation above.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    products.forEach(product=>{
+
+        const item =
+            document.createElement("div");
+
+
+        item.className="admin-item";
+
+
+        const imageURL =
+            product.image
+            ?
+            blobURL(product.image)
+            :
+            "";
+
+
+        item.innerHTML=`
+
+            <img
+                class="admin-item-image"
+                src="${imageURL}"
+                alt="">
+
+
+            <div class="admin-item-info">
+
+                <div class="admin-item-name">
+
+                    ${escapeHTML(product.name)}
+
+                </div>
+
+                <div class="admin-item-category">
+
+                    ${escapeHTML(product.category)}
+
+                </div>
+
+
+                ${
+                    product.featured
+                    ?
+                    `<span class="featured-badge">
+                        Cinematic Featured
+                    </span>`
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="admin-item-actions">
+
+                ${
+                    !product.featured
+                    ?
+                    `<button
+                        class="small-btn"
+                        onclick="makeFeatured('${product.id}')">
+                        Feature
+                    </button>`
+                    :
+                    ""
+                }
+
+
+                <button
+                    class="small-btn"
+                    onclick="editProduct('${product.id}')">
+                    Edit
+                </button>
+
+
+                <button
+                    class="small-btn"
+                    onclick="removeProduct('${product.id}')">
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(item);
 
     });
 
@@ -1569,7 +3148,7 @@ function readImage(file){
 
 
 /* =========================================================
-   RENDER PUBLIC PRODUCTS
+   RENDER PUBLIC COLLECTION
 ========================================================= */
 
 async function renderProducts(){
@@ -1577,39 +3156,26 @@ async function renderProducts(){
     const products =
         await getProducts();
 
+
     const container =
-        document.getElementById("products");
+        document.getElementById(
+            "products"
+        );
 
-    container.innerHTML = "";
+
+    container.innerHTML="";
 
 
-    if(products.length === 0){
+    if(products.length===0){
 
-        container.innerHTML = `
+        container.innerHTML=`
 
-            <article class="product">
+            <div class="empty-collection">
 
-                <div class="product-image">
+                Your signature creations
+                will appear here.
 
-                    <div class="product-placeholder">
-                        Your Signature Creation
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <h3>
-                        Coming Soon
-                    </h3>
-
-                    <p>
-                        Your handcrafted creations will appear here.
-                    </p>
-
-                </div>
-
-            </article>
+            </div>
 
         `;
 
@@ -1623,44 +3189,46 @@ async function renderProducts(){
         const article =
             document.createElement("article");
 
+
         article.className="product";
 
 
-        const imageHTML =
-            product.image
-
-            ?
-
-            `<img
-                src="${product.image}"
-                alt="${escapeHTML(product.name)}"
-                loading="lazy">`
-
-            :
-
-            `<div class="product-placeholder">
-                ${escapeHTML(product.name)}
-            </div>`;
+        const imageURL =
+            blobURL(product.image);
 
 
-        article.innerHTML = `
+        article.innerHTML=`
 
             <div class="product-image">
-                ${imageHTML}
+
+                <img
+                    src="${imageURL}"
+                    alt="${escapeHTML(product.name)}"
+                    loading="lazy">
+
             </div>
+
 
             <div class="product-info">
 
                 <div class="eyebrow">
+
                     ${escapeHTML(product.category)}
+
                 </div>
+
 
                 <h3>
                     ${escapeHTML(product.name)}
                 </h3>
 
+
                 <p>
-                    ${escapeHTML(product.short || "")}
+
+                    ${escapeHTML(
+                        product.short || ""
+                    )}
+
                 </p>
 
             </div>
@@ -1676,104 +3244,67 @@ async function renderProducts(){
 
 
 /* =========================================================
-   RENDER ADMIN PRODUCTS
+   RENDER FEATURED CINEMATIC IMAGE
 ========================================================= */
 
-async function renderAdminProducts(){
+async function renderFeatured(){
 
     const products =
         await getProducts();
 
-    const container =
-        document.getElementById("adminProducts");
 
-    container.innerHTML="";
+    let featured =
+        products.find(
+            product=>product.featured
+        );
 
 
-    if(products.length===0){
+    /*
+       If nothing is manually featured,
+       use the first creation.
+    */
 
-        container.innerHTML = `
+    if(!featured && products.length){
 
-            <div class="empty-products">
+        featured=products[0];
 
-                No creations added yet.
+    }
 
-            </div>
 
-        `;
+    const image =
+        document.getElementById(
+            "featuredImage"
+        );
+
+
+    const placeholder =
+        document.getElementById(
+            "featuredPlaceholder"
+        );
+
+
+    if(!featured){
+
+        image.style.display="none";
+
+        placeholder.style.display="block";
 
         return;
 
     }
 
 
-    products.forEach(product=>{
-
-        const item =
-            document.createElement("div");
-
-        item.className="admin-item";
+    image.src =
+        blobURL(featured.image);
 
 
-        item.innerHTML = `
-
-            ${
-                product.image
-
-                ?
-
-                `<img src="${product.image}" alt="">`
-
-                :
-
-                `<div
-                    style="
-                    width:70px;
-                    height:70px;
-                    background:#eee5dc;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    ">
-                    ✦
-                </div>`
-            }
+    image.alt =
+        featured.name;
 
 
-            <div class="admin-item-info">
+    image.style.display="block";
 
-                <strong>
-                    ${escapeHTML(product.name)}
-                </strong>
-
-                <small>
-                    ${escapeHTML(product.category)}
-                </small>
-
-            </div>
-
-
-            <button
-                onclick="editProduct('${product.id}')">
-
-                Edit
-
-            </button>
-
-
-            <button
-                onclick="removeProduct('${product.id}')">
-
-                Delete
-
-            </button>
-
-        `;
-
-
-        container.appendChild(item);
-
-    });
+    placeholder.style.display="none";
 
 }
 
@@ -1795,301 +3326,136 @@ function escapeHTML(value){
 
 
 /* =========================================================
-   EDIT PRODUCT
+   ADMIN TABS
 ========================================================= */
 
-async function editProduct(id){
+document
+    .querySelectorAll(".admin-tab")
+    .forEach(tab=>{
 
-    const products =
-        await getProducts();
+        tab.addEventListener(
+            "click",
+            ()=>{
 
-    const product =
-        products.find(item=>item.id===id);
-
-    if(!product) return;
-
-
-    document.getElementById("editingId").value =
-        product.id;
-
-    document.getElementById("productName").value =
-        product.name || "";
-
-    document.getElementById("productCategory").value =
-        product.category || "Signature Cakes";
-
-    document.getElementById("productShort").value =
-        product.short || "";
-
-    document.getElementById("productStory").value =
-        product.story || "";
-
-    document.getElementById("productFlavor").value =
-        product.flavor || "";
+                document
+                    .querySelectorAll(
+                        ".admin-tab"
+                    )
+                    .forEach(t=>
+                        t.classList.remove(
+                            "active"
+                        )
+                    );
 
 
-    if(product.image){
-
-        const preview =
-            document.getElementById("uploadPreview");
-
-        preview.src=product.image;
-
-        preview.style.display="block";
-
-        document.getElementById("uploadText")
-            .style.display="none";
-
-    }
+                document
+                    .querySelectorAll(
+                        ".admin-section"
+                    )
+                    .forEach(section=>
+                        section.classList.remove(
+                            "active"
+                        )
+                    );
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
+                tab.classList.add("active");
 
 
-/* =========================================================
-   DELETE PRODUCT
-========================================================= */
+                document
+                    .getElementById(
+                        tab.dataset.tab
+                    )
+                    .classList.add(
+                        "active"
+                    );
 
-async function removeProduct(id){
-
-    const confirmed =
-        confirm(
-            "Remove this creation from your collection?"
+            }
         );
 
-    if(!confirmed) return;
-
-
-    await deleteProduct(id);
-
-    await renderProducts();
-    await renderAdminProducts();
-
-}
+    });
 
 
 /* =========================================================
-   ADMIN PANEL
+   ADMIN OPEN / CLOSE
 ========================================================= */
-
-const adminTrigger =
-    document.getElementById("adminTrigger");
 
 const adminOverlay =
-    document.getElementById("adminOverlay");
-
-const closeAdmin =
-    document.getElementById("closeAdmin");
-
-
-adminTrigger.addEventListener("click",()=>{
-
-    adminOverlay.classList.add("open");
-
-    renderAdminProducts();
-
-});
-
-
-closeAdmin.addEventListener("click",()=>{
-
-    adminOverlay.classList.remove("open");
-
-});
-
-
-adminOverlay.addEventListener("click",(event)=>{
-
-    if(event.target===adminOverlay){
-
-        adminOverlay.classList.remove("open");
-
-    }
-
-});
-
-
-/* =========================================================
-   IMAGE PREVIEW
-========================================================= */
-
-const imageInput =
-    document.getElementById("productImage");
-
-imageInput.addEventListener("change",function(){
-
-    const file=this.files[0];
-
-    if(!file) return;
-
-
-    const preview =
-        document.getElementById("uploadPreview");
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload=function(event){
-
-        preview.src =
-            event.target.result;
-
-        preview.style.display="block";
-
-        document.getElementById("uploadText")
-            .style.display="none";
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* =========================================================
-   FORM SUBMISSION
-========================================================= */
-
-const productForm =
-    document.getElementById("productForm");
-
-
-productForm.addEventListener("submit",async function(event){
-
-    event.preventDefault();
-
-
-    const editingId =
-        document.getElementById("editingId").value;
-
-
-    const existingProducts =
-        await getProducts();
-
-
-    let existingProduct=null;
-
-
-    if(editingId){
-
-        existingProduct =
-            existingProducts.find(
-                item=>item.id===editingId
-            );
-
-    }
-
-
-    const file =
-        imageInput.files[0];
-
-
-    let image =
-        existingProduct
-        ?
-        existingProduct.image
-        :
-        null;
-
-
-    if(file){
-
-        image =
-            await readImage(file);
-
-    }
-
-
-    const product={
-
-        id:
-            editingId
-            ||
-            Date.now().toString(),
-
-        name:
-            document.getElementById("productName").value.trim(),
-
-        category:
-            document.getElementById("productCategory").value,
-
-        short:
-            document.getElementById("productShort").value.trim(),
-
-        story:
-            document.getElementById("productStory").value.trim(),
-
-        flavor:
-            document.getElementById("productFlavor").value.trim(),
-
-        image:image
-
-    };
-
-
-    await saveProduct(product);
-
-
-    alert(
-        editingId
-        ?
-        "Creation updated."
-        :
-        "Creation added to your collection."
+    document.getElementById(
+        "adminOverlay"
     );
 
 
-    clearForm();
+document
+    .getElementById("adminTrigger")
+    .addEventListener(
+        "click",
+        async ()=>{
 
-    await renderProducts();
+            adminOverlay.classList.add(
+                "open"
+            );
 
-    await renderAdminProducts();
+            await renderAdminProducts();
 
-});
+        }
+    );
+
+
+document
+    .getElementById("closeAdmin")
+    .addEventListener(
+        "click",
+        ()=>{
+
+            adminOverlay.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+
+adminOverlay.addEventListener(
+    "click",
+    event=>{
+
+        if(event.target===adminOverlay){
+
+            adminOverlay.classList.remove(
+                "open"
+            );
+
+        }
+
+    }
+);
 
 
 /* =========================================================
-   CLEAR FORM
-========================================================= */
-
-function clearForm(){
-
-    productForm.reset();
-
-    document.getElementById("editingId").value="";
-
-    document.getElementById("uploadPreview")
-        .style.display="none";
-
-    document.getElementById("uploadText")
-        .style.display="block";
-
-}
-
-
-document.getElementById("clearForm")
-    .addEventListener("click",clearForm);
-
-
-/* =========================================================
-   CINEMATIC SCROLL
+   CINEMATIC SCROLL ENGINE
 ========================================================= */
 
 const story =
     document.querySelector(".story");
 
-const cakeStage =
-    document.getElementById("cakeStage");
+
+const featuredStage =
+    document.getElementById(
+        "featuredStage"
+    );
+
 
 const storyTexts =
-    document.querySelectorAll(".story-text");
+    document.querySelectorAll(
+        ".story-text"
+    );
+
+
+const storyCounter =
+    document.getElementById(
+        "storyCounter"
+    );
 
 
 function updateStory(){
@@ -2097,9 +3463,11 @@ function updateStory(){
     const rect =
         story.getBoundingClientRect();
 
+
     const total =
         story.offsetHeight -
         window.innerHeight;
+
 
     let progress =
         -rect.top / total;
@@ -2113,24 +3481,70 @@ function updateStory(){
 
 
     /*
-        Cake movement
+       ==========================================
+       CINEMATIC MOVEMENT
+       ==========================================
+    */
+
+
+    /*
+       Horizontal movement:
+       centre → right → left → centre
     */
 
     const x =
-        Math.sin(progress*Math.PI*2)*120;
+        Math.sin(
+            progress * Math.PI * 2
+        ) * 180;
+
+
+    /*
+       Vertical movement
+    */
 
     const y =
-        progress*80;
+        Math.sin(
+            progress * Math.PI
+        ) * 70;
+
+
+    /*
+       Dramatic but smooth scaling
+    */
 
     const scale =
-        .65 +
-        Math.sin(progress*Math.PI)*.75;
+        .72 +
+        Math.sin(
+            progress * Math.PI
+        ) * .70;
+
+
+    /*
+       Gentle rotation
+    */
 
     const rotation =
-        progress*20;
+        Math.sin(
+            progress * Math.PI * 2
+        ) * 10;
 
 
-    cakeStage.style.transform = `
+    /*
+       Slight depth effect
+    */
+
+    const blur =
+        progress > .82
+        ?
+        Math.max(
+            0,
+            (progress-.82)*15
+        )
+        :
+        0;
+
+
+    featuredStage.style.transform=`
 
         translate(
             calc(-50% + ${x}px),
@@ -2145,31 +3559,80 @@ function updateStory(){
 
 
     /*
-        Story text scenes
+       The last part returns the cake
+       to a clean centered composition.
     */
 
-    storyTexts.forEach((text,index)=>{
+    if(progress>.84){
 
-        const start =
-            index/4;
+        const finalProgress =
+            (progress-.84)/.16;
 
-        const end =
-            (index+1)/4;
 
-        if(
-            progress>=start &&
-            progress<end
-        ){
+        const finalX =
+            x*(1-finalProgress);
 
-            text.classList.add("active");
 
-        }else{
+        const finalScale =
+            scale*(1-finalProgress)
+            +
+            .82*finalProgress;
 
-            text.classList.remove("active");
+
+        featuredStage.style.transform=`
+
+            translate(
+                calc(-50% + ${finalX}px),
+                calc(-50% + ${y*(1-finalProgress)}px)
+            )
+
+            scale(${finalScale})
+
+            rotate(${rotation*(1-finalProgress)}deg)
+
+        `;
+
+    }
+
+
+    /*
+       Story scenes
+    */
+
+    const scene =
+        Math.min(
+            3,
+            Math.floor(
+                progress * 4
+            )
+        );
+
+
+    storyTexts.forEach(
+        (text,index)=>{
+
+            if(index===scene){
+
+                text.classList.add(
+                    "active"
+                );
+
+            }else{
+
+                text.classList.remove(
+                    "active"
+                );
+
+            }
 
         }
+    );
 
-    });
+
+    storyCounter.textContent =
+        String(scene+1).padStart(2,"0")
+        +
+        " / 04";
 
 }
 
@@ -2183,48 +3646,67 @@ function updateProgress(){
     const scrollTop =
         window.scrollY;
 
+
     const height =
-        document.documentElement.scrollHeight -
+        document.documentElement
+            .scrollHeight
+        -
         window.innerHeight;
 
-    const percent =
+
+    const percentage =
         height>0
         ?
-        (scrollTop/height)*100
+        scrollTop/height*100
         :
         0;
 
 
-    document.getElementById("progress")
-        .style.width=percent+"%";
+    /*
+       Re-use top border as subtle progress.
+    */
+
+    document.body.style.setProperty(
+        "--scroll-progress",
+        percentage+"%"
+    );
 
 }
 
 
 /* =========================================================
-   SCROLL EVENTS
+   OPTIMIZED SCROLL
 ========================================================= */
 
 let ticking=false;
 
-window.addEventListener("scroll",()=>{
 
-    if(!ticking){
+window.addEventListener(
+    "scroll",
+    ()=>{
 
-        requestAnimationFrame(()=>{
+        if(!ticking){
 
-            updateStory();
-            updateProgress();
+            requestAnimationFrame(
+                ()=>{
 
-            ticking=false;
+                    updateStory();
 
-        });
+                    updateProgress();
 
-        ticking=true;
+                    ticking=false;
 
-    }
+                }
+            );
 
-});
+
+            ticking=true;
+
+        }
+
+    },
+    {passive:true}
+);
 
 
 /* =========================================================
@@ -2237,20 +3719,27 @@ window.addEventListener("scroll",()=>{
 
         await openDatabase();
 
+        await loadLogo();
+
         await renderProducts();
+
+        await renderAdminProducts();
+
+        await renderFeatured();
+
+        updateStory();
+
+        updateProgress();
 
     }catch(error){
 
         console.error(error);
 
         alert(
-            "Your browser does not support the content storage system."
+            "The Content Studio could not start in this browser."
         );
 
     }
-
-    updateStory();
-    updateProgress();
 
 })();
 
