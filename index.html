@@ -2,3748 +2,1125 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Laiba's Cakery — The Art of Something Sweet</title>
-
-<meta name="description"
-content="Laiba's Cakery — handcrafted cakes and bakery creations made with care, imagination and love.">
+<meta name="description" content="Laiba's Cakery — handcrafted luxury cakes made with care, imagination and love.">
+<meta name="theme-color" content="#1f0c16">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231f0c16'/%3E%3Cg fill='%23d8b878'%3E%3Crect x='15' y='39' width='34' height='9' rx='2'/%3E%3Crect x='20' y='30' width='24' height='8' rx='2'/%3E%3Crect x='25' y='22' width='14' height='7' rx='2'/%3E%3Cpath d='M12 50h40l-3 5H15z'/%3E%3C/g%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
 /* =========================================================
-   RESET
+   TOKENS
 ========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+  --wine:#1f0c16;
+  --plum:#2b1220;
+  --plum-2:#3a1a2c;
+  --ivory:#f6eee3;
+  --paper:#efe4d5;
+  --ink:#2a1720;
+  --gold:#d8b878;
+  --gold-hi:#f0dba8;
+  --rose:#e2a7a8;
+  --display:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --nav-h:72px;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-    background:#f8f4ee;
-    color:#332821;
-    font-family:Inter,sans-serif;
-    overflow-x:hidden;
+  background:var(--wine);
+  color:var(--ivory);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 
-img{
-    max-width:100%;
-    display:block;
-}
-
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
-}
-
+.logo{width:100%;height:100%}
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
-
 .nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:82px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 5vw;
-
-    z-index:1000;
-
-    background:rgba(248,244,238,.78);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(60,40,30,.08);
-
-    transition:.4s ease;
+  position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(5vw,env(safe-area-inset-left));
+  background:rgba(31,12,22,.72);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(216,184,120,.16);
 }
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    min-width:0;
+.nav-progress{
+  position:absolute;left:0;bottom:-1px;height:1px;width:100%;
+  background:var(--gold);transform-origin:left;transform:scaleX(0);
 }
-
-.brand-logo{
-    width:48px;
-    height:48px;
-
-    display:none;
-
-    object-fit:contain;
-}
-
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand-mark{width:44px;height:44px;flex:none}
 .brand-name{
-    font-family:"Cormorant Garamond",serif;
-    font-size:30px;
-    line-height:1;
-    letter-spacing:1.5px;
-    white-space:nowrap;
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(22px,2.4vw,28px);letter-spacing:.02em;line-height:1;white-space:nowrap;
 }
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:32px;
+.links{display:flex;gap:clamp(20px,3vw,42px)}
+.links a{
+  text-decoration:none;font-size:15px;font-weight:400;letter-spacing:.04em;
+  color:rgba(246,238,227,.78);transition:color .25s;
 }
-
-.nav-links a{
-    color:#332821;
-    text-decoration:none;
-
-    font-size:10px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-
-    opacity:.8;
-    transition:.3s ease;
+.links a:hover{color:var(--gold-hi)}
+.menu-btn{
+  display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;
+  place-items:center;color:var(--ivory);
 }
-
-.nav-links a:hover{
-    opacity:1;
+.menu-btn span,.menu-btn span::before{
+  display:block;width:22px;height:1.5px;background:currentColor;position:relative;transition:transform .3s;
 }
+.menu-btn span::before{content:"";position:absolute;top:7px;left:0}
+.nav.open .menu-btn span{transform:translateY(3px) rotate(45deg)}
+.nav.open .menu-btn span::before{transform:translateY(-7px) rotate(-90deg);top:7px}
 
+@media (max-width:760px){
+  .menu-btn{display:grid}
+  .links{
+    position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;gap:0;
+    background:rgba(31,12,22,.97);padding:6px 5vw 20px;
+    border-bottom:1px solid rgba(216,184,120,.16);
+  }
+  .nav.open .links{display:flex}
+  .links a{padding:14px 0;font-size:18px;border-bottom:1px solid rgba(246,238,227,.08)}
+}
 
 /* =========================================================
    HERO
 ========================================================= */
-
 .hero{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:140px 25px 90px;
-
-    position:relative;
+  position:relative;min-height:100vh;min-height:100svh;
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  align-items:center;gap:2vw;
+  padding:calc(var(--nav-h) + 30px) 6vw 70px;
+  background:
+    radial-gradient(52% 58% at 72% 50%, #5c2b41 0%, rgba(92,43,65,0) 70%),
+    radial-gradient(90% 80% at 50% 110%, #3a1a2c 0%, rgba(58,26,44,0) 60%),
+    var(--wine);
+  overflow:hidden;
 }
-
-.hero-content{
-    max-width:1000px;
-}
-
-.hero-logo{
-    width:110px;
-    height:110px;
-
-    object-fit:contain;
-
-    margin:0 auto 30px;
-
-    display:none;
-}
-
-.eyebrow{
-    font-size:10px;
-    letter-spacing:5px;
-    text-transform:uppercase;
-
-    opacity:.55;
-
-    margin-bottom:25px;
-}
-
+.hero-copy{position:relative;z-index:2}
 .hero h1{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(72px,13vw,180px);
-
-    font-weight:400;
-
-    line-height:.78;
-
-    letter-spacing:-3px;
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(58px,9.2vw,148px);line-height:.92;letter-spacing:-.01em;
+  color:var(--ivory);
 }
-
-.hero-subtitle{
-    max-width:620px;
-
-    margin:45px auto 0;
-
-    font-size:14px;
-    line-height:1.9;
-
-    opacity:.68;
+.hero h1 span{display:block}
+.hero-tag{
+  margin-top:clamp(20px,3vw,34px);
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(24px,2.7vw,38px);color:var(--gold-hi);line-height:1.2;
 }
+.hero-lede{
+  margin-top:18px;max-width:34em;font-size:17px;color:rgba(246,238,227,.72);
+}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin-top:38px}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:400;font-size:16px;letter-spacing:.03em;
+  padding:15px 30px;border-radius:999px;
+  background:linear-gradient(135deg,#f0dba8,#cfa762);color:#2a1720;
+  transition:transform .25s,box-shadow .25s;box-shadow:0 10px 30px -10px rgba(216,184,120,.55);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(216,184,120,.7)}
+.text-link{
+  color:var(--ivory);text-decoration:none;font-size:16px;
+  border-bottom:1px solid rgba(216,184,120,.6);padding-bottom:3px;transition:color .25s;
+}
+.text-link:hover{color:var(--gold-hi)}
+
+.hero-cake{position:relative;justify-self:center;width:min(100%,620px);z-index:1}
+.hero-cake svg{width:100%;height:auto;max-height:82vh;max-height:82svh;
+  filter:drop-shadow(0 40px 50px rgba(0,0,0,.45))}
+.hero-cake::before{
+  content:"";position:absolute;inset:8% -12% 6%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(240,219,168,.22),rgba(240,219,168,0));
+}
+.spark{
+  position:absolute;width:16px;height:16px;background:var(--gold-hi);
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);
+  opacity:0;animation:twinkle 5s ease-in-out infinite;
+}
+.spark:nth-child(1){top:8%;left:4%;animation-delay:.6s}
+.spark:nth-child(2){top:22%;right:-2%;width:11px;height:11px;animation-delay:1.9s}
+.spark:nth-child(3){top:46%;left:-6%;width:10px;height:10px;animation-delay:3s}
+.spark:nth-child(4){bottom:26%;right:0;width:14px;height:14px;animation-delay:2.4s}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:.9;transform:scale(1)}}
 
 .scroll-hint{
-    position:absolute;
-
-    bottom:35px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    opacity:.45;
+  position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+  font-size:13px;letter-spacing:.08em;color:rgba(246,238,227,.5);text-align:center;
 }
+.scroll-hint i{display:block;width:1px;height:34px;margin:8px auto 0;
+  background:linear-gradient(var(--gold),transparent);animation:drop 2.2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-.scroll-line{
-    width:1px;
-    height:40px;
+/* one orchestrated page-load moment */
+.hero-copy > *{opacity:0;animation:fadeIn 1.1s cubic-bezier(.2,.7,.2,1) forwards}
+.hero h1{animation-delay:.15s}
+.hero-tag{animation-delay:.45s}
+.hero-lede{animation-delay:.6s}
+.hero-actions{animation-delay:.75s}
+.hero-cake svg{opacity:0;animation:rise 1.8s cubic-bezier(.2,.7,.2,1) .2s forwards}
+@keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
 
-    background:#5e4435;
-
-    margin:12px auto 0;
-
-    opacity:.35;
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;gap:26px;padding-top:calc(var(--nav-h) + 34px);padding-bottom:90px}
+  .hero-lede{display:none}
+  .hero-actions{justify-content:center;margin-top:24px}
+  .hero-tag{margin-top:14px}
+  .hero-cake{width:min(88%,420px);margin-top:-6px}
+  .hero-cake svg{max-height:64svh}
 }
-
 
 /* =========================================================
-   CINEMATIC STORY
+   SCROLL-DRIVEN STORY
 ========================================================= */
-
-.story{
-    height:430vh;
-
-    position:relative;
-}
-
+.story{height:540vh;position:relative;background:var(--wine)}
 .story-sticky{
-    position:sticky;
-    top:0;
-
-    height:100vh;
-
-    overflow:hidden;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  display:grid;place-items:center;
+  background:radial-gradient(70% 70% at 50% 55%,#3a1a2c 0%,#2b1220 45%,#1f0c16 100%);
 }
-
-.story-background{
-    position:absolute;
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            #fffdf9 0%,
-            #f8f4ee 45%,
-            #ebe1d6 100%
-        );
-}
-
 .story-glow{
-    position:absolute;
-
-    width:55vw;
-    height:55vw;
-
-    max-width:700px;
-    max-height:700px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.45);
-
-    filter:blur(70px);
-
-    opacity:.7;
+  position:absolute;left:50%;top:52%;width:min(80vh,80vw);height:min(80vh,80vw);
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(240,219,168,.30),rgba(226,167,168,.12) 55%,transparent);
+  opacity:var(--glow,.4);pointer-events:none;
 }
+.story-cake{
+  position:relative;height:86vh;height:86svh;aspect-ratio:600/820;
+  transform-origin:50% 92%;will-change:transform;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.4));
+}
+.story-cake svg{width:100%;height:100%;overflow:visible}
 
+.beats{position:absolute;inset:0;pointer-events:none}
+.beat{
+  position:absolute;top:50%;width:min(340px,25vw);
+  opacity:0;transform:translateY(calc(-50% + 26px));
+  transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.beat.on{opacity:1;transform:translateY(-50%)}
+.beat.l{left:6vw}
+.beat.r{right:6vw;text-align:right}
+.beat h2{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(40px,4.6vw,76px);line-height:.95;letter-spacing:-.01em;
+}
+.beat p{margin-top:18px;font-size:16px;color:rgba(246,238,227,.74)}
+
+.story-dots{
+  position:absolute;right:max(2.4vw,14px);top:50%;transform:translateY(-50%);
+  display:grid;gap:12px;
+}
+.story-dots i{
+  display:block;width:6px;height:6px;border-radius:6px;background:rgba(246,238,227,.3);
+  transition:height .4s,background .4s;
+}
+.story-dots i.on{height:26px;background:var(--gold)}
+
+@media (max-width:1100px){
+  .story-sticky{place-items:start center;padding-top:calc(var(--nav-h) + 6px)}
+  .story-cake{height:56vh;height:56svh}
+  .story-sticky::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:46%;
+    background:linear-gradient(transparent,rgba(31,12,22,.92) 45%);pointer-events:none;
+  }
+  .beat,.beat.l,.beat.r{
+    top:auto;bottom:5svh;left:7vw;right:7vw;width:auto;text-align:center;z-index:2;
+    transform:translateY(20px);
+  }
+  .beat.on{transform:none}
+  .beat h2{font-size:clamp(38px,9vw,60px)}
+  .beat p{font-size:16px;max-width:28em;margin-left:auto;margin-right:auto}
+  .story-dots{top:calc(var(--nav-h) + 30svh)}
+}
 
 /* =========================================================
-   CINEMATIC IMAGE
+   SIGNATURE COLLECTION
 ========================================================= */
-
-.featured-stage{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:min(650px,72vw);
-    height:min(650px,72vw);
-
-    transform:
-        translate(-50%,-50%)
-        scale(.72);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    z-index:3;
-
-    will-change:transform;
-}
-
-.featured-image{
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 35px 40px rgba(60,35,20,.20)
-        );
-
-    will-change:transform;
-}
-
-.featured-placeholder{
-    text-align:center;
-
-    opacity:.3;
-
-    font-family:"Cormorant Garamond",serif;
-    font-size:35px;
-}
-
-
-/* =========================================================
-   STORY TEXT
-========================================================= */
-
-.story-copy{
-    position:absolute;
-    inset:0;
-
-    z-index:6;
-
-    pointer-events:none;
-}
-
-.story-text{
-    position:absolute;
-
-    width:min(420px,40vw);
-
-    opacity:0;
-
-    transform:translateY(35px);
-
-    transition:
-        opacity .45s ease,
-        transform .65s cubic-bezier(.2,.7,.2,1);
-}
-
-.story-text.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.story-text.left{
-    left:7vw;
-}
-
-.story-text.right{
-    right:7vw;
-}
-
-.story-text.top{
-    top:24vh;
-}
-
-.story-text.bottom{
-    bottom:20vh;
-}
-
-.story-text h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(55px,6vw,90px);
-
-    font-weight:400;
-
-    line-height:.85;
-
-    letter-spacing:-1px;
-
-    margin-bottom:25px;
-}
-
-.story-text p{
-    font-size:13px;
-
-    line-height:1.9;
-
-    opacity:.65;
-
-    max-width:370px;
-}
-
-
-/* =========================================================
-   STORY LABEL
-========================================================= */
-
-.story-counter{
-    position:absolute;
-
-    bottom:35px;
-    left:7vw;
-
-    z-index:10;
-
-    font-size:9px;
-    letter-spacing:3px;
-
-    opacity:.4;
-}
-
-
-/* =========================================================
-   PHILOSOPHY
-========================================================= */
-
-.section{
-    padding:150px 8vw;
-}
-
-.section-header{
-    max-width:720px;
-
-    margin-bottom:85px;
-}
-
-.section h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(55px,7vw,105px);
-
-    font-weight:400;
-
-    line-height:.86;
-
-    letter-spacing:-1px;
-}
-
-.section-header p{
-    margin-top:30px;
-
-    max-width:610px;
-
-    font-size:14px;
-
-    line-height:1.9;
-
-    opacity:.65;
-}
-
-.philosophy{
-    background:#30231c;
-    color:#f8f1e9;
-}
-
-.philosophy-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:1px;
-
-    background:rgba(255,255,255,.12);
-}
-
-.philosophy-card{
-    min-height:330px;
-
-    padding:55px 40px;
-
-    background:#30231c;
-
-    border:1px solid rgba(255,255,255,.05);
-}
-
-.philosophy-card-number{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:55px;
-
-    opacity:.25;
-}
-
-.philosophy-card h3{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:38px;
-
-    font-weight:400;
-
-    margin:30px 0 15px;
-}
-
-.philosophy-card p{
-    font-size:12px;
-
-    line-height:1.9;
-
-    opacity:.6;
-}
-
-
-/* =========================================================
-   COLLECTION
-========================================================= */
-
 .collection{
-    background:#fffaf5;
+  background:var(--paper);color:var(--ink);
+  padding:clamp(90px,12vw,170px) 6vw clamp(80px,11vw,150px);
+}
+.sec-head{max-width:820px}
+.sec-head h2,.craft h2{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(46px,6.4vw,100px);line-height:.95;letter-spacing:-.012em;
+}
+.sec-head p{margin-top:24px;max-width:36em;font-size:18px;color:rgba(42,23,32,.72)}
+
+.piece{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(30px,7vw,120px);align-items:center;
+  margin-top:clamp(70px,10vw,150px);
+}
+.piece:nth-of-type(even) .piece-art{order:2}
+.piece-art{
+  position:relative;aspect-ratio:4/5;width:min(100%,520px);justify-self:center;
+  border-radius:999px 999px 6px 6px;overflow:hidden;
+  background:radial-gradient(85% 65% at 50% 36%,var(--tint) 0%,var(--tint2) 100%);
+  display:grid;place-items:end center;padding:11% 6% 6%;
+}
+.piece-art::after{
+  content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.55);
+  border-radius:999px 999px 2px 2px;pointer-events:none;
+}
+.piece-art svg,.piece-art img{width:100%;height:100%;object-fit:contain;object-position:bottom;
+  filter:drop-shadow(0 24px 22px rgba(60,30,30,.28))}
+.piece-copy{max-width:520px}
+.piece-copy h3{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(40px,4.8vw,70px);line-height:.98;letter-spacing:-.01em;
+}
+.piece-line{
+  margin-top:14px;font-family:var(--display);font-style:italic;
+  font-size:clamp(22px,2.2vw,28px);color:#8a4a56;line-height:1.25;
+}
+.piece-story{margin-top:22px;font-size:17px;color:rgba(42,23,32,.78)}
+.piece dl{margin-top:28px;border-top:1px solid rgba(42,23,32,.16)}
+.piece dl div{
+  display:grid;grid-template-columns:104px 1fr;gap:16px;
+  padding:13px 0;border-bottom:1px solid rgba(42,23,32,.16);font-size:16px;
+}
+.piece dt{color:rgba(42,23,32,.55);font-weight:400}
+.piece dd{color:var(--ink);font-weight:400}
+.piece-for{margin-top:22px;font-size:16px;color:rgba(42,23,32,.7)}
+.piece-for b{font-weight:500;color:var(--ink)}
+
+@media (max-width:820px){
+  .piece{grid-template-columns:1fr;gap:34px}
+  .piece:nth-of-type(even) .piece-art{order:0}
+  .piece-art{width:min(100%,440px)}
+  .piece-copy{max-width:none}
 }
 
-.products{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:55px 38px;
+/* =========================================================
+   CRAFTSMANSHIP
+========================================================= */
+.craft{
+  background:linear-gradient(180deg,var(--plum) 0%,#241019 100%);
+  padding:clamp(90px,12vw,170px) 6vw;
 }
-
-.product{
-    cursor:pointer;
+.craft-grid{
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:clamp(40px,7vw,120px);align-items:center;
 }
-
-.product-image{
-    width:100%;
-
-    aspect-ratio:4/5;
-
-    overflow:hidden;
-
-    background:#eee5db;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.slice-wrap{
+  position:relative;justify-self:center;width:min(100%,520px);
+  padding:clamp(18px,3vw,34px);
+  border:1px solid rgba(216,184,120,.28);border-radius:999px 999px 8px 8px;
+  background:radial-gradient(80% 60% at 50% 40%,#4a2438,#2b1220);
 }
-
-.product-image img{
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    transition:
-        transform 1s cubic-bezier(.2,.7,.2,1);
+.slice{width:100%;height:auto}
+.slice [data-band]{transition:opacity .45s,filter .45s}
+.slice.dim [data-band]{opacity:.22}
+.slice.dim [data-band].on{opacity:1;filter:drop-shadow(0 0 10px rgba(240,219,168,.45))}
+.craft-copy p.intro{margin-top:22px;font-size:18px;color:rgba(246,238,227,.75);max-width:34em}
+.steps{list-style:none;margin-top:34px;counter-reset:s}
+.steps li{counter-increment:s}
+.step{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;font:inherit;
+  display:grid;grid-template-columns:44px 1fr;gap:6px 14px;
+  padding:20px 0 20px 16px;border-top:1px solid rgba(246,238,227,.14);
+  border-left:2px solid transparent;transition:border-color .3s,background .3s;
 }
-
-.product:hover .product-image img{
-    transform:scale(1.045);
+.steps li:last-child .step{border-bottom:1px solid rgba(246,238,227,.14)}
+.step::before{
+  content:counter(s);grid-row:1/3;font-family:var(--display);font-size:38px;line-height:1;
+  color:var(--gold);
 }
+.step h3{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.05}
+.step p{font-size:16px;color:rgba(246,238,227,.68)}
+.step:hover,.step.on{border-left-color:var(--gold);background:linear-gradient(90deg,rgba(216,184,120,.08),transparent)}
 
-.product-info{
-    padding:22px 5px;
+@media (max-width:900px){
+  .craft-grid{display:flex;flex-direction:column;gap:0}
+  .craft-copy{display:contents}
+  .craft h2{order:1}
+  .craft-copy p.intro{order:2;margin-bottom:26px}
+  .slice-wrap{
+    order:3;width:min(100%,290px);align-self:center;
+    position:sticky;top:calc(var(--nav-h) + 10px);z-index:5;
+    padding:14px;background:#2f1526;box-shadow:0 18px 30px -8px rgba(20,6,14,.85);
+  }
+  .steps{order:4;margin-top:26px}
 }
-
-.product-info .eyebrow{
-    margin-bottom:10px;
-}
-
-.product-info h3{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:32px;
-
-    font-weight:500;
-}
-
-.product-info p{
-    margin-top:7px;
-
-    font-size:12px;
-
-    line-height:1.7;
-
-    opacity:.58;
-}
-
-.empty-collection{
-    grid-column:1/-1;
-
-    padding:100px 20px;
-
-    text-align:center;
-
-    opacity:.45;
-}
-
 
 /* =========================================================
    BRAND STORY
 ========================================================= */
-
-.brand-story{
-    min-height:90vh;
-
-    display:flex;
-    align-items:center;
-
-    background:#f4ece3;
+.story-brand{
+  background:var(--ivory);color:var(--ink);
+  padding:clamp(90px,12vw,170px) 6vw clamp(70px,9vw,120px);
 }
-
-.brand-inner{
-    max-width:950px;
+.brand-row{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:center;
+  max-width:1200px;margin:0 auto;
 }
-
-.brand-inner .large-copy{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(38px,5vw,70px);
-
-    line-height:1.02;
+.emblem{
+  width:clamp(120px,19vw,260px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#4a2438,#1f0c16);
+  padding:8%;box-shadow:0 30px 60px -25px rgba(31,12,22,.6);
 }
-
-.brand-inner em{
-    opacity:.42;
+.brand-text p{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(32px,4.4vw,66px);line-height:1.06;letter-spacing:-.01em;
 }
-
+.brand-text p + p{margin-top:.6em;color:#8a4a56}
+.values{
+  max-width:1200px;margin:clamp(60px,8vw,110px) auto 0;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(42,23,32,.18);
+}
+.values div{padding:34px clamp(16px,3vw,40px) 0 0}
+.values div + div{padding-left:clamp(16px,3vw,40px);border-left:1px solid rgba(42,23,32,.18)}
+.values h3{font-family:var(--display);font-weight:500;font-size:34px;line-height:1}
+.values p{margin-top:12px;font-size:16px;color:rgba(42,23,32,.72);max-width:26em}
+@media (max-width:820px){
+  .brand-row{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .values{grid-template-columns:1fr}
+  .values div,.values div + div{padding:26px 0;border-left:0}
+  .values div + div{border-top:1px solid rgba(42,23,32,.18)}
+}
 
 /* =========================================================
-   FINAL
+   CLOSING + FOOTER
 ========================================================= */
-
 .final{
-    min-height:85vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    background:#e8dbce;
+  text-align:center;padding:clamp(100px,14vw,200px) 6vw clamp(70px,9vw,110px);
+  background:radial-gradient(60% 70% at 50% 40%,#4a2438 0%,#2b1220 50%,#1f0c16 100%);
 }
-
 .final h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(75px,12vw,175px);
-
-    font-weight:400;
-
-    line-height:.78;
-
-    letter-spacing:-4px;
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(52px,9vw,140px);line-height:.95;letter-spacing:-.012em;
 }
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
+.final p{margin:24px auto 0;max-width:30em;font-size:18px;color:rgba(246,238,227,.72)}
+.contact{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:38px}
+.contact:empty{display:none}
 .footer{
-    background:#241914;
-
-    color:#eee5dc;
-
-    padding:80px 8vw 30px;
+  background:var(--wine);border-top:1px solid rgba(216,184,120,.16);
+  padding:44px 6vw calc(36px + env(safe-area-inset-bottom));
+  display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:space-between;
+  font-size:15px;color:rgba(246,238,227,.6);
 }
+.footer .brand-mark{width:38px;height:38px}
+.footer .brand{color:var(--ivory)}
 
-.footer-top{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:50px;
-
-    padding-bottom:75px;
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero-copy > *,.hero-cake svg{opacity:1}
 }
-
-.footer-brand{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:48px;
-}
-
-.footer p{
-    max-width:360px;
-
-    font-size:12px;
-
-    line-height:1.8;
-
-    opacity:.55;
-
-    margin-top:10px;
-}
-
-.footer-bottom{
-    border-top:1px solid rgba(255,255,255,.1);
-
-    padding-top:22px;
-
-    font-size:10px;
-
-    opacity:.4;
-}
-
-
-/* =========================================================
-   ADMIN BUTTON
-========================================================= */
-
-.admin-trigger{
-    position:fixed;
-
-    right:22px;
-    bottom:22px;
-
-    z-index:2500;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(50,35,25,.15);
-
-    background:#fffaf5;
-
-    color:#332821;
-
-    cursor:pointer;
-
-    font-size:17px;
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.14);
-
-    transition:.3s ease;
-}
-
-.admin-trigger:hover{
-    transform:rotate(20deg) scale(1.06);
-}
-
-
-/* =========================================================
-   ADMIN OVERLAY
-========================================================= */
-
-.admin-overlay{
-    position:fixed;
-
-    inset:0;
-
-    z-index:4000;
-
-    background:rgba(20,12,8,.58);
-
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-
-    overflow-y:auto;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.35s ease;
-}
-
-.admin-overlay.open{
-    opacity:1;
-    visibility:visible;
-}
-
-.admin-panel{
-    width:min(960px,95vw);
-
-    margin:35px auto;
-
-    background:#fffaf5;
-
-    border-radius:6px;
-
-    min-height:calc(100vh - 70px);
-
-    padding:42px;
-
-    box-shadow:
-        0 40px 120px rgba(0,0,0,.35);
-}
-
-.admin-header{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:42px;
-}
-
-.admin-header h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:48px;
-
-    font-weight:400;
-}
-
-.close-admin{
-    width:42px;
-    height:42px;
-
-    border:0;
-
-    background:#eee3d8;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    font-size:25px;
-}
-
-
-/* =========================================================
-   ADMIN TABS
-========================================================= */
-
-.admin-tabs{
-    display:flex;
-
-    border-bottom:1px solid #dfd1c5;
-
-    margin-bottom:35px;
-}
-
-.admin-tab{
-    border:0;
-
-    background:none;
-
-    padding:15px 22px;
-
-    cursor:pointer;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    opacity:.45;
-}
-
-.admin-tab.active{
-    opacity:1;
-
-    border-bottom:2px solid #332821;
-}
-
-.admin-section{
-    display:none;
-}
-
-.admin-section.active{
-    display:block;
-}
-
-
-/* =========================================================
-   LOGO STUDIO
-========================================================= */
-
-.logo-studio{
-    display:grid;
-
-    grid-template-columns:200px 1fr;
-
-    gap:35px;
-
-    align-items:center;
-}
-
-.logo-preview-box{
-    width:200px;
-    height:200px;
-
-    background:#f0e7de;
-
-    border:1px dashed #cdbbad;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-}
-
-.logo-preview{
-    max-width:85%;
-    max-height:85%;
-
-    object-fit:contain;
-
-    display:none;
-}
-
-.logo-empty{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:24px;
-
-    opacity:.3;
-
-    text-align:center;
-}
-
-.admin-label{
-    display:block;
-
-    font-size:10px;
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    opacity:.58;
-
-    margin-bottom:9px;
-}
-
-.file-input{
-    width:100%;
-
-    padding:15px;
-
-    border:1px solid #daccc0;
-
-    background:#fff;
-
-    cursor:pointer;
-}
-
-.admin-buttons{
-    display:flex;
-
-    gap:10px;
-
-    margin-top:18px;
-
-    flex-wrap:wrap;
-}
-
-.admin-btn{
-    border:0;
-
-    padding:14px 23px;
-
-    cursor:pointer;
-
-    font-size:10px;
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-}
-
-.btn-dark{
-    background:#30231c;
-
-    color:white;
-}
-
-.btn-light{
-    background:#e9ded4;
-
-    color:#30231c;
-}
-
-.btn-danger{
-    background:#ead1ca;
-
-    color:#5c2920;
-}
-
-
-/* =========================================================
-   PRODUCT FORM
-========================================================= */
-
-.admin-form{
-    display:grid;
-
-    gap:18px;
-}
-
-.admin-form input,
-.admin-form textarea,
-.admin-form select{
-    width:100%;
-
-    border:1px solid #daccc0;
-
-    background:white;
-
-    padding:14px;
-
-    outline:none;
-
-    font-size:13px;
-}
-
-.admin-form textarea{
-    min-height:120px;
-
-    resize:vertical;
-}
-
-.admin-form input:focus,
-.admin-form textarea:focus,
-.admin-form select:focus{
-    border-color:#8e705d;
-}
-
-
-/* =========================================================
-   IMAGE UPLOAD
-========================================================= */
-
-.upload-box{
-    min-height:280px;
-
-    border:1px dashed #cdbbad;
-
-    background:#fdf8f3;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:20px;
-
-    cursor:pointer;
-
-    position:relative;
-}
-
-.upload-box input{
-    display:none;
-}
-
-.upload-preview{
-    max-width:100%;
-    max-height:250px;
-
-    object-fit:contain;
-
-    display:none;
-}
-
-.upload-text{
-    font-size:11px;
-
-    line-height:1.9;
-
-    opacity:.55;
-}
-
-.upload-text strong{
-    display:block;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:30px;
-
-    font-weight:400;
-
-    opacity:1;
-
-    color:#332821;
-}
-
-
-/* =========================================================
-   FEATURED SELECT
-========================================================= */
-
-.featured-note{
-    padding:15px 18px;
-
-    background:#f0e5da;
-
-    font-size:11px;
-
-    line-height:1.7;
-
-    opacity:.75;
-}
-
-
-/* =========================================================
-   ADMIN COLLECTION
-========================================================= */
-
-.admin-products{
-    margin-top:55px;
-}
-
-.admin-products-title{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:38px;
-
-    font-weight:400;
-
-    margin-bottom:18px;
-}
-
-.admin-item{
-    display:flex;
-
-    align-items:center;
-
-    gap:16px;
-
-    padding:15px 0;
-
-    border-bottom:1px solid #e5d9cf;
-}
-
-.admin-item-image{
-    width:75px;
-    height:75px;
-
-    object-fit:contain;
-
-    background:#eee5dc;
-
-    flex-shrink:0;
-}
-
-.admin-item-info{
-    flex:1;
-}
-
-.admin-item-name{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:25px;
-}
-
-.admin-item-category{
-    font-size:10px;
-
-    opacity:.5;
-
-    margin-top:3px;
-}
-
-.featured-badge{
-    display:inline-block;
-
-    margin-top:7px;
-
-    font-size:8px;
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    padding:5px 8px;
-
-    background:#30231c;
-
-    color:#fff;
-}
-
-.admin-item-actions{
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-}
-
-.small-btn{
-    border:0;
-
-    background:none;
-
-    cursor:pointer;
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-    padding:8px;
-}
-
-.small-btn:hover{
-    text-decoration:underline;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:800px){
-
-    .nav{
-        height:67px;
-
-        padding:0 18px;
-    }
-
-    .brand-logo{
-        width:38px;
-        height:38px;
-    }
-
-    .brand-name{
-        font-size:24px;
-    }
-
-    .nav-links{
-        gap:12px;
-    }
-
-    .nav-links a{
-        font-size:8px;
-
-        letter-spacing:1px;
-    }
-
-    .hero{
-        padding-top:120px;
-    }
-
-    .hero h1{
-        font-size:72px;
-
-        letter-spacing:-2px;
-    }
-
-    .hero-subtitle{
-        font-size:12px;
-
-        margin-top:35px;
-    }
-
-    .story{
-        height:380vh;
-    }
-
-    .featured-stage{
-        width:92vw;
-        height:92vw;
-    }
-
-    .story-text{
-        width:80%;
-
-        left:10%!important;
-        right:auto!important;
-
-        text-align:center;
-    }
-
-    .story-text.top{
-        top:14vh;
-    }
-
-    .story-text.bottom{
-        bottom:11vh;
-    }
-
-    .story-text h2{
-        font-size:52px;
-    }
-
-    .story-text p{
-        margin:auto;
-    }
-
-    .story-counter{
-        left:50%;
-
-        transform:translateX(-50%);
-    }
-
-    .section{
-        padding:100px 24px;
-    }
-
-    .philosophy-grid{
-        grid-template-columns:1fr;
-    }
-
-    .philosophy-card{
-        min-height:270px;
-    }
-
-    .products{
-        grid-template-columns:1fr;
-
-        gap:55px;
-    }
-
-    .product-image{
-        aspect-ratio:1/1.15;
-    }
-
-    .brand-story{
-        min-height:75vh;
-    }
-
-    .footer-top{
-        flex-direction:column;
-    }
-
-    .admin-panel{
-        width:96vw;
-
-        margin:15px auto;
-
-        padding:25px;
-    }
-
-    .admin-header h2{
-        font-size:38px;
-    }
-
-    .logo-studio{
-        grid-template-columns:1fr;
-    }
-
-    .logo-preview-box{
-        width:170px;
-        height:170px;
-    }
-
-    .admin-item{
-        align-items:flex-start;
-    }
-
-    .admin-item-actions{
-        flex-direction:column;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation:none!important;
-        transition:none!important;
-        scroll-behavior:auto!important;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- Shared logo: a luxury tiered cake inside a gold ring -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="lgGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e8bd"/><stop offset=".45" stop-color="#d2a95f"/>
+      <stop offset=".7" stop-color="#f3dda0"/><stop offset="1" stop-color="#a97f3c"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="url(#lgGold)" stroke-width="1.6"/>
+    <circle cx="32" cy="32" r="26.6" fill="none" stroke="url(#lgGold)" stroke-width=".6" opacity=".6"/>
+    <g fill="url(#lgGold)">
+      <rect x="15" y="39" width="34" height="9" rx="1.6"/>
+      <rect x="20" y="30" width="24" height="8" rx="1.6"/>
+      <rect x="25" y="22" width="14" height="7" rx="1.6"/>
+      <path d="M12 50h40l-1.6 3.3a2 2 0 0 1-1.8 1.1H15.4a2 2 0 0 1-1.8-1.1z"/>
+      <path d="M32 8.6l1.5 4.3 4.3 1.5-4.3 1.5L32 20.2l-1.5-4.3-4.3-1.5 4.3-1.5z"/>
+    </g>
+    <g fill="#1f0c16" opacity=".5">
+      <circle cx="19.5" cy="43.5" r=".9"/><circle cx="23.7" cy="43.5" r=".9"/><circle cx="27.9" cy="43.5" r=".9"/>
+      <circle cx="32" cy="43.5" r=".9"/><circle cx="36.1" cy="43.5" r=".9"/><circle cx="40.3" cy="43.5" r=".9"/>
+      <circle cx="44.5" cy="43.5" r=".9"/>
+    </g>
+  </symbol>
+</svg>
 
-<!-- =======================================================
+<noscript><p style="padding:100px 24px;text-align:center">Please enable JavaScript to see Laiba's Cakery.</p></noscript>
+
+<!-- =========================================================
      NAVIGATION
-======================================================= -->
-
-<nav class="nav">
-
-    <div class="brand">
-
-        <img
-            id="navLogo"
-            class="brand-logo"
-            alt="Laiba's Cakery Logo">
-
-        <div class="brand-name">
-            Laiba's Cakery
-        </div>
-
-    </div>
-
-
-    <div class="nav-links">
-
-        <a href="#experience">
-            Experience
-        </a>
-
-        <a href="#collection">
-            Collection
-        </a>
-
-        <a href="#our-story">
-            Our Story
-        </a>
-
-    </div>
-
+========================================================= -->
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Laiba's Cakery — home">
+    <svg class="brand-mark" role="img" aria-label="Laiba's Cakery logo"><use href="#logo"/></svg>
+    <span class="brand-name">Laiba's Cakery</span>
+  </a>
+  <div class="links" id="links">
+    <a href="#experience">Experience</a>
+    <a href="#collection">Signature Collection</a>
+    <a href="#craft">Craftsmanship</a>
+    <a href="#story">Our Story</a>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span></span></button>
+  <div class="nav-progress" id="navProgress"></div>
 </nav>
 
-
-<!-- =======================================================
+<!-- =========================================================
      HERO
-======================================================= -->
-
-<header class="hero">
-
-    <div class="hero-content">
-
-        <img
-            id="heroLogo"
-            class="hero-logo"
-            alt="Laiba's Cakery Logo">
-
-        <div class="eyebrow">
-            Laiba's Cakery
-        </div>
-
-        <h1>
-            Made<br>
-            With Love.
-        </h1>
-
-        <p class="hero-subtitle">
-            Where handcrafted creations become beautiful memories.
-            Discover the art, imagination and care behind every
-            creation from Laiba's Cakery.
-        </p>
-
+========================================================= -->
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <h1><span>Laiba's</span><span>Cakery</span></h1>
+    <p class="hero-tag">The art of something sweet.</p>
+    <p class="hero-lede">Handcrafted cakes made with real butter, patient hands and a great deal of imagination. Every one is designed to be remembered.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#collection">See the collection</a>
+      <a class="text-link" href="#experience">Watch a cake come together</a>
     </div>
+  </div>
 
+  <div class="hero-cake" id="heroCake">
+    <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
+  </div>
 
-    <div class="scroll-hint">
-
-        Scroll to discover
-
-        <div class="scroll-line"></div>
-
-    </div>
-
+  <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
 </header>
 
+<!-- =========================================================
+     SCROLL-DRIVEN CAKE ANIMATION
+========================================================= -->
+<section class="story" id="experience" aria-label="How a cake comes together">
+  <div class="story-sticky">
+    <div class="story-glow" id="storyGlow"></div>
+    <div class="story-cake" id="storyCake"></div>
 
-<!-- =======================================================
-     CINEMATIC STORY
-======================================================= -->
-
-<section
-    class="story"
-    id="experience">
-
-    <div class="story-sticky">
-
-        <div class="story-background"></div>
-
-        <div class="story-glow"></div>
-
-
-        <!-- REAL UPLOADED FEATURED IMAGE -->
-
-        <div
-            class="featured-stage"
-            id="featuredStage">
-
-            <div
-                class="featured-placeholder"
-                id="featuredPlaceholder">
-
-                Your Featured Creation
-
-            </div>
-
-            <img
-                id="featuredImage"
-                class="featured-image"
-                alt=""
-                style="display:none;">
-
-        </div>
-
-
-        <!-- STORY TEXT -->
-
-        <div class="story-copy">
-
-
-            <div
-                class="story-text left top active"
-                data-scene="0">
-
-                <div class="eyebrow">
-                    The Beginning
-                </div>
-
-                <h2>
-                    Baked<br>
-                    Fresh.
-                </h2>
-
-                <p>
-                    Every creation begins with carefully selected
-                    ingredients and the simple belief that fresh
-                    is always better.
-                </p>
-
-            </div>
-
-
-            <div
-                class="story-text right top"
-                data-scene="1">
-
-                <div class="eyebrow">
-                    The Craft
-                </div>
-
-                <h2>
-                    Made<br>
-                    By Hand.
-                </h2>
-
-                <p>
-                    From the first layer to the final detail,
-                    every creation receives the attention
-                    it deserves.
-                </p>
-
-            </div>
-
-
-            <div
-                class="story-text left bottom"
-                data-scene="2">
-
-                <div class="eyebrow">
-                    The Detail
-                </div>
-
-                <h2>
-                    Every Detail<br>
-                    Matters.
-                </h2>
-
-                <p>
-                    Texture, balance, colour and finishing
-                    touches come together to create something
-                    truly memorable.
-                </p>
-
-            </div>
-
-
-            <div
-                class="story-text right bottom"
-                data-scene="3">
-
-                <div class="eyebrow">
-                    The Memory
-                </div>
-
-                <h2>
-                    Made For<br>
-                    Memories.
-                </h2>
-
-                <p>
-                    Because a beautiful creation is never
-                    just a dessert. It becomes part of
-                    someone's story.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            class="story-counter"
-            id="storyCounter">
-
-            01 / 04
-
-        </div>
-
+    <div class="beats">
+      <div class="beat l on">
+        <h2>Baked fresh.</h2>
+        <p>Every cake begins with real butter, whole vanilla and a slow, careful bake. Nothing is rushed, and nothing comes from a box.</p>
+      </div>
+      <div class="beat r">
+        <h2>Built in layers.</h2>
+        <p>Sponge, cream and fruit are stacked one thin layer at a time, then chilled until each tier holds its shape.</p>
+      </div>
+      <div class="beat l">
+        <h2>Cut to reveal.</h2>
+        <p>Slice into it and every layer should tell the same story: soft, balanced and never too sweet.</p>
+      </div>
+      <div class="beat r">
+        <h2>Finished by hand.</h2>
+        <p>Piped, pressed and touched with gold leaf, one detail at a time, until it is ready for its table.</p>
+      </div>
     </div>
 
+    <div class="story-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
 </section>
 
-
-<!-- =======================================================
-     PHILOSOPHY
-======================================================= -->
-
-<section class="section philosophy">
-
-    <div class="section-header">
-
-        <div class="eyebrow">
-            Our Philosophy
-        </div>
-
-        <h2>
-            Simple.<br>
-            Thoughtful.<br>
-            Beautiful.
-        </h2>
-
-        <p>
-            We believe the most memorable creations don't need
-            to be complicated. They simply need to be made with
-            patience, imagination and genuine care.
-        </p>
-
-    </div>
-
-
-    <div class="philosophy-grid">
-
-
-        <div class="philosophy-card">
-
-            <div class="philosophy-card-number">
-                01
-            </div>
-
-            <h3>
-                Fresh
-            </h3>
-
-            <p>
-                Carefully selected ingredients and freshly
-                prepared creations made with attention.
-            </p>
-
-        </div>
-
-
-        <div class="philosophy-card">
-
-            <div class="philosophy-card-number">
-                02
-            </div>
-
-            <h3>
-                Handmade
-            </h3>
-
-            <p>
-                Every finishing touch receives the human
-                attention that makes a creation special.
-            </p>
-
-        </div>
-
-
-        <div class="philosophy-card">
-
-            <div class="philosophy-card-number">
-                03
-            </div>
-
-            <h3>
-                Personal
-            </h3>
-
-            <p>
-                Every celebration has its own feeling,
-                and every creation should carry that feeling.
-            </p>
-
-        </div>
-
-
-    </div>
-
+<!-- =========================================================
+     SIGNATURE COLLECTION
+========================================================= -->
+<section class="collection" id="collection">
+  <div class="sec-head">
+    <h2>Signature Collection</h2>
+    <p>Four cakes we return to again and again. Each starts as a flavour we love, then becomes something worth gathering around.</p>
+  </div>
+  <div id="pieces"></div>
 </section>
 
-
-<!-- =======================================================
-     COLLECTION
-======================================================= -->
-
-<section
-    class="section collection"
-    id="collection">
-
-    <div class="section-header">
-
-        <div class="eyebrow">
-            The Collection
-        </div>
-
-        <h2>
-            Signature<br>
-            Creations.
-        </h2>
-
-        <p>
-            Explore a curated collection of handcrafted
-            cakes and bakery creations from Laiba's Cakery.
-        </p>
-
+<!-- =========================================================
+     CRAFTSMANSHIP
+========================================================= -->
+<section class="craft" id="craft">
+  <div class="craft-grid">
+    <div class="slice-wrap" id="sliceWrap"></div>
+    <div class="craft-copy">
+      <h2>Craftsmanship</h2>
+      <p class="intro">It starts with good ingredients, chosen by hand. After that, four careful steps turn them into a cake. Choose a step to see where it lives inside the slice.</p>
+      <ol class="steps" id="steps">
+        <li><button class="step" data-band="bake" type="button">
+          <h3>Bake</h3>
+          <p>Light, tender sponge baked in thin rounds so every layer stays moist.</p>
+        </button></li>
+        <li><button class="step" data-band="fill" type="button">
+          <h3>Fill</h3>
+          <p>Whipped cream and a spoonful of fruit compote between each layer.</p>
+        </button></li>
+        <li><button class="step" data-band="coat" type="button">
+          <h3>Coat</h3>
+          <p>A smooth silk buttercream coat, chilled and scraped until it is flawless.</p>
+        </button></li>
+        <li><button class="step" data-band="finish" type="button">
+          <h3>Finish</h3>
+          <p>Fresh fruit, sugar flowers and gold leaf, placed one piece at a time.</p>
+        </button></li>
+      </ol>
     </div>
-
-
-    <div
-        class="products"
-        id="products">
-
-        <div class="empty-collection">
-
-            Your creations will appear here.
-
-        </div>
-
-    </div>
-
+  </div>
 </section>
 
-
-<!-- =======================================================
+<!-- =========================================================
      BRAND STORY
-======================================================= -->
-
-<section
-    class="section brand-story"
-    id="our-story">
-
-    <div class="brand-inner">
-
-        <div class="eyebrow">
-            Our Story
-        </div>
-
-        <p class="large-copy">
-
-            It started with a simple idea:
-
-            <em>
-                make something beautiful,
-                make it with care,
-                and let people remember it.
-            </em>
-
-            <br><br>
-
-            That idea became
-            <strong>
-                Laiba's Cakery.
-            </strong>
-
-        </p>
-
+========================================================= -->
+<section class="story-brand" id="story">
+  <div class="brand-row">
+    <div class="emblem"><svg class="logo" role="img" aria-label="Laiba's Cakery emblem"><use href="#logo"/></svg></div>
+    <div class="brand-text">
+      <p>It started with a simple idea: make something beautiful, make it with care, and let people remember it.</p>
+      <p>That idea became Laiba's Cakery.</p>
     </div>
-
-</section>
-
-
-<!-- =======================================================
-     FINAL
-======================================================= -->
-
-<section class="final">
-
+  </div>
+  <div class="values">
     <div>
-
-        <div class="eyebrow">
-            Laiba's Cakery
-        </div>
-
-        <h2>
-            Made<br>
-            To Remember.
-        </h2>
-
+      <h3>Fresh</h3>
+      <p>Carefully chosen ingredients and cakes prepared close to the day they are enjoyed.</p>
     </div>
-
+    <div>
+      <h3>Handmade</h3>
+      <p>Every finishing touch receives the human attention that makes a cake feel special.</p>
+    </div>
+    <div>
+      <h3>Personal</h3>
+      <p>Every celebration has its own feeling, and every cake should carry it.</p>
+    </div>
+  </div>
 </section>
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- =========================================================
+     CLOSING
+========================================================= -->
+<section class="final" id="contact">
+  <h2>Made to remember.</h2>
+  <p>Have a celebration in mind? Say hello and tell us about it.</p>
+  <div class="contact" id="contactLinks"></div>
+</section>
 
 <footer class="footer">
-
-    <div class="footer-top">
-
-        <div>
-
-            <div class="footer-brand">
-                Laiba's Cakery
-            </div>
-
-            <p>
-                A handcrafted bakery experience created
-                with imagination, patience and love.
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <p>
-                Handcrafted Bakery<br>
-                Crafted With Love
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        © 2026 Laiba's Cakery. All rights reserved.
-
-    </div>
-
+  <a class="brand" href="#top" aria-label="Back to top">
+    <svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>
+    <span class="brand-name">Laiba's Cakery</span>
+  </a>
+  <span>A handcrafted bakery, made with imagination, patience and love.</span>
+  <span>© 2026 Laiba's Cakery. All rights reserved.</span>
 </footer>
 
 
-<!-- =======================================================
-     ADMIN BUTTON
-======================================================= -->
-
-<button
-    class="admin-trigger"
-    id="adminTrigger"
-    title="Content Studio">
-
-    ✦
-
-</button>
-
-
-<!-- =======================================================
-     ADMIN CONTENT STUDIO
-======================================================= -->
-
-<div
-    class="admin-overlay"
-    id="adminOverlay">
-
-
-    <div class="admin-panel">
-
-
-        <div class="admin-header">
-
-            <h2>
-                Content Studio
-            </h2>
-
-            <button
-                class="close-admin"
-                id="closeAdmin">
-
-                ×
-
-            </button>
-
-        </div>
-
-
-        <!-- TABS -->
-
-        <div class="admin-tabs">
-
-            <button
-                class="admin-tab active"
-                data-tab="brandTab">
-
-                Brand
-
-            </button>
-
-            <button
-                class="admin-tab"
-                data-tab="creationTab">
-
-                Creations
-
-            </button>
-
-        </div>
-
-
-        <!-- =================================================
-             BRAND TAB
-        ================================================== -->
-
-        <section
-            class="admin-section active"
-            id="brandTab">
-
-
-            <div class="logo-studio">
-
-
-                <div class="logo-preview-box">
-
-                    <div
-                        class="logo-empty"
-                        id="logoEmpty">
-
-                        Your Logo
-
-                    </div>
-
-                    <img
-                        id="logoPreview"
-                        class="logo-preview"
-                        alt="Logo Preview">
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Laiba's Cakery Logo
-                    </label>
-
-                    <input
-                        type="file"
-                        id="logoInput"
-                        class="file-input"
-                        accept="image/*">
-
-
-                    <div class="admin-buttons">
-
-                        <button
-                            class="admin-btn btn-dark"
-                            id="saveLogo">
-
-                            Save Logo
-
-                        </button>
-
-                        <button
-                            class="admin-btn btn-light"
-                            id="removeLogo">
-
-                            Remove Logo
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CREATIONS TAB
-        ================================================== -->
-
-        <section
-            class="admin-section"
-            id="creationTab">
-
-
-            <form
-                class="admin-form"
-                id="productForm">
-
-
-                <input
-                    type="hidden"
-                    id="editingId">
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Creation Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productName"
-                        placeholder="Chocolate Dream"
-                        required>
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Category
-                    </label>
-
-                    <select id="productCategory">
-
-                        <option>
-                            Signature Cakes
-                        </option>
-
-                        <option>
-                            Celebration Cakes
-                        </option>
-
-                        <option>
-                            Wedding Cakes
-                        </option>
-
-                        <option>
-                            Pastries
-                        </option>
-
-                        <option>
-                            Desserts
-                        </option>
-
-                        <option>
-                            Bakery
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Flavour
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productFlavor"
-                        placeholder="Dark Chocolate">
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Short Description
-                    </label>
-
-                    <input
-                        type="text"
-                        id="productShort"
-                        placeholder="A rich handcrafted chocolate creation.">
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Full Story
-                    </label>
-
-                    <textarea
-                        id="productStory"
-                        placeholder="Tell the story behind this creation..."></textarea>
-
-                </div>
-
-
-                <div>
-
-                    <label class="admin-label">
-                        Creation Image
-                    </label>
-
-
-                    <label class="upload-box">
-
-                        <input
-                            type="file"
-                            id="productImage"
-                            accept="image/*">
-
-
-                        <div
-                            class="upload-text"
-                            id="uploadText">
-
-                            <strong>
-                                Upload Creation
-                            </strong>
-
-                            JPG · JPEG · PNG · WEBP
-
-                            <br>
-
-                            Portrait · Landscape · Square · Custom
-
-                        </div>
-
-
-                        <img
-                            id="uploadPreview"
-                            class="upload-preview"
-                            alt="Creation Preview">
-
-                    </label>
-
-                </div>
-
-
-                <div class="featured-note">
-
-                    <strong>
-                        Cinematic Featured Creation
-                    </strong>
-
-                    <br>
-
-                    The featured creation becomes the hero image
-                    in the cinematic scroll experience at the top
-                    of the website.
-
-                </div>
-
-
-                <div class="admin-buttons">
-
-                    <button
-                        type="submit"
-                        class="admin-btn btn-dark">
-
-                        Save Creation
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="admin-btn btn-light"
-                        id="clearForm">
-
-                        Clear
-
-                    </button>
-
-                </div>
-
-
-            </form>
-
-
-            <!-- ADMIN COLLECTION -->
-
-            <div class="admin-products">
-
-                <div class="admin-products-title">
-                    Your Creations
-                </div>
-
-                <div id="adminProducts"></div>
-
-            </div>
-
-
-        </section>
-
-
-    </div>
-
-</div>
-
-
 <script>
+/* =========================================================
+   ★ EDIT ME — your contact details (leave "" to hide)
+   instagram: your handle without @   e.g. "laibascakery"
+   whatsapp : number with country code, digits only  e.g. "923001234567"
+   email    : e.g. "hello@example.com"
+========================================================= */
+const CONTACT = { instagram:"", whatsapp:"", email:"" };
 
 /* =========================================================
-   DATABASE
+   ★ EDIT ME — the Signature Collection
+   Each cake is drawn in code, so no image uploads are needed.
+   To use a real photo instead, put the file in an /images
+   folder in your repo and set  photo:"images/my-cake.jpg"
 ========================================================= */
-
-const DB_NAME = "LaibasCakeryStudio";
-const DB_VERSION = 1;
-const PRODUCT_STORE = "products";
-const SETTINGS_STORE = "settings";
-
-let db;
-
+const CAKES = [
+  {
+    name:"Rose Petal Cloud",
+    line:"Soft, floral and quietly romantic.",
+    story:"Inspired by the first garden roses of the season. A feather-light rose-water sponge, whipped mascarpone and a spoonful of raspberry, finished with buttercream roses piped one petal at a time.",
+    notes:[["Sponge","Rose-water vanilla"],["Filling","Mascarpone cream, raspberry"],["Finish","Piped buttercream roses"]],
+    madeFor:"Engagements, bridal showers and garden afternoons.",
+    tint:"#f6dcd9", photo:"",
+    art:{tiers:["#f1c6c6","#f7dcd8"],decos:[["swirl","pearls"],["swirl","flowers"]],topper:"roses",rose:"#c96f7e",seed:21}
+  },
+  {
+    name:"Midnight Noir",
+    line:"For people who take chocolate seriously.",
+    story:"Deep cocoa sponge layered with salted caramel, covered in a glossy dark ganache that runs slowly down the sides. Raspberries cut through the richness, and a little gold leaf catches the light.",
+    notes:[["Sponge","Dark cocoa"],["Filling","Salted caramel, ganache"],["Finish","Ganache drip, gold leaf"]],
+    madeFor:"Birthdays with grown-up taste.",
+    tint:"#eadcc6", photo:"",
+    art:{tiers:["#4a2a1f","#5a3325"],decos:[["swirl","band"],["swirl","leaf"]],drip:"#1d0d09",dripTop:true,topper:"gold",seed:5}
+  },
+  {
+    name:"Pistachio Gold",
+    line:"Nutty, fragrant and made for the table.",
+    story:"Toasted pistachio sponge, brown butter cream and a touch of orange blossom, wrapped in soft green buttercream. Crushed pistachios crown the top, and gold leaf finishes it.",
+    notes:[["Sponge","Toasted pistachio"],["Filling","Brown butter, orange blossom"],["Finish","Crushed pistachio, gold leaf"]],
+    madeFor:"Eid tables, weddings and long family dinners.",
+    tint:"#dfe6cd", photo:"",
+    art:{tiers:["#a7bb84","#b6c89d","#c4d3ae"],decos:[["swirl","band","pearls"],["swirl","leaf"],["swirl","pearls"]],topper:"pistachio",seed:14}
+  },
+  {
+    name:"Berry Velvet",
+    line:"A classic, dressed for the occasion.",
+    story:"Buttermilk red velvet with tangy cream cheese frosting, stacked tall and left with its layers on show. A ribbon of white chocolate drips from the top, crowned with strawberries at their peak.",
+    notes:[["Sponge","Buttermilk red velvet"],["Filling","Cream cheese frosting"],["Finish","White drip, fresh strawberries"]],
+    madeFor:"Anniversaries and Valentine's dinners.",
+    tint:"#f2d3cd", photo:"",
+    art:{tiers:["#9c1f2e"],decos:[["layers","swirl"]],drip:"#fbf4ea",dripTop:true,topper:"strawberries",seed:9}
+  }
+];
 
 /* =========================================================
-   OPEN INDEXED DB
+   COLOUR + RANDOM HELPERS
 ========================================================= */
+const hex2rgb=h=>{h=h.replace("#","");return [0,2,4].map(i=>parseInt(h.substr(i,2),16))};
+const rgb2hex=a=>"#"+a.map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,"0")).join("");
+const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return rgb2hex(A.map((v,i)=>v+(B[i]-v)*t))};
+const lighten=(c,t)=>mix(c,"#ffffff",t);
+const darken=(c,t)=>mix(c,"#000000",t);
+const rng=seed=>{let s=seed*9301%2147483647||1;return()=>{s=s*16807%2147483647;return (s-1)/2147483646}};
+const f=n=>Math.round(n*100)/100;
 
-function openDatabase(){
+/* =========================================================
+   CAKE ILLUSTRATOR
+   Draws a luxury cake as SVG, tier by tier.
+========================================================= */
+const CX=300;
 
-    return new Promise((resolve,reject)=>{
+function leaf(x,y,len,ang,col){
+  return `<path transform="translate(${x} ${y}) rotate(${ang})" d="M0 0Q${len*.5} ${-len*.3} ${len} 0Q${len*.5} ${len*.3} 0 0Z" fill="${col}"/>
+  <path transform="translate(${x} ${y}) rotate(${ang})" d="M2 0L${len*.85} 0" stroke="${darken(col,.25)}" stroke-width=".8" opacity=".6"/>`;
+}
+function flower(x,y,r,petal,center){
+  let s="";
+  for(let k=0;k<5;k++){
+    const a=k*72-90, px=x+Math.cos(a*Math.PI/180)*r*.55, py=y+Math.sin(a*Math.PI/180)*r*.55;
+    s+=`<ellipse cx="${f(px)}" cy="${f(py)}" rx="${f(r*.55)}" ry="${f(r*.34)}" transform="rotate(${a} ${f(px)} ${f(py)})" fill="${petal}" stroke="${darken(petal,.12)}" stroke-width=".6"/>`;
+  }
+  return s+`<circle cx="${x}" cy="${y}" r="${f(r*.28)}" fill="${center}"/>`;
+}
+function rose(x,y,r,c){
+  return `<g>
+  <circle cx="${x}" cy="${y}" r="${r}" fill="${darken(c,.06)}"/>
+  <circle cx="${x}" cy="${y}" r="${f(r*.78)}" fill="${lighten(c,.08)}" stroke="${darken(c,.22)}" stroke-width="1"/>
+  <path d="M${f(x-r*.62)} ${y}a${f(r*.62)} ${f(r*.62)} 0 0 1 ${f(r*1.24)} 0" fill="none" stroke="${darken(c,.25)}" stroke-width="1"/>
+  <circle cx="${x}" cy="${y}" r="${f(r*.5)}" fill="${c}" stroke="${darken(c,.25)}" stroke-width="1"/>
+  <path d="M${f(x-r*.3)} ${y}a${f(r*.3)} ${f(r*.3)} 0 1 1 ${f(r*.3)} ${f(r*.3)}a${f(r*.16)} ${f(r*.16)} 0 1 1 ${f(-r*.22)} ${f(-r*.1)}" fill="none" stroke="${darken(c,.32)}" stroke-width="1.1"/>
+  <path d="M${f(x-r*.85)} ${f(y-r*.2)}a${f(r*.9)} ${f(r*.9)} 0 0 1 ${f(r*.7)} ${f(-r*.5)}" fill="none" stroke="#fff" stroke-width="1.4" opacity=".4" stroke-linecap="round"/>
+  </g>`;
+}
+function rasp(x,y,r,c="#c2183f"){
+  let s="";
+  const pts=[[0,-1],[-1,-.5],[1,-.5],[-.5,.3],[.5,.3],[0,1.05],[-1,.4],[1,.4],[0,-.2]];
+  pts.forEach(([a,b])=>{s+=`<circle cx="${f(x+a*r*.55)}" cy="${f(y+b*r*.55)}" r="${f(r*.42)}" fill="${c}" stroke="${darken(c,.3)}" stroke-width=".6"/><circle cx="${f(x+a*r*.55-r*.12)}" cy="${f(y+b*r*.55-r*.14)}" r="${f(r*.12)}" fill="#fff" opacity=".45"/>`});
+  return s;
+}
+function blueberry(x,y,r){
+  return `<circle cx="${x}" cy="${y}" r="${r}" fill="#3b3f78"/>
+  <circle cx="${x-r*.3}" cy="${y-r*.35}" r="${f(r*.28)}" fill="#fff" opacity=".35"/>
+  <path d="M${x} ${f(y-r*.25)}l${f(r*.2)} ${f(r*.22)}l${f(-r*.4)} 0z" fill="#1f2148"/>`;
+}
+function strawberry(x,y,r,rot=0){
+  return `<g transform="rotate(${rot} ${x} ${y})">
+  <path d="M${x} ${f(y+r*1.15)}C${f(x-r*1.25)} ${f(y+r*.3)} ${f(x-r*1.1)} ${f(y-r*.8)} ${x} ${f(y-r*.55)}C${f(x+r*1.1)} ${f(y-r*.8)} ${f(x+r*1.25)} ${f(y+r*.3)} ${x} ${f(y+r*1.15)}Z" fill="#d1122f" stroke="#8f0a20" stroke-width="1"/>
+  ${[[-.5,-.1],[.4,-.2],[0,.15],[-.3,.5],[.35,.45],[0,.85],[-.65,.25],[.7,.15]].map(([a,b])=>`<ellipse cx="${f(x+a*r)}" cy="${f(y+b*r)}" rx="${f(r*.06)}" ry="${f(r*.1)}" fill="#ffe7a8"/>`).join("")}
+  <path d="M${f(x-r*.75)} ${f(y-r*.55)}l${f(r*.4)} ${f(-r*.1)}l${f(r*.35)} ${f(-r*.35)}l${f(r*.35)} ${f(r*.35)}l${f(r*.4)} ${f(r*.1)}l${f(-r*.5)} ${f(r*.25)}l${f(-r*.25)} ${f(r*.1)}l${f(-r*.25)} ${f(-r*.1)}z" fill="#4f7a3b"/>
+  <path d="M${f(x-r*.5)} ${f(y-r*.2)}q${f(-r*.15)} ${f(r*.5)} ${f(r*.1)} ${f(r*.9)}" fill="none" stroke="#fff" stroke-width="1.4" opacity=".35" stroke-linecap="round"/>
+  </g>`;
+}
+function flake(x,y,s,rot,fill){
+  return `<polygon transform="translate(${f(x)} ${f(y)}) rotate(${rot})" points="0,${-s} ${f(s*.9)},${f(-s*.2)} ${f(s*.5)},${f(s*.8)} ${f(-s*.8)},${f(s*.5)} ${f(-s)},${f(-s*.3)}" fill="${fill}"/>`;
+}
+function dripPath(rx,ry,top,rand,base){
+  const arcY=x=>top+ry*Math.sqrt(Math.max(0,1-((x-CX)/rx)**2));
+  let d=`M${CX-rx} ${top}A${rx} ${ry} 0 0 0 ${CX+rx} ${top}`;
+  let x=CX+rx;
+  while(true){
+    const w=5+rand()*6, gap=6+rand()*20;
+    x-=gap;
+    if(x-2*w<CX-rx+4)break;
+    const xr=x, xl=x-2*w, xc=x-w;
+    const len=rand()<.45?8+rand()*12:26+rand()*54;
+    const y1=arcY(xr)+base, y2=arcY(xl)+base, bottom=arcY(xc)+base+len;
+    const yb=(bottom-.125*(y1+y2))/.75;
+    d+=`L${f(xr)} ${f(y1)}C${f(xr)} ${f(yb)} ${f(xl)} ${f(yb)} ${f(xl)} ${f(y2)}`;
+    x=xl;
+  }
+  d+=`L${CX-rx} ${top+base}Z`;
+  return d;
+}
 
-        const request =
-            indexedDB.open(DB_NAME,DB_VERSION);
+function cakeSVG(cfg){
+  const id=cfg.id, rand=rng(cfg.seed||11), n=cfg.tiers.length;
+  const dims={
+    3:[{rx:190,top:580,bottom:715},{rx:140,top:468,bottom:580},{rx:98,top:372,bottom:468}],
+    2:[{rx:185,top:555,bottom:715},{rx:128,top:425,bottom:555}],
+    1:[{rx:172,top:470,bottom:715}]
+  }[n];
+  const topBase=dims[n-1].top;
+  const vbY=cfg.full?0:Math.max(0,topBase-135);
+  const gold=`url(#${id}-gold)`;
+  const stand=cfg.stand||"#f3ead9";
 
+  let defs=`
+  <linearGradient id="${id}-gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f7e8bd"/><stop offset=".35" stop-color="#d2a95f"/>
+    <stop offset=".6" stop-color="#f3dda0"/><stop offset="1" stop-color="#a97f3c"/>
+  </linearGradient>
+  <linearGradient id="${id}-stem" x1="0" x2="1">
+    <stop offset="0" stop-color="${darken(stand,.3)}"/><stop offset=".4" stop-color="${lighten(stand,.35)}"/><stop offset="1" stop-color="${darken(stand,.35)}"/>
+  </linearGradient>
+  <radialGradient id="${id}-plate" cx=".5" cy=".4" r=".7">
+    <stop offset="0" stop-color="${lighten(stand,.55)}"/><stop offset="1" stop-color="${stand}"/>
+  </radialGradient>
+  <filter id="${id}-blur" x="-20%" y="-150%" width="140%" height="400%"><feGaussianBlur stdDeviation="9"/></filter>`;
 
-        request.onupgradeneeded = event => {
+  let out="";
+  /* ---- stand ---- */
+  out+=`
+  <ellipse cx="300" cy="800" rx="215" ry="12" fill="#000" opacity=".3" filter="url(#${id}-blur)"/>
+  <ellipse cx="300" cy="796" rx="96" ry="14" fill="${darken(stand,.32)}"/>
+  <ellipse cx="300" cy="792" rx="96" ry="14" fill="${lighten(stand,.15)}"/>
+  <path d="M284 742C289 760 282 776 274 792L326 792C318 776 311 760 316 742Z" fill="url(#${id}-stem)"/>
+  <path d="M52 728v11a248 36 0 0 0 496 0v-11Z" fill="${darken(stand,.2)}"/>
+  <ellipse cx="300" cy="728" rx="248" ry="36" fill="url(#${id}-plate)"/>
+  <ellipse cx="300" cy="728" rx="236" ry="31" fill="none" stroke="${gold}" stroke-width="1.4" opacity=".8"/>`;
 
-            const database =
-                event.target.result;
+  /* ---- tiers ---- */
+  dims.forEach((t,i)=>{
+    const c=cfg.tiers[i], rx=t.rx, ry=rx*.17, h=t.bottom-t.top, decos=(cfg.decos&&cfg.decos[i])||[];
+    defs+=`
+    <linearGradient class="cyl" id="${id}-c${i}" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="${darken(c,.2)}"/><stop offset=".2" stop-color="${lighten(c,.08)}"/>
+      <stop offset=".42" stop-color="${lighten(c,.24)}"/><stop offset=".72" stop-color="${c}"/>
+      <stop offset="1" stop-color="${darken(c,.3)}"/>
+    </linearGradient>
+    <radialGradient id="${id}-t${i}" cx=".5" cy=".5" r=".6">
+      <stop offset="0" stop-color="${lighten(c,.38)}"/><stop offset="1" stop-color="${lighten(c,.06)}"/>
+    </radialGradient>`;
+    const topFill=cfg.dripTop&&cfg.drip?`${cfg.drip}`:`url(#${id}-t${i})`;
+    let s=`<g class="tier tier${i}">`;
+    s+=`<path d="M${CX-rx} ${t.top}L${CX-rx} ${t.bottom}A${rx} ${ry} 0 0 0 ${CX+rx} ${t.bottom}L${CX+rx} ${t.top}Z" fill="url(#${id}-c${i})"/>`;
 
+    if(decos.includes("swirl")){
+      for(let k=1;k<=6;k++){
+        const y=t.top+h*k/7+(rand()-.5)*4;
+        s+=`<path d="M${CX-rx} ${f(y)}A${rx} ${ry} 0 0 0 ${CX+rx} ${f(y)}" fill="none" stroke="${darken(c,.25)}" stroke-width="1.1" opacity="${f(.12+rand()*.1)}"/>`;
+      }
+    }
+    if(decos.includes("layers")){
+      const cream=cfg.cream||"#fff4e4";
+      for(let k=1;k<=3;k++){
+        const y=t.top+h*k/4-5;
+        s+=`<path d="M${CX-rx} ${f(y)}V${f(y+9)}A${rx} ${ry} 0 0 0 ${CX+rx} ${f(y+9)}V${f(y)}A${rx} ${ry} 0 0 1 ${CX-rx} ${f(y)}Z" fill="${cream}" opacity=".95"/>
+        <path d="M${CX-rx} ${f(y+9)}A${rx} ${ry} 0 0 0 ${CX+rx} ${f(y+9)}" fill="none" stroke="${darken(cream,.2)}" stroke-width="1" opacity=".45"/>`;
+      }
+    }
+    if(decos.includes("band")){
+      const y=t.top+h*.68;
+      s+=`<path d="M${CX-rx} ${f(y)}A${rx} ${ry} 0 0 0 ${CX+rx} ${f(y)}" fill="none" stroke="${gold}" stroke-width="3"/>
+      <path d="M${CX-rx} ${f(y+7)}A${rx} ${ry} 0 0 0 ${CX+rx} ${f(y+7)}" fill="none" stroke="${gold}" stroke-width="1" opacity=".8"/>`;
+    }
+    if(decos.includes("leaf")){
+      const cnt=Math.round(rx/9);
+      for(let k=0;k<cnt;k++){
+        const x=CX-rx+14+rand()*(2*rx-28), y=t.top+ry+10+rand()*(h-ry-24);
+        s+=flake(x,y,3+rand()*6,Math.round(rand()*360),gold).replace("<polygon","<polygon opacity=\".92\"");
+      }
+    }
+    if(decos.includes("flowers")){
+      const cnt=Math.max(3,Math.round(rx/30));
+      for(let k=0;k<cnt;k++){
+        const x=CX-rx*.8+(k+.5)*(rx*1.6/cnt)+(rand()-.5)*10, y=t.top+ry+18+rand()*(h-ry-40);
+        s+=leaf(x-4,y+4,16,rand()*360|0,"#7f9a6a")+flower(x,y,8+rand()*4,"#fff8f0","#d2a95f");
+      }
+    }
+    if(decos.includes("pearls")||true){
+      // bottom pearl border
+      if(decos.includes("pearls")){
+        const r=Math.max(3.2,rx/40), step=r*2.05, cnt=Math.floor((2*rx-4*r)/step);
+        for(let k=0;k<=cnt;k++){
+          const x=CX-rx+2*r+k*step, u=(x-CX)/rx, y=t.bottom+ry*Math.sqrt(Math.max(0,1-u*u))-r*.25;
+          s+=`<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="${lighten(c,.5)}" stroke="${darken(c,.18)}" stroke-width=".6"/><circle cx="${f(x-r*.3)}" cy="${f(y-r*.32)}" r="${f(r*.3)}" fill="#fff" opacity=".85"/>`;
+        }
+      }
+    }
 
-            if(
-                !database.objectStoreNames
-                    .contains(PRODUCT_STORE)
-            ){
+    // top surface
+    s+=`<ellipse cx="${CX}" cy="${t.top}" rx="${rx}" ry="${f(ry)}" fill="${topFill}"/>
+        <ellipse cx="${CX}" cy="${t.top}" rx="${rx-1}" ry="${f(ry-1)}" fill="none" stroke="${lighten(cfg.dripTop&&cfg.drip?cfg.drip:c,.5)}" stroke-width="1.4" opacity=".55"/>`;
 
-                database.createObjectStore(
-                    PRODUCT_STORE,
-                    {keyPath:"id"}
-                );
+    // drip
+    if(cfg.drip){
+      s+=`<path d="${dripPath(rx,ry,t.top,rng((cfg.seed||1)*7+i),9)}" fill="${cfg.drip}" stroke="${darken(cfg.drip,.2)}" stroke-width=".8"/>`;
+    }
 
-            }
+    // top pearls (inner top edge)
+    if(decos.includes("pearls")&&i>0||(decos.includes("pearls")&&i===0&&n===1)){
+      const r=Math.max(2.6,rx/48), step=r*2.05, cnt=Math.floor((2*rx-4*r)/step);
+      for(let k=0;k<=cnt;k++){
+        const x=CX-rx+2*r+k*step, u=(x-CX)/rx, y=t.top+ry*Math.sqrt(Math.max(0,1-u*u))-r*.1;
+        s+=`<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="${lighten(c,.55)}" stroke="${darken(c,.15)}" stroke-width=".5"/><circle cx="${f(x-r*.3)}" cy="${f(y-r*.3)}" r="${f(r*.3)}" fill="#fff" opacity=".85"/>`;
+      }
+    }
 
+    // cross-section face (only used by the scroll animation)
+    if(cfg.sliceable){
+      const x0=CX-rx*.5, w=rx, yA=t.top+ry*.98, yB=t.bottom+ry*.82, H=yB-yA;
+      const plan=[["s",.26],["c",.07],["j",.05],["s",.26],["c",.07],["j",.05],["s",.24]];
+      const col={s:"#f2d9a3",c:"#fffaf0",j:"#b3263f"};
+      defs+=`<clipPath id="${id}-cl${i}"><rect x="${f(x0)}" y="${f(yA)}" width="${f(w)}" height="${f(H)}" rx="6"/></clipPath>`;
+      let yy=yA, cut=`<g clip-path="url(#${id}-cl${i})">`;
+      plan.forEach(([k,p])=>{
+        cut+=`<rect x="${f(x0)}" y="${f(yy)}" width="${f(w)}" height="${f(H*p+.6)}" fill="${col[k]}"/>`;
+        yy+=H*p;
+      });
+      for(let k=0;k<Math.round(rx/6);k++){
+        cut+=`<circle cx="${f(x0+rand()*w)}" cy="${f(yA+rand()*H)}" r="${f(.6+rand()*1.1)}" fill="#d9b46f" opacity=".55"/>`;
+      }
+      cut+=`<rect x="${f(x0)}" y="${f(yA)}" width="${f(w)}" height="${f(H)}" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="5"/></g>
+            <rect x="${f(x0)}" y="${f(yA)}" width="${f(w)}" height="${f(H)}" rx="6" fill="none" stroke="${lighten(c,.5)}" stroke-width="1.2" opacity=".7"/>`;
+      s+=`<g class="cut" data-x="${CX}" opacity="0" transform="translate(${CX} 0) scale(.001 1) translate(${-CX} 0)">${cut}</g>`;
+    }
+    s+=`</g>`;
+    out+=s;
+  });
 
-            if(
-                !database.objectStoreNames
-                    .contains(SETTINGS_STORE)
-            ){
-
-                database.createObjectStore(
-                    SETTINGS_STORE,
-                    {keyPath:"key"}
-                );
-
-            }
-
-        };
-
-
-        request.onsuccess = event => {
-
-            db = event.target.result;
-
-            resolve(db);
-
-        };
-
-
-        request.onerror = () => {
-
-            reject(request.error);
-
-        };
-
+  /* ---- topper ---- */
+  const ty=topBase;
+  let tp=`<g class="topper">`;
+  if(cfg.topper==="roses"){
+    const rc=cfg.rose||"#d98a94";
+    tp+=leaf(300,ty-6,64,-165,"#7f9a6a")+leaf(300,ty-6,64,-15,"#7f9a6a")+leaf(292,ty-34,54,-125,"#6f8b5a")+leaf(308,ty-34,54,-55,"#6f8b5a")+leaf(300,ty-10,50,-92,"#8aa574");
+    tp+=rose(346,ty-14,23,lighten(rc,.12))+rose(254,ty-13,23,lighten(rc,.05));
+    tp+=rose(300,ty-40,31,rc)+rose(272,ty-78,15,lighten(rc,.2))+rose(330,ty-74,16,darken(rc,.05));
+    tp+=flake(236,ty-44,5,20,gold)+flake(366,ty-46,4,60,gold)+flake(304,ty-104,4,10,gold)+flake(262,ty-98,3,40,gold);
+    tp+=`<circle cx="228" cy="${ty-6}" r="5" fill="${lighten(rc,.35)}"/><circle cx="374" cy="${ty-8}" r="5" fill="${lighten(rc,.3)}"/>`;
+  }
+  if(cfg.topper==="gold"){
+    [[262,-68,-14],[282,-98,-6],[304,-112,2],[326,-90,10],[346,-62,18]].forEach(([x,h2,rot],k)=>{
+      tp+=`<polygon transform="rotate(${rot} ${x} ${ty})" points="${x-7},${ty} ${x+2},${ty+h2} ${x+9},${ty}" fill="${gold}" stroke="#a97f3c" stroke-width=".6"/>
+           <polygon transform="rotate(${rot} ${x} ${ty})" points="${x+2},${ty+h2} ${x+9},${ty} ${x+2},${ty}" fill="#fff" opacity=".25"/>`;
     });
-
-}
-
-
-/* =========================================================
-   PRODUCT FUNCTIONS
-========================================================= */
-
-function getProducts(){
-
-    return new Promise((resolve,reject)=>{
-
-        const transaction =
-            db.transaction(
-                PRODUCT_STORE,
-                "readonly"
-            );
-
-        const store =
-            transaction.objectStore(
-                PRODUCT_STORE
-            );
-
-        const request =
-            store.getAll();
-
-
-        request.onsuccess = () => {
-
-            resolve(request.result);
-
-        };
-
-
-        request.onerror = () => {
-
-            reject(request.error);
-
-        };
-
+    [[250,-6,-40],[352,-8,40],[300,-20,0]].forEach(([x,y,r])=>{
+      tp+=`<path d="M${x-22} ${ty+y}q22 -26 44 0" fill="none" stroke="#3a1c12" stroke-width="7" stroke-linecap="round" transform="rotate(${r} ${x} ${ty+y})"/><path d="M${x-22} ${ty+y}q22 -26 44 0" fill="none" stroke="#7a4632" stroke-width="1.6" stroke-linecap="round" opacity=".7" transform="rotate(${r} ${x} ${ty+y})"/>`;
     });
-
-}
-
-
-function saveProduct(product){
-
-    return new Promise((resolve,reject)=>{
-
-        const transaction =
-            db.transaction(
-                PRODUCT_STORE,
-                "readwrite"
-            );
-
-        const store =
-            transaction.objectStore(
-                PRODUCT_STORE
-            );
-
-        const request =
-            store.put(product);
-
-
-        request.onsuccess = () => resolve();
-
-        request.onerror = () =>
-            reject(request.error);
-
-    });
-
-}
-
-
-function deleteProduct(id){
-
-    return new Promise((resolve,reject)=>{
-
-        const transaction =
-            db.transaction(
-                PRODUCT_STORE,
-                "readwrite"
-            );
-
-        const store =
-            transaction.objectStore(
-                PRODUCT_STORE
-            );
-
-        const request =
-            store.delete(id);
-
-
-        request.onsuccess = () => resolve();
-
-        request.onerror = () =>
-            reject(request.error);
-
-    });
-
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function getSetting(key){
-
-    return new Promise((resolve,reject)=>{
-
-        const transaction =
-            db.transaction(
-                SETTINGS_STORE,
-                "readonly"
-            );
-
-        const store =
-            transaction.objectStore(
-                SETTINGS_STORE
-            );
-
-        const request =
-            store.get(key);
-
-
-        request.onsuccess = () => {
-
-            resolve(
-                request.result
-                ? request.result.value
-                : null
-            );
-
-        };
-
-
-        request.onerror = () =>
-            reject(request.error);
-
-    });
-
-}
-
-
-function saveSetting(key,value){
-
-    return new Promise((resolve,reject)=>{
-
-        const transaction =
-            db.transaction(
-                SETTINGS_STORE,
-                "readwrite"
-            );
-
-        const store =
-            transaction.objectStore(
-                SETTINGS_STORE
-            );
-
-        const request =
-            store.put({
-                key:key,
-                value:value
-            });
-
-
-        request.onsuccess = () => resolve();
-
-        request.onerror = () =>
-            reject(request.error);
-
-    });
-
-}
-
-
-/* =========================================================
-   FILE -> BLOB
-========================================================= */
-
-function fileToBlob(file){
-
-    return new Promise((resolve,reject)=>{
-
-        if(!file){
-
-            resolve(null);
-
-            return;
-
-        }
-
-
-        if(!file.type.startsWith("image/")){
-
-            alert(
-                "Please select an image file."
-            );
-
-            resolve(null);
-
-            return;
-
-        }
-
-
-        resolve(file);
-
-    });
-
-}
-
-
-/* =========================================================
-   BLOB -> OBJECT URL
-========================================================= */
-
-function blobURL(blob){
-
-    if(!blob) return "";
-
-    return URL.createObjectURL(blob);
-
-}
-
-
-/* =========================================================
-   LOAD LOGO
-========================================================= */
-
-async function loadLogo(){
-
-    const logo =
-        await getSetting("logo");
-
-
-    const navLogo =
-        document.getElementById("navLogo");
-
-    const heroLogo =
-        document.getElementById("heroLogo");
-
-    const preview =
-        document.getElementById("logoPreview");
-
-    const empty =
-        document.getElementById("logoEmpty");
-
-
-    if(logo){
-
-        const url =
-            blobURL(logo);
-
-
-        navLogo.src=url;
-
-        navLogo.style.display="block";
-
-
-        heroLogo.src=url;
-
-        heroLogo.style.display="block";
-
-
-        preview.src=url;
-
-        preview.style.display="block";
-
-
-        empty.style.display="none";
-
+    tp+=rasp(268,ty-8,15)+rasp(332,ty-9,15)+rasp(300,ty-16,17)+leaf(300,ty-26,26,-90,"#5b8a4a");
+    tp+=flake(240,ty-30,4,10,gold)+flake(360,ty-32,5,50,gold);
+  }
+  if(cfg.topper==="pistachio"){
+    const greens=["#7a9b4f","#94b064","#5f7f3c","#b1c986","#6d8e44"];
+    for(let k=0;k<190;k++){
+      const a=rand()*Math.PI*2, rr=Math.sqrt(rand()), x=300+Math.cos(a)*rr*84, y=ty+2+Math.sin(a)*rr*13-(1-rr)*16;
+      tp+=`<ellipse cx="${f(x)}" cy="${f(y)}" rx="${f(4+rand()*3)}" ry="${f(2.6+rand()*2)}" transform="rotate(${Math.round(rand()*180)} ${f(x)} ${f(y)})" fill="${greens[Math.floor(rand()*greens.length)]}"/>`;
     }
+    tp+=leaf(268,ty-22,46,-150,"#6f8b5a")+leaf(332,ty-22,46,-30,"#6f8b5a");
+    tp+=flower(300,ty-40,17,"#fff8f0","#d2a95f")+flower(258,ty-26,12,"#fff1e6","#d2a95f")+flower(344,ty-28,12,"#fff1e6","#d2a95f");
+    tp+=flake(236,ty-30,6,12,gold)+flake(366,ty-34,5,55,gold)+flake(300,ty-70,5,30,gold)+flake(276,ty-52,4,80,gold);
+  }
+  if(cfg.topper==="strawberries"){
+    tp+=leaf(262,ty-10,40,-160,"#5b8a4a")+leaf(340,ty-10,40,-20,"#5b8a4a")+leaf(300,ty-26,44,-95,"#6f9a5a");
+    tp+=strawberry(254,ty-26,26,-14)+strawberry(348,ty-28,26,14)+strawberry(301,ty-48,30,0);
+    tp+=blueberry(222,ty-6,10)+blueberry(380,ty-8,10)+rasp(300,ty-2,13);
+    tp+=flake(244,ty-60,4,20,gold)+flake(360,ty-62,4,45,gold);
+  }
+  tp+=`</g>`;
 
+  return `<svg viewBox="0 ${vbY} 600 ${820-vbY}" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${cfg.label||"An illustrated luxury cake"}"><defs>${defs}</defs>${out}${tp}</svg>`;
 }
 
+/* =========================================================
+   HERO + SCROLL CAKE (same cake — the story continues)
+========================================================= */
+const luxury={
+  tiers:["#f3e7d9","#efcfcd","#f6ede2"],
+  decos:[["swirl","pearls"],["swirl","band","flowers"],["swirl","pearls"]],
+  topper:"roses",rose:"#d98a94",stand:"#d9bb76",seed:3,full:true
+};
+document.getElementById("heroCake").insertAdjacentHTML("afterbegin",
+  cakeSVG({...luxury,full:false,id:"hero",label:"An elegant three-tier ivory and blush cake topped with roses and gold leaf"}));
+document.getElementById("storyCake").innerHTML=
+  cakeSVG({...luxury,id:"story",sliceable:true,label:"A three-tier cake separating into layers as you scroll"});
 
 /* =========================================================
-   LOGO UPLOAD PREVIEW
+   SIGNATURE COLLECTION
 ========================================================= */
-
-document
-    .getElementById("logoInput")
-    .addEventListener(
-        "change",
-        function(){
-
-            const file=this.files[0];
-
-            if(!file) return;
-
-
-            const url =
-                URL.createObjectURL(file);
-
-
-            const preview =
-                document.getElementById(
-                    "logoPreview"
-                );
-
-
-            preview.src=url;
-
-            preview.style.display="block";
-
-
-            document.getElementById(
-                "logoEmpty"
-            ).style.display="none";
-
-        }
-    );
-
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.getElementById("pieces").innerHTML=CAKES.map((c,i)=>{
+  const art=c.photo
+    ? `<img src="${esc(c.photo)}" alt="${esc(c.name)}" loading="lazy">`
+    : cakeSVG({...c.art,id:"p"+i,label:c.name+" cake illustration"});
+  return `<article class="piece">
+    <div class="piece-art" style="--tint:${c.tint};--tint2:${darken(c.tint,.13)}">${art}</div>
+    <div class="piece-copy">
+      <h3>${esc(c.name)}</h3>
+      <p class="piece-line">${esc(c.line)}</p>
+      <p class="piece-story">${esc(c.story)}</p>
+      <dl>${c.notes.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+      <p class="piece-for"><b>Made for</b> ${esc(c.madeFor)}</p>
+    </div>
+  </article>`;
+}).join("");
 
 /* =========================================================
-   SAVE LOGO
+   CRAFTSMANSHIP — cross-section
 ========================================================= */
-
-document
-    .getElementById("saveLogo")
-    .addEventListener(
-        "click",
-        async function(){
-
-            const input =
-                document.getElementById(
-                    "logoInput"
-                );
-
-
-            const file =
-                input.files[0];
-
-
-            if(!file){
-
-                alert(
-                    "Please choose a logo image first."
-                );
-
-                return;
-
-            }
-
-
-            await saveSetting(
-                "logo",
-                await fileToBlob(file)
-            );
-
-
-            await loadLogo();
-
-
-            alert(
-                "Laiba's Cakery logo saved."
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   REMOVE LOGO
-========================================================= */
-
-document
-    .getElementById("removeLogo")
-    .addEventListener(
-        "click",
-        async function(){
-
-            await saveSetting(
-                "logo",
-                null
-            );
-
-
-            document.getElementById(
-                "navLogo"
-            ).style.display="none";
-
-
-            document.getElementById(
-                "heroLogo"
-            ).style.display="none";
-
-
-            document.getElementById(
-                "logoPreview"
-            ).style.display="none";
-
-
-            document.getElementById(
-                "logoEmpty"
-            ).style.display="block";
-
-
-            document.getElementById(
-                "logoInput"
-            ).value="";
-
-
-            alert(
-                "Logo removed."
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   PRODUCT IMAGE PREVIEW
-========================================================= */
-
-document
-    .getElementById("productImage")
-    .addEventListener(
-        "change",
-        function(){
-
-            const file=this.files[0];
-
-            if(!file) return;
-
-
-            const url =
-                URL.createObjectURL(file);
-
-
-            const preview =
-                document.getElementById(
-                    "uploadPreview"
-                );
-
-
-            preview.src=url;
-
-            preview.style.display="block";
-
-
-            document.getElementById(
-                "uploadText"
-            ).style.display="none";
-
-        }
-    );
-
-
-/* =========================================================
-   SAVE PRODUCT FORM
-========================================================= */
-
-document
-    .getElementById("productForm")
-    .addEventListener(
-        "submit",
-        async function(event){
-
-            event.preventDefault();
-
-
-            const editingId =
-                document.getElementById(
-                    "editingId"
-                ).value;
-
-
-            const products =
-                await getProducts();
-
-
-            const existing =
-                products.find(
-                    p=>p.id===editingId
-                );
-
-
-            const file =
-                document.getElementById(
-                    "productImage"
-                ).files[0];
-
-
-            let image =
-                existing
-                ?
-                existing.image
-                :
-                null;
-
-
-            if(file){
-
-                image =
-                    await fileToBlob(file);
-
-            }
-
-
-            if(!image){
-
-                alert(
-                    "Please upload a creation image."
-                );
-
-                return;
-
-            }
-
-
-            const product={
-
-                id:
-                    editingId
-                    ||
-                    Date.now().toString(),
-
-                name:
-                    document.getElementById(
-                        "productName"
-                    ).value.trim(),
-
-                category:
-                    document.getElementById(
-                        "productCategory"
-                    ).value,
-
-                flavor:
-                    document.getElementById(
-                        "productFlavor"
-                    ).value.trim(),
-
-                short:
-                    document.getElementById(
-                        "productShort"
-                    ).value.trim(),
-
-                story:
-                    document.getElementById(
-                        "productStory"
-                    ).value.trim(),
-
-                image:image,
-
-                featured:
-                    existing
-                    ?
-                    existing.featured
-                    :
-                    false
-
-            };
-
-
-            await saveProduct(product);
-
-
-            clearForm();
-
-
-            await renderAdminProducts();
-
-            await renderProducts();
-
-            await renderFeatured();
-
-
-            alert(
-                editingId
-                ?
-                "Creation updated successfully."
-                :
-                "Creation added successfully."
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   CLEAR FORM
-========================================================= */
-
-function clearForm(){
-
-    document
-        .getElementById("productForm")
-        .reset();
-
-
-    document.getElementById(
-        "editingId"
-    ).value="";
-
-
-    document.getElementById(
-        "uploadPreview"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "uploadText"
-    ).style.display="block";
-
-}
-
-
-/* =========================================================
-   EDIT PRODUCT
-========================================================= */
-
-async function editProduct(id){
-
-    const products =
-        await getProducts();
-
-
-    const product =
-        products.find(
-            p=>p.id===id
-        );
-
-
-    if(!product) return;
-
-
-    document.getElementById(
-        "editingId"
-    ).value=product.id;
-
-
-    document.getElementById(
-        "productName"
-    ).value=product.name;
-
-
-    document.getElementById(
-        "productCategory"
-    ).value=product.category;
-
-
-    document.getElementById(
-        "productFlavor"
-    ).value=product.flavor || "";
-
-
-    document.getElementById(
-        "productShort"
-    ).value=product.short || "";
-
-
-    document.getElementById(
-        "productStory"
-    ).value=product.story || "";
-
-
-    if(product.image){
-
-        const preview =
-            document.getElementById(
-                "uploadPreview"
-            );
-
-
-        preview.src =
-            blobURL(product.image);
-
-
-        preview.style.display="block";
-
-
-        document.getElementById(
-            "uploadText"
-        ).style.display="none";
-
-    }
-
-
-    document.querySelector(
-        '[data-tab="creationTab"]'
-    ).click();
-
-
-    document
-        .getElementById("creationTab")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-
-/* =========================================================
-   DELETE PRODUCT
-========================================================= */
-
-async function removeProduct(id){
-
-    if(
-        !confirm(
-            "Delete this creation?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    await deleteProduct(id);
-
-
-    await renderAdminProducts();
-
-    await renderProducts();
-
-    await renderFeatured();
-
-}
-
-
-/* =========================================================
-   MAKE FEATURED
-========================================================= */
-
-async function makeFeatured(id){
-
-    const products =
-        await getProducts();
-
-
-    for(const product of products){
-
-        product.featured =
-            product.id===id;
-
-
-        await saveProduct(product);
-
-    }
-
-
-    await renderAdminProducts();
-
-    await renderFeatured();
-
-}
-
-
-/* =========================================================
-   RENDER ADMIN PRODUCTS
-========================================================= */
-
-async function renderAdminProducts(){
-
-    const products =
-        await getProducts();
-
-
-    const container =
-        document.getElementById(
-            "adminProducts"
-        );
-
-
-    container.innerHTML="";
-
-
-    if(products.length===0){
-
-        container.innerHTML=`
-
-            <div style="
-                padding:30px 0;
-                opacity:.5;
-            ">
-                No creations yet.
-                Upload your first creation above.
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    products.forEach(product=>{
-
-        const item =
-            document.createElement("div");
-
-
-        item.className="admin-item";
-
-
-        const imageURL =
-            product.image
-            ?
-            blobURL(product.image)
-            :
-            "";
-
-
-        item.innerHTML=`
-
-            <img
-                class="admin-item-image"
-                src="${imageURL}"
-                alt="">
-
-
-            <div class="admin-item-info">
-
-                <div class="admin-item-name">
-
-                    ${escapeHTML(product.name)}
-
-                </div>
-
-                <div class="admin-item-category">
-
-                    ${escapeHTML(product.category)}
-
-                </div>
-
-
-                ${
-                    product.featured
-                    ?
-                    `<span class="featured-badge">
-                        Cinematic Featured
-                    </span>`
-                    :
-                    ""
-                }
-
-            </div>
-
-
-            <div class="admin-item-actions">
-
-                ${
-                    !product.featured
-                    ?
-                    `<button
-                        class="small-btn"
-                        onclick="makeFeatured('${product.id}')">
-                        Feature
-                    </button>`
-                    :
-                    ""
-                }
-
-
-                <button
-                    class="small-btn"
-                    onclick="editProduct('${product.id}')">
-                    Edit
-                </button>
-
-
-                <button
-                    class="small-btn"
-                    onclick="removeProduct('${product.id}')">
-                    Delete
-                </button>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(item);
-
-    });
-
-}
-
-
-/* =========================================================
-   RENDER PUBLIC COLLECTION
-========================================================= */
-
-async function renderProducts(){
-
-    const products =
-        await getProducts();
-
-
-    const container =
-        document.getElementById(
-            "products"
-        );
-
-
-    container.innerHTML="";
-
-
-    if(products.length===0){
-
-        container.innerHTML=`
-
-            <div class="empty-collection">
-
-                Your signature creations
-                will appear here.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    products.forEach(product=>{
-
-        const article =
-            document.createElement("article");
-
-
-        article.className="product";
-
-
-        const imageURL =
-            blobURL(product.image);
-
-
-        article.innerHTML=`
-
-            <div class="product-image">
-
-                <img
-                    src="${imageURL}"
-                    alt="${escapeHTML(product.name)}"
-                    loading="lazy">
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="eyebrow">
-
-                    ${escapeHTML(product.category)}
-
-                </div>
-
-
-                <h3>
-                    ${escapeHTML(product.name)}
-                </h3>
-
-
-                <p>
-
-                    ${escapeHTML(
-                        product.short || ""
-                    )}
-
-                </p>
-
-            </div>
-
-        `;
-
-
-        container.appendChild(article);
-
-    });
-
-}
-
-
-/* =========================================================
-   RENDER FEATURED CINEMATIC IMAGE
-========================================================= */
-
-async function renderFeatured(){
-
-    const products =
-        await getProducts();
-
-
-    let featured =
-        products.find(
-            product=>product.featured
-        );
-
-
-    /*
-       If nothing is manually featured,
-       use the first creation.
-    */
-
-    if(!featured && products.length){
-
-        featured=products[0];
-
-    }
-
-
-    const image =
-        document.getElementById(
-            "featuredImage"
-        );
-
-
-    const placeholder =
-        document.getElementById(
-            "featuredPlaceholder"
-        );
-
-
-    if(!featured){
-
-        image.style.display="none";
-
-        placeholder.style.display="block";
-
-        return;
-
-    }
-
-
-    image.src =
-        blobURL(featured.image);
-
-
-    image.alt =
-        featured.name;
-
-
-    image.style.display="block";
-
-    placeholder.style.display="none";
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   ADMIN TABS
-========================================================= */
-
-document
-    .querySelectorAll(".admin-tab")
-    .forEach(tab=>{
-
-        tab.addEventListener(
-            "click",
-            ()=>{
-
-                document
-                    .querySelectorAll(
-                        ".admin-tab"
-                    )
-                    .forEach(t=>
-                        t.classList.remove(
-                            "active"
-                        )
-                    );
-
-
-                document
-                    .querySelectorAll(
-                        ".admin-section"
-                    )
-                    .forEach(section=>
-                        section.classList.remove(
-                            "active"
-                        )
-                    );
-
-
-                tab.classList.add("active");
-
-
-                document
-                    .getElementById(
-                        tab.dataset.tab
-                    )
-                    .classList.add(
-                        "active"
-                    );
-
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   ADMIN OPEN / CLOSE
-========================================================= */
-
-const adminOverlay =
-    document.getElementById(
-        "adminOverlay"
-    );
-
-
-document
-    .getElementById("adminTrigger")
-    .addEventListener(
-        "click",
-        async ()=>{
-
-            adminOverlay.classList.add(
-                "open"
-            );
-
-            await renderAdminProducts();
-
-        }
-    );
-
-
-document
-    .getElementById("closeAdmin")
-    .addEventListener(
-        "click",
-        ()=>{
-
-            adminOverlay.classList.remove(
-                "open"
-            );
-
-        }
-    );
-
-
-adminOverlay.addEventListener(
-    "click",
-    event=>{
-
-        if(event.target===adminOverlay){
-
-            adminOverlay.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CINEMATIC SCROLL ENGINE
-========================================================= */
-
-const story =
-    document.querySelector(".story");
-
-
-const featuredStage =
-    document.getElementById(
-        "featuredStage"
-    );
-
-
-const storyTexts =
-    document.querySelectorAll(
-        ".story-text"
-    );
-
-
-const storyCounter =
-    document.getElementById(
-        "storyCounter"
-    );
-
-
-function updateStory(){
-
-    const rect =
-        story.getBoundingClientRect();
-
-
-    const total =
-        story.offsetHeight -
-        window.innerHeight;
-
-
-    let progress =
-        -rect.top / total;
-
-
-    progress =
-        Math.max(
-            0,
-            Math.min(1,progress)
-        );
-
-
-    /*
-       ==========================================
-       CINEMATIC MOVEMENT
-       ==========================================
-    */
-
-
-    /*
-       Horizontal movement:
-       centre → right → left → centre
-    */
-
-    const x =
-        Math.sin(
-            progress * Math.PI * 2
-        ) * 180;
-
-
-    /*
-       Vertical movement
-    */
-
-    const y =
-        Math.sin(
-            progress * Math.PI
-        ) * 70;
-
-
-    /*
-       Dramatic but smooth scaling
-    */
-
-    const scale =
-        .72 +
-        Math.sin(
-            progress * Math.PI
-        ) * .70;
-
-
-    /*
-       Gentle rotation
-    */
-
-    const rotation =
-        Math.sin(
-            progress * Math.PI * 2
-        ) * 10;
-
-
-    /*
-       Slight depth effect
-    */
-
-    const blur =
-        progress > .82
-        ?
-        Math.max(
-            0,
-            (progress-.82)*15
-        )
-        :
-        0;
-
-
-    featuredStage.style.transform=`
-
-        translate(
-            calc(-50% + ${x}px),
-            calc(-50% + ${y}px)
-        )
-
-        scale(${scale})
-
-        rotate(${rotation}deg)
-
-    `;
-
-
-    /*
-       The last part returns the cake
-       to a clean centered composition.
-    */
-
-    if(progress>.84){
-
-        const finalProgress =
-            (progress-.84)/.16;
-
-
-        const finalX =
-            x*(1-finalProgress);
-
-
-        const finalScale =
-            scale*(1-finalProgress)
-            +
-            .82*finalProgress;
-
-
-        featuredStage.style.transform=`
-
-            translate(
-                calc(-50% + ${finalX}px),
-                calc(-50% + ${y*(1-finalProgress)}px)
-            )
-
-            scale(${finalScale})
-
-            rotate(${rotation*(1-finalProgress)}deg)
-
-        `;
-
-    }
-
-
-    /*
-       Story scenes
-    */
-
-    const scene =
-        Math.min(
-            3,
-            Math.floor(
-                progress * 4
-            )
-        );
-
-
-    storyTexts.forEach(
-        (text,index)=>{
-
-            if(index===scene){
-
-                text.classList.add(
-                    "active"
-                );
-
-            }else{
-
-                text.classList.remove(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-
-    storyCounter.textContent =
-        String(scene+1).padStart(2,"0")
-        +
-        " / 04";
-
-}
-
-
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
-
-function updateProgress(){
-
-    const scrollTop =
-        window.scrollY;
-
-
-    const height =
-        document.documentElement
-            .scrollHeight
-        -
-        window.innerHeight;
-
-
-    const percentage =
-        height>0
-        ?
-        scrollTop/height*100
-        :
-        0;
-
-
-    /*
-       Re-use top border as subtle progress.
-    */
-
-    document.body.style.setProperty(
-        "--scroll-progress",
-        percentage+"%"
-    );
-
-}
-
-
-/* =========================================================
-   OPTIMIZED SCROLL
-========================================================= */
-
-let ticking=false;
-
-
-window.addEventListener(
-    "scroll",
-    ()=>{
-
-        if(!ticking){
-
-            requestAnimationFrame(
-                ()=>{
-
-                    updateStory();
-
-                    updateProgress();
-
-                    ticking=false;
-
-                }
-            );
-
-
-            ticking=true;
-
-        }
-
-    },
-    {passive:true}
-);
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-(async function(){
-
-    try{
-
-        await openDatabase();
-
-        await loadLogo();
-
-        await renderProducts();
-
-        await renderAdminProducts();
-
-        await renderFeatured();
-
-        updateStory();
-
-        updateProgress();
-
-    }catch(error){
-
-        console.error(error);
-
-        alert(
-            "The Content Studio could not start in this browser."
-        );
-
-    }
-
+(function(){
+  const r=rng(42), g="url(#slGold)";
+  const X0=62, X1=358, W=X1-X0;
+  const plan=[["sponge","bake",58],["cream","fill",16],["jam","fill",12],["sponge","bake",58],["cream","fill",16],["jam","fill",12],["sponge","bake",58]];
+  const col={sponge:"#f2d9a3",cream:"#fffaf0",jam:"#b3263f"};
+  let y=372, bands={bake:"",fill:"",coat:"",finish:""};
+  plan.forEach(([k,b,h])=>{
+    y-=h;
+    let el=`<rect x="${X0}" y="${y}" width="${W}" height="${h+.6}" fill="${col[k]}"/>`;
+    if(k==="sponge"){for(let i=0;i<46;i++)el+=`<circle cx="${f(X0+4+r()*(W-8))}" cy="${f(y+3+r()*(h-6))}" r="${f(.8+r()*1.7)}" fill="#d9b46f" opacity=".55"/>`}
+    if(k==="jam"){for(let i=0;i<20;i++)el+=`<circle cx="${f(X0+4+r()*(W-8))}" cy="${f(y+2+r()*(h-4))}" r="${f(.8+r()*1.2)}" fill="#7d1029" opacity=".6"/>`}
+    bands[b]+=el;
+  });
+  // coat: side walls + cap
+  bands.coat=`
+    <rect x="30" y="98" width="32" height="274" fill="#f7ecdf"/><rect x="358" y="98" width="32" height="274" fill="#f7ecdf"/>
+    <rect x="30" y="98" width="32" height="274" fill="url(#slShade)"/><rect x="358" y="98" width="32" height="274" fill="url(#slShade)"/>
+    <path d="M30 142V112Q30 92 50 92H370Q390 92 390 112V142Z" fill="#fbf3e8"/>
+    <path d="M62 142Q76 158 90 142T118 142T146 142T174 142T202 142T230 142T258 142T286 142T314 142T342 142T358 142V142Z" fill="#fbf3e8"/>`;
+  // finish: fruit, flower, gold leaf
+  let fin="";
+  fin+=rasp(128,84,17)+rasp(160,78,18)+`<g>${leaf(196,90,32,-150,"#6f8b5a")}${leaf(226,90,32,-30,"#6f8b5a")}</g>`+flower(210,80,14,"#fff8f0","#d2a95f")+blueberry(262,82,10)+blueberry(280,86,9);
+  for(let i=0;i<14;i++){fin+=flake(40+r()*340,100+r()*40,3+r()*4,Math.round(r()*360),g)}
+  for(let i=0;i<8;i++){fin+=flake(34+r()*22,150+r()*200,3+r()*3,Math.round(r()*360),g)}
+  bands.finish=fin;
+
+  document.getElementById("sliceWrap").innerHTML=`
+  <svg class="slice" id="slice" viewBox="0 30 420 370" role="img" aria-label="Cross-section of a layered cake showing sponge, cream, compote, buttercream and gold leaf">
+    <defs>
+      <linearGradient id="slGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7e8bd"/><stop offset=".4" stop-color="#d2a95f"/><stop offset=".65" stop-color="#f3dda0"/><stop offset="1" stop-color="#a97f3c"/></linearGradient>
+      <linearGradient id="slShade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".12"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".1"/></linearGradient>
+    </defs>
+    <ellipse cx="210" cy="392" rx="190" ry="8" fill="#000" opacity=".3"/>
+    <rect x="18" y="372" width="384" height="14" rx="4" fill="${g}"/>
+    <g data-band="bake">${bands.bake}</g>
+    <g data-band="fill">${bands.fill}</g>
+    <g data-band="coat">${bands.coat}</g>
+    <g data-band="finish">${bands.finish}</g>
+  </svg>`;
+
+  const svg=document.getElementById("slice"), steps=[...document.querySelectorAll(".step")];
+  function show(b){
+    svg.classList.toggle("dim",!!b);
+    svg.querySelectorAll("[data-band]").forEach(g=>g.classList.toggle("on",g.dataset.band===b));
+    steps.forEach(s=>s.classList.toggle("on",s.dataset.band===b));
+  }
+  steps.forEach(s=>{
+    s.addEventListener("mouseenter",()=>show(s.dataset.band));
+    s.addEventListener("focus",()=>show(s.dataset.band));
+    s.addEventListener("click",()=>show(s.dataset.band));
+  });
+  document.getElementById("steps").addEventListener("mouseleave",()=>{
+    if(!document.activeElement||!document.activeElement.classList.contains("step"))show(null);
+  });
+  document.getElementById("steps").addEventListener("focusout",e=>{
+    if(!e.currentTarget.contains(e.relatedTarget))show(null);
+  });
 })();
 
-</script>
+/* =========================================================
+   CONTACT LINKS (only shown if filled in above)
+========================================================= */
+(function(){
+  const box=document.getElementById("contactLinks"), out=[];
+  if(CONTACT.instagram) out.push(`<a class="btn" href="https://instagram.com/${encodeURIComponent(CONTACT.instagram)}" target="_blank" rel="noopener">Instagram</a>`);
+  if(CONTACT.whatsapp)  out.push(`<a class="btn" href="https://wa.me/${encodeURIComponent(CONTACT.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a>`);
+  if(CONTACT.email)     out.push(`<a class="btn" href="mailto:${esc(CONTACT.email)}">Email</a>`);
+  box.innerHTML=out.join("");
+  if(!out.length) document.querySelector(".final p").textContent="Every cake is made with care, for the moments that matter most.";
+})();
 
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+const nav=document.getElementById("nav"), menuBtn=document.getElementById("menuBtn");
+menuBtn.addEventListener("click",()=>{
+  const open=nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded",open);
+  menuBtn.setAttribute("aria-label",open?"Close menu":"Open menu");
+});
+document.querySelectorAll("#links a").forEach(a=>a.addEventListener("click",()=>{
+  nav.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");
+}));
+
+/* =========================================================
+   SCROLL-DRIVEN CAKE
+   Progress 0→1 across the section:
+   0.00  cake whole, slow push-in
+   0.22  tiers lift apart
+   0.50  each tier is cut open to show its layers
+   0.78  everything settles back together, glowing
+========================================================= */
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=t=>t*t*(3-2*t);
+const seg=(p,a,b)=>ease(clamp((p-a)/(b-a)));
+
+const story=document.getElementById("experience");
+const stage=document.getElementById("storyCake");
+const glow=document.getElementById("storyGlow");
+const tiers=[...stage.querySelectorAll(".tier")];
+const topper=stage.querySelector(".topper");
+const cuts=[...stage.querySelectorAll(".cut")];
+const cyl=[...stage.querySelectorAll("linearGradient.cyl")];
+const beats=[...document.querySelectorAll(".beat")];
+const dots=[...document.querySelectorAll(".story-dots i")];
+const navProgress=document.getElementById("navProgress");
+const LIFT=[0,-58,-118], TOP_LIFT=-196;
+let lastScene=-1;
+
+function update(){
+  const r=story.getBoundingClientRect();
+  const total=story.offsetHeight-window.innerHeight;
+  const p=clamp(-r.top/total);
+
+  const E=seg(p,.20,.34)-seg(p,.78,.90);          // explode 0→1→0
+  const C=seg(p,.48,.60)-seg(p,.74,.82);          // cut face 0→1→0
+  const base=window.innerWidth<=1100?1.06:1.2;
+
+  tiers.forEach((t,i)=>t.setAttribute("transform",`translate(0 ${f(LIFT[i]*E)})`));
+  topper.setAttribute("transform",`translate(0 ${f(TOP_LIFT*E)})`);
+  cuts.forEach(c=>{
+    const s=Math.max(.001,C);
+    c.setAttribute("transform",`translate(${CX} 0) scale(${f(s)} 1) translate(${-CX} 0)`);
+    c.setAttribute("opacity",C>.02?1:0);
+  });
+
+  const scale=base-(base-.98)*E+seg(p,0,.2)*.04;
+  stage.style.transform=`scale(${f(scale)}) translateY(${f(-(1-E)*4)}%)`;
+
+  // light travelling round the cylinders as you scroll
+  const sway=Math.sin(p*Math.PI*2)*.22;
+  cyl.forEach(g=>g.setAttribute("gradientTransform",`translate(${f(sway)} 0)`));
+
+  glow.style.setProperty("--glow",f(.35+.65*seg(p,.8,1)+.25*E));
+
+  const scene=Math.min(3,Math.floor(p*4));
+  if(scene!==lastScene){
+    beats.forEach((b,i)=>b.classList.toggle("on",i===scene));
+    dots.forEach((d,i)=>d.classList.toggle("on",i===scene));
+    lastScene=scene;
+  }
+
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  navProgress.style.transform=`scaleX(${h>0?clamp(window.scrollY/h):0})`;
+}
+
+let ticking=false;
+function onScroll(){
+  if(ticking)return;
+  ticking=true;
+  requestAnimationFrame(()=>{update();ticking=false});
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+window.addEventListener("resize",onScroll);
+update();
+</script>
 </body>
 </html>
