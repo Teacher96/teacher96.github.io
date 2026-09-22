@@ -257,56 +257,77 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
   background:var(--paper);color:var(--ink);
   padding:clamp(90px,12vw,170px) 6vw clamp(80px,11vw,150px);
 }
-.sec-head{max-width:820px}
+.sec-head{max-width:820px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px}
 .sec-head h2,.craft h2{
   font-family:var(--display);font-weight:500;
   font-size:clamp(46px,6.4vw,100px);line-height:.95;letter-spacing:-.012em;
 }
 .sec-head p{margin-top:24px;max-width:36em;font-size:18px;color:rgba(42,23,32,.72)}
 
-.piece{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(30px,7vw,120px);align-items:center;
-  margin-top:clamp(70px,10vw,150px);
+/* ---- filter tabs ---- */
+.g-filters{
+  display:flex;flex-wrap:wrap;gap:8px 30px;
+  margin-top:clamp(50px,7vw,86px);padding-bottom:18px;
+  border-bottom:1px solid rgba(42,23,32,.18);
 }
-.piece:nth-of-type(even) .piece-art{order:2}
-.piece-art{
-  position:relative;aspect-ratio:4/5;width:min(100%,520px);justify-self:center;
-  border-radius:999px 999px 6px 6px;overflow:hidden;
-  background:radial-gradient(85% 65% at 50% 36%,var(--tint) 0%,var(--tint2) 100%);
-  display:grid;place-items:end center;padding:11% 6% 6%;
+.g-filter{
+  position:relative;background:none;border:0;cursor:pointer;color:inherit;font:inherit;
+  padding:6px 0 12px;font-size:15px;letter-spacing:.02em;color:rgba(42,23,32,.55);
+  transition:color .3s;
 }
-.piece-art::after{
-  content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.55);
-  border-radius:999px 999px 2px 2px;pointer-events:none;
+.g-filter::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:#8a4a56;
+  transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1);
 }
-.piece-art svg,.piece-art img{width:100%;height:100%;object-fit:contain;object-position:bottom;
-  filter:drop-shadow(0 24px 22px rgba(60,30,30,.28))}
-.piece-copy{max-width:520px}
-.piece-copy h3{
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(40px,4.8vw,70px);line-height:.98;letter-spacing:-.01em;
-}
-.piece-line{
-  margin-top:14px;font-family:var(--display);font-style:italic;
-  font-size:clamp(22px,2.2vw,28px);color:#8a4a56;line-height:1.25;
-}
-.piece-story{margin-top:22px;font-size:17px;color:rgba(42,23,32,.78)}
-.piece dl{margin-top:28px;border-top:1px solid rgba(42,23,32,.16)}
-.piece dl div{
-  display:grid;grid-template-columns:104px 1fr;gap:16px;
-  padding:13px 0;border-bottom:1px solid rgba(42,23,32,.16);font-size:16px;
-}
-.piece dt{color:rgba(42,23,32,.55);font-weight:400}
-.piece dd{color:var(--ink);font-weight:400}
-.piece-for{margin-top:22px;font-size:16px;color:rgba(42,23,32,.7)}
-.piece-for b{font-weight:500;color:var(--ink)}
+.g-filter:hover{color:var(--ink)}
+.g-filter.on{color:var(--ink)}
+.g-filter.on::after{transform:scaleX(1)}
 
-@media (max-width:820px){
-  .piece{grid-template-columns:1fr;gap:34px}
-  .piece:nth-of-type(even) .piece-art{order:0}
-  .piece-art{width:min(100%,440px)}
-  .piece-copy{max-width:none}
+/* ---- gallery grid ---- */
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px);
+  margin-top:clamp(46px,6vw,64px);
+}
+.g-card{
+  opacity:0;transform:translateY(34px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--d,0ms);
+}
+.g-card.in{opacity:1;transform:translateY(0)}
+.g-card.hide{display:none}
+.g-frame{
+  position:relative;aspect-ratio:4/5;overflow:hidden;
+  border:1px solid rgba(42,23,32,.14);
+  background:#e7dcc9;
+}
+.g-frame img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.001);transition:transform 1.1s cubic-bezier(.2,.7,.2,1);
+}
+.g-card:hover .g-frame img{transform:scale(1.07)}
+.g-tag{
+  position:absolute;left:14px;top:14px;padding:5px 12px;
+  font-size:11px;letter-spacing:.06em;color:var(--ivory);
+  background:rgba(31,12,22,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.g-info{padding:18px 2px 0}
+.g-name{
+  font-family:var(--display);font-weight:500;font-size:26px;line-height:1.05;
+  display:inline-block;position:relative;
+}
+.g-name::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#8a4a56;
+  transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.g-card:hover .g-name::after{transform:scaleX(1)}
+.g-desc{margin-top:8px;font-size:15px;line-height:1.65;color:rgba(42,23,32,.68);max-width:34em}
+
+@media (max-width:1000px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .gallery{grid-template-columns:1fr;gap:36px}
+  .g-name{font-size:24px}
 }
 
 /* =========================================================
@@ -534,10 +555,13 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 ========================================================= -->
 <section class="collection" id="collection">
   <div class="sec-head">
-    <h2>Signature Collection</h2>
-    <p>Four cakes we return to again and again. Each starts as a flavour we love, then becomes something worth gathering around.</p>
+    <div>
+      <h2>Signature Collection</h2>
+      <p>Every piece here has left our kitchen and come back requested by name. Photographed as it actually leaves the door.</p>
+    </div>
   </div>
-  <div id="pieces"></div>
+  <div class="g-filters" id="gFilters"></div>
+  <div class="gallery" id="gallery"></div>
 </section>
 
 <!-- =========================================================
@@ -628,47 +652,59 @@ const CONTACT = { instagram:"", whatsapp:"", email:"" };
 
 /* =========================================================
    ★ EDIT ME — the Signature Collection
-   Each cake is drawn in code, so no image uploads are needed.
-   To use a real photo instead, put the file in an /images
-   folder in your repo and set  photo:"images/my-cake.jpg"
+   These are your real photos from /images. Edit name, category
+   and desc for each — the text below is a first draft written
+   from the photos, not confirmed copy. Add a new cake by copying
+   a block and pointing photo at a new file in /images.
+   Categories drive the filter tabs above the gallery; use
+   whichever ones you like, they're generated from this list.
 ========================================================= */
-const CAKES = [
-  {
-    name:"Rose Petal Cloud",
-    line:"Soft, floral and quietly romantic.",
-    story:"Inspired by the first garden roses of the season. A feather-light rose-water sponge, whipped mascarpone and a spoonful of raspberry, finished with buttercream roses piped one petal at a time.",
-    notes:[["Sponge","Rose-water vanilla"],["Filling","Mascarpone cream, raspberry"],["Finish","Piped buttercream roses"]],
-    madeFor:"Engagements, bridal showers and garden afternoons.",
-    tint:"#f6dcd9", photo:"",
-    art:{tiers:["#f1c6c6","#f7dcd8"],decos:[["swirl","pearls"],["swirl","flowers"]],topper:"roses",rose:"#c96f7e",seed:21}
-  },
-  {
-    name:"Midnight Noir",
-    line:"For people who take chocolate seriously.",
-    story:"Deep cocoa sponge layered with salted caramel, covered in a glossy dark ganache that runs slowly down the sides. Raspberries cut through the richness, and a little gold leaf catches the light.",
-    notes:[["Sponge","Dark cocoa"],["Filling","Salted caramel, ganache"],["Finish","Ganache drip, gold leaf"]],
-    madeFor:"Birthdays with grown-up taste.",
-    tint:"#eadcc6", photo:"",
-    art:{tiers:["#4a2a1f","#5a3325"],decos:[["swirl","band"],["swirl","leaf"]],drip:"#1d0d09",dripTop:true,topper:"gold",seed:5}
-  },
-  {
-    name:"Pistachio Gold",
-    line:"Nutty, fragrant and made for the table.",
-    story:"Toasted pistachio sponge, brown butter cream and a touch of orange blossom, wrapped in soft green buttercream. Crushed pistachios crown the top, and gold leaf finishes it.",
-    notes:[["Sponge","Toasted pistachio"],["Filling","Brown butter, orange blossom"],["Finish","Crushed pistachio, gold leaf"]],
-    madeFor:"Eid tables, weddings and long family dinners.",
-    tint:"#dfe6cd", photo:"",
-    art:{tiers:["#a7bb84","#b6c89d","#c4d3ae"],decos:[["swirl","band","pearls"],["swirl","leaf"],["swirl","pearls"]],topper:"pistachio",seed:14}
-  },
-  {
-    name:"Berry Velvet",
-    line:"A classic, dressed for the occasion.",
-    story:"Buttermilk red velvet with tangy cream cheese frosting, stacked tall and left with its layers on show. A ribbon of white chocolate drips from the top, crowned with strawberries at their peak.",
-    notes:[["Sponge","Buttermilk red velvet"],["Filling","Cream cheese frosting"],["Finish","White drip, fresh strawberries"]],
-    madeFor:"Anniversaries and Valentine's dinners.",
-    tint:"#f2d3cd", photo:"",
-    art:{tiers:["#9c1f2e"],decos:[["layers","swirl"]],drip:"#fbf4ea",dripTop:true,topper:"strawberries",seed:9}
-  }
+const GALLERY = [
+  { name:"Chocolate Rose Cloud", category:"Celebration Cakes",
+    desc:"Whipped chocolate buttercream piped in two tones, finished with dark chocolate curls and rose petals.",
+    photo:"images/chocolate-rose-cloud.jpg" },
+  { name:"Biscoff Caramel Drip", category:"Celebration Cakes",
+    desc:"A pale vanilla cake under a slow caramel drip, crowned and based with crushed Biscoff.",
+    photo:"images/biscoff-caramel-drip.jpg" },
+  { name:"Cookies & Cream Drip", category:"Celebration Cakes",
+    desc:"Cookies-and-cream sponge under a dark chocolate drip, with whipped rosettes and whole Oreos on top.",
+    photo:"images/cookies-and-cream-drip.jpg" },
+  { name:"Salted Caramel Praline", category:"Celebration Cakes",
+    desc:"Caramel buttercream finished with a crown of almond and pistachio praline for crunch in every slice.",
+    photo:"images/salted-caramel-praline.jpg" },
+  { name:"Sweetheart Cake", category:"Celebration Cakes",
+    desc:"Soft pink buttercream, a piped border and a silk ribbon — made for Valentine's and anniversaries.",
+    photo:"images/sweetheart-cake.jpg" },
+  { name:"Anniversary Cake", category:"Celebration Cakes",
+    desc:"Ivory buttercream with a hand-piped message and a scatter of tiny hearts. Any message, any occasion.",
+    photo:"images/anniversary-cake.jpg" },
+  { name:"Ribbon & Bow Cake", category:"Celebration Cakes",
+    desc:"Whipped cream swirls finished with silk bows and a personal note piped straight onto the cake.",
+    photo:"images/ribbon-bow-cake.jpg" },
+  { name:"Vanilla Butter Loaf", category:"Loaf & Tea Cakes",
+    desc:"A dense, golden butter cake baked in a loaf tin and sliced thick. Simple, and exactly what it should be.",
+    photo:"images/vanilla-butter-loaf.jpg" },
+  { name:"Vanilla Silk Slice", category:"Loaf & Tea Cakes",
+    desc:"Layered vanilla sponge and whipped cream, cut into petite slices and finished with a whisper of gold leaf.",
+    photo:"images/vanilla-silk-slice.jpg" },
+  { name:"Honey Almond Cake", category:"Loaf & Tea Cakes",
+    desc:"A moist semolina-almond cake soaked in honey syrup, topped with toasted almonds and pistachio.",
+    photo:"images/honey-almond-cake.jpg" },
+  { name:"Vanilla Tea Fingers", category:"Loaf & Tea Cakes",
+    desc:"Vanilla bean cake baked in a tray and cut into fingers, plated for sharing over tea.",
+    photo:"images/vanilla-tea-fingers.jpg" },
+  { name:"Marble Cupcakes", category:"Loaf & Tea Cakes",
+    desc:"Vanilla and chocolate batter swirled together and baked in small batches for parties and platters.",
+    photo:"images/marble-cupcakes.jpg" },
+  { name:"Almond Crinkle Cookies", category:"Cookies",
+    desc:"Soft, crackled almond cookies, each finished with a whole roasted almond at the centre.",
+    photo:"images/almond-crinkle-cookies.jpg" },
+  { name:"Chicken Salad Cake", category:"Savoury Cakes",
+    desc:"Layers of savoury sponge and a creamy chicken filling, topped with cucumber, carrot and spiced chicken.",
+    photo:"images/chicken-salad-cake.jpg" },
+  { name:"Garden Salad Cake", category:"Savoury Cakes",
+    desc:"A savoury layer cake finished with egg, cucumber, a chilli drizzle and crisp fried onions.",
+    photo:"images/garden-salad-cake.jpg" }
 ];
 
 /* =========================================================
@@ -944,24 +980,56 @@ document.getElementById("storyCake").innerHTML=
   cakeSVG({...luxury,id:"story",sliceable:true,label:"A three-tier cake separating into layers as you scroll"});
 
 /* =========================================================
-   SIGNATURE COLLECTION
+   SIGNATURE COLLECTION — photo gallery
 ========================================================= */
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-document.getElementById("pieces").innerHTML=CAKES.map((c,i)=>{
-  const art=c.photo
-    ? `<img src="${esc(c.photo)}" alt="${esc(c.name)}" loading="lazy">`
-    : cakeSVG({...c.art,id:"p"+i,label:c.name+" cake illustration"});
-  return `<article class="piece">
-    <div class="piece-art" style="--tint:${c.tint};--tint2:${darken(c.tint,.13)}">${art}</div>
-    <div class="piece-copy">
-      <h3>${esc(c.name)}</h3>
-      <p class="piece-line">${esc(c.line)}</p>
-      <p class="piece-story">${esc(c.story)}</p>
-      <dl>${c.notes.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-      <p class="piece-for"><b>Made for</b> ${esc(c.madeFor)}</p>
-    </div>
-  </article>`;
-}).join("");
+(function(){
+  const grid=document.getElementById("gallery"), filterBar=document.getElementById("gFilters");
+  const cats=["All",...new Set(GALLERY.map(c=>c.category))];
+  let active="All";
+
+  filterBar.innerHTML=cats.map(c=>
+    `<button class="g-filter${c==="All"?" on":""}" type="button" data-cat="${esc(c)}">${esc(c)}</button>`
+  ).join("");
+
+  grid.innerHTML=GALLERY.map((c,i)=>`
+    <article class="g-card" data-cat="${esc(c.category)}" style="--d:${(i%3)*90}ms">
+      <div class="g-frame">
+        <img src="${esc(c.photo)}" alt="${esc(c.name)} — ${esc(c.category)}" loading="lazy">
+        <span class="g-tag">${esc(c.category)}</span>
+      </div>
+      <div class="g-info">
+        <h3 class="g-name">${esc(c.name)}</h3>
+        <p class="g-desc">${esc(c.desc)}</p>
+      </div>
+    </article>`
+  ).join("");
+
+  const cards=[...grid.querySelectorAll(".g-card")];
+
+  // scroll reveal, staggered per row
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.15,rootMargin:"0px 0px -60px 0px"});
+  cards.forEach(c=>io.observe(c));
+
+  // filtering
+  filterBar.addEventListener("click",e=>{
+    const btn=e.target.closest(".g-filter");
+    if(!btn||btn.dataset.cat===active)return;
+    active=btn.dataset.cat;
+    filterBar.querySelectorAll(".g-filter").forEach(b=>b.classList.toggle("on",b===btn));
+    cards.forEach((c,i)=>{
+      const show=active==="All"||c.dataset.cat===active;
+      c.classList.toggle("hide",!show);
+      if(show){
+        c.classList.remove("in");
+        c.style.setProperty("--d",(i%3)*70+"ms");
+        requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add("in")));
+      }
+    });
+  });
+})();
 
 /* =========================================================
    CRAFTSMANSHIP — cross-section
