@@ -99,30 +99,44 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 }
 
 /* =========================================================
-   HERO
+   HERO + SCROLL-DRIVEN STORY — one merged, pinned sequence.
+   The cake is a single element: it starts in its "hero pose"
+   (offset beside the title) and glides to centre stage as you
+   scroll, then the tier-explode story plays on that same cake.
 ========================================================= */
-.hero{
-  position:relative;min-height:100vh;min-height:100svh;
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  align-items:center;gap:2vw;
-  padding:calc(var(--nav-h) + 30px) 6vw 70px;
+.hs{height:640vh;position:relative;background:var(--wine)}
+.hs-stage{
+  position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  background:radial-gradient(70% 70% at 50% 55%,#3a1a2c 0%,#2b1220 45%,#1f0c16 100%);
+}
+.hs-glow2{
+  position:absolute;inset:0;pointer-events:none;
   background:
     radial-gradient(52% 58% at 72% 50%, #5c2b41 0%, rgba(92,43,65,0) 70%),
-    radial-gradient(90% 80% at 50% 110%, #3a1a2c 0%, rgba(58,26,44,0) 60%),
-    var(--wine);
-  overflow:hidden;
+    radial-gradient(90% 80% at 50% 110%, #3a1a2c 0%, rgba(58,26,44,0) 60%);
+  opacity:var(--hero-glow,1);
 }
-.hero-copy{position:relative;z-index:2}
-.hero h1{
+.story-glow{
+  position:absolute;left:50%;top:52%;width:min(80vh,80vw);height:min(80vh,80vw);
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(240,219,168,.30),rgba(226,167,168,.12) 55%,transparent);
+  opacity:var(--glow,.4);pointer-events:none;
+}
+
+.hero-copy{
+  position:absolute;z-index:3;left:6vw;top:50%;width:min(46vw,640px);
+  transform:translateY(-50%);will-change:transform,opacity;
+}
+.hero-copy h1{
   font-family:var(--display);font-weight:500;
-  font-size:clamp(58px,9.2vw,148px);line-height:.92;letter-spacing:-.01em;
+  font-size:clamp(52px,7.4vw,128px);line-height:.92;letter-spacing:-.01em;
   color:var(--ivory);
 }
-.hero h1 span{display:block}
+.hero-copy h1 span{display:block}
 .hero-tag{
   margin-top:clamp(20px,3vw,34px);
   font-family:var(--display);font-style:italic;font-weight:400;
-  font-size:clamp(24px,2.7vw,38px);color:var(--gold-hi);line-height:1.2;
+  font-size:clamp(24px,2.4vw,36px);color:var(--gold-hi);line-height:1.2;
 }
 .hero-lede{
   margin-top:18px;max-width:34em;font-size:17px;color:rgba(246,238,227,.72);
@@ -141,74 +155,47 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 }
 .text-link:hover{color:var(--gold-hi)}
 
-.hero-cake{position:relative;justify-self:center;width:min(100%,620px);z-index:1}
-.hero-cake svg{width:100%;height:auto;max-height:82vh;max-height:82svh;
-  filter:drop-shadow(0 40px 50px rgba(0,0,0,.45))}
-.hero-cake::before{
-  content:"";position:absolute;inset:8% -12% 6%;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(240,219,168,.22),rgba(240,219,168,0));
+/* one orchestrated page-load moment */
+.hero-copy > *{opacity:0;animation:fadeIn 1.1s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-copy h1{animation-delay:.15s}
+.hero-tag{animation-delay:.45s}
+.hero-lede{animation-delay:.6s}
+.hero-actions{animation-delay:.75s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.hs-cake-wrap{
+  position:absolute;left:50%;top:50%;z-index:2;
+  height:76vh;height:76svh;aspect-ratio:600/820;
+  transform:translate(-50%,-50%);transform-origin:50% 85%;
+  will-change:transform;opacity:0;
+  filter:drop-shadow(0 34px 44px rgba(0,0,0,.42));
+  animation:riseIn 1.6s cubic-bezier(.2,.7,.2,1) .2s forwards;
 }
+.hs-cake-wrap svg{width:100%;height:100%;overflow:visible;display:block}
+@keyframes riseIn{from{opacity:0}to{opacity:1}}
+
+.hs-sparks{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:var(--hero-glow,1)}
 .spark{
   position:absolute;width:16px;height:16px;background:var(--gold-hi);
   clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);
   opacity:0;animation:twinkle 5s ease-in-out infinite;
 }
-.spark:nth-child(1){top:8%;left:4%;animation-delay:.6s}
-.spark:nth-child(2){top:22%;right:-2%;width:11px;height:11px;animation-delay:1.9s}
-.spark:nth-child(3){top:46%;left:-6%;width:10px;height:10px;animation-delay:3s}
-.spark:nth-child(4){bottom:26%;right:0;width:14px;height:14px;animation-delay:2.4s}
+.spark:nth-child(1){top:30%;left:60%;animation-delay:.6s}
+.spark:nth-child(2){top:42%;left:82%;width:11px;height:11px;animation-delay:1.9s}
+.spark:nth-child(3){top:60%;left:56%;width:10px;height:10px;animation-delay:3s}
+.spark:nth-child(4){top:50%;left:88%;width:14px;height:14px;animation-delay:2.4s}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:.9;transform:scale(1)}}
 
 .scroll-hint{
   position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
   font-size:13px;letter-spacing:.08em;color:rgba(246,238,227,.5);text-align:center;
+  z-index:3;will-change:opacity;
 }
 .scroll-hint i{display:block;width:1px;height:34px;margin:8px auto 0;
   background:linear-gradient(var(--gold),transparent);animation:drop 2.2s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* one orchestrated page-load moment */
-.hero-copy > *{opacity:0;animation:fadeIn 1.1s cubic-bezier(.2,.7,.2,1) forwards}
-.hero h1{animation-delay:.15s}
-.hero-tag{animation-delay:.45s}
-.hero-lede{animation-delay:.6s}
-.hero-actions{animation-delay:.75s}
-.hero-cake svg{opacity:0;animation:rise 1.8s cubic-bezier(.2,.7,.2,1) .2s forwards}
-@keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
-
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr;text-align:center;gap:26px;padding-top:calc(var(--nav-h) + 34px);padding-bottom:90px}
-  .hero-lede{display:none}
-  .hero-actions{justify-content:center;margin-top:24px}
-  .hero-tag{margin-top:14px}
-  .hero-cake{width:min(88%,420px);margin-top:-6px}
-  .hero-cake svg{max-height:64svh}
-}
-
-/* =========================================================
-   SCROLL-DRIVEN STORY
-========================================================= */
-.story{height:540vh;position:relative;background:var(--wine)}
-.story-sticky{
-  position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
-  display:grid;place-items:center;
-  background:radial-gradient(70% 70% at 50% 55%,#3a1a2c 0%,#2b1220 45%,#1f0c16 100%);
-}
-.story-glow{
-  position:absolute;left:50%;top:52%;width:min(80vh,80vw);height:min(80vh,80vw);
-  transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(closest-side,rgba(240,219,168,.30),rgba(226,167,168,.12) 55%,transparent);
-  opacity:var(--glow,.4);pointer-events:none;
-}
-.story-cake{
-  position:relative;height:86vh;height:86svh;aspect-ratio:600/820;
-  transform-origin:50% 92%;will-change:transform;
-  filter:drop-shadow(0 30px 40px rgba(0,0,0,.4));
-}
-.story-cake svg{width:100%;height:100%;overflow:visible}
-
-.beats{position:absolute;inset:0;pointer-events:none}
+.beats{position:absolute;inset:0;pointer-events:none;z-index:3}
 .beat{
   position:absolute;top:50%;width:min(340px,25vw);
   opacity:0;transform:translateY(calc(-50% + 26px));
@@ -225,20 +212,28 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 
 .story-dots{
   position:absolute;right:max(2.4vw,14px);top:50%;transform:translateY(-50%);
-  display:grid;gap:12px;
+  display:grid;gap:12px;z-index:3;opacity:0;transition:opacity .4s;
 }
+.story-dots.on{opacity:1}
 .story-dots i{
   display:block;width:6px;height:6px;border-radius:6px;background:rgba(246,238,227,.3);
   transition:height .4s,background .4s;
 }
 .story-dots i.on{height:26px;background:var(--gold)}
 
-@media (max-width:1100px){
-  .story-sticky{place-items:start center;padding-top:calc(var(--nav-h) + 6px)}
-  .story-cake{height:56vh;height:56svh}
-  .story-sticky::after{
-    content:"";position:absolute;inset:auto 0 0 0;height:46%;
-    background:linear-gradient(transparent,rgba(31,12,22,.92) 45%);pointer-events:none;
+@media (max-width:1000px){
+  .hero-copy{
+    left:0;right:0;top:calc(var(--nav-h) + 18px);width:100%;transform:none;
+    text-align:center;padding:0 7vw;
+  }
+  .hero-lede{display:none}
+  .hero-actions{justify-content:center}
+  .hs-cake-wrap{height:44vh;height:44svh;top:42%}
+  .hs-sparks{display:none}
+  .hs-stage::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:54%;
+    background:linear-gradient(transparent,rgba(31,12,22,.85) 32%,rgba(31,12,22,.97) 60%);
+    pointer-events:none;z-index:1;
   }
   .beat,.beat.l,.beat.r{
     top:auto;bottom:5svh;left:7vw;right:7vw;width:auto;text-align:center;z-index:2;
@@ -247,7 +242,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
   .beat.on{transform:none}
   .beat h2{font-size:clamp(38px,9vw,60px)}
   .beat p{font-size:16px;max-width:28em;margin-left:auto;margin-right:auto}
-  .story-dots{top:calc(var(--nav-h) + 30svh)}
+  .story-dots{top:calc(var(--nav-h) + 24svh)}
 }
 
 /* =========================================================
@@ -445,7 +440,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .hero-copy > *,.hero-cake svg{opacity:1}
+  .hero-copy > *,.hs-cake-wrap{opacity:1}
 }
 </style>
 </head>
@@ -489,7 +484,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
     <span class="brand-name">Laiba's Cakery</span>
   </a>
   <div class="links" id="links">
-    <a href="#experience">Experience</a>
+    <a href="#top">Experience</a>
     <a href="#collection">Signature Collection</a>
     <a href="#craft">Craftsmanship</a>
     <a href="#story">Our Story</a>
@@ -499,36 +494,32 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 </nav>
 
 <!-- =========================================================
-     HERO
+     HERO + SCROLL-DRIVEN CAKE — one merged, pinned sequence
 ========================================================= -->
-<header class="hero" id="top">
-  <div class="hero-copy">
-    <h1><span>Laiba's</span><span>Cakery</span></h1>
-    <p class="hero-tag">The art of something sweet.</p>
-    <p class="hero-lede">Handcrafted cakes made with real butter, patient hands and a great deal of imagination. Every one is designed to be remembered.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#collection">See the collection</a>
-      <a class="text-link" href="#experience">Watch a cake come together</a>
-    </div>
-  </div>
-
-  <div class="hero-cake" id="heroCake">
-    <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
-  </div>
-
-  <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
-</header>
-
-<!-- =========================================================
-     SCROLL-DRIVEN CAKE ANIMATION
-========================================================= -->
-<section class="story" id="experience" aria-label="How a cake comes together">
-  <div class="story-sticky">
+<section class="hs" id="top" aria-label="Laiba's Cakery — how a cake comes together">
+  <div class="hs-stage" id="hsStage">
+    <div class="hs-glow2" id="heroGlow"></div>
     <div class="story-glow" id="storyGlow"></div>
-    <div class="story-cake" id="storyCake"></div>
+
+    <div class="hero-copy" id="heroCopy">
+      <h1><span>Laiba's</span><span>Cakery</span></h1>
+      <p class="hero-tag">The art of something sweet.</p>
+      <p class="hero-lede">Handcrafted cakes made with real butter, patient hands and a great deal of imagination. Every one is designed to be remembered.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#collection">See the collection</a>
+        <a class="text-link" href="#top">Watch a cake come together</a>
+      </div>
+    </div>
+
+    <div class="hs-cake-wrap" id="hsCakeWrap">
+      <div id="storyCake"></div>
+    </div>
+    <div class="hs-sparks" id="hsSparks">
+      <i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>
+    </div>
 
     <div class="beats">
-      <div class="beat l on">
+      <div class="beat l">
         <h2>Baked fresh.</h2>
         <p>Every cake begins with real butter, whole vanilla and a slow, careful bake. Nothing is rushed, and nothing comes from a box.</p>
       </div>
@@ -546,7 +537,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
       </div>
     </div>
 
-    <div class="story-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="story-dots" id="storyDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true">Scroll<i></i></div>
   </div>
 </section>
 
@@ -974,10 +966,8 @@ const luxury={
   decos:[["swirl","pearls"],["swirl","band","flowers"],["swirl","pearls"]],
   topper:"roses",rose:"#d98a94",stand:"#d9bb76",seed:3,full:true
 };
-document.getElementById("heroCake").insertAdjacentHTML("afterbegin",
-  cakeSVG({...luxury,full:false,id:"hero",label:"An elegant three-tier ivory and blush cake topped with roses and gold leaf"}));
 document.getElementById("storyCake").innerHTML=
-  cakeSVG({...luxury,id:"story",sliceable:true,label:"A three-tier cake separating into layers as you scroll"});
+  cakeSVG({...luxury,id:"story",sliceable:true,label:"An elegant three-tier ivory and blush cake that separates into layers as you scroll"});
 
 /* =========================================================
    SIGNATURE COLLECTION — photo gallery
@@ -1119,38 +1109,67 @@ document.querySelectorAll("#links a").forEach(a=>a.addEventListener("click",()=>
 }));
 
 /* =========================================================
-   SCROLL-DRIVEN CAKE
-   Progress 0→1 across the section:
-   0.00  cake whole, slow push-in
-   0.22  tiers lift apart
-   0.50  each tier is cut open to show its layers
-   0.78  everything settles back together, glowing
+   HERO → SCROLL-DRIVEN CAKE, one merged sequence
+   Overall progress p runs 0→1 across the whole pinned section:
+   0.00 – 0.19   the cake glides from its hero spot to centre stage
+                 while the title/tagline fade and lift away
+   0.19 – 1.00   remapped to storyP, the same tier-explode /
+                 cut-open / reassemble story plays on that cake
 ========================================================= */
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 const ease=t=>t*t*(3-2*t);
 const seg=(p,a,b)=>ease(clamp((p-a)/(b-a)));
 
-const story=document.getElementById("experience");
+const hs=document.getElementById("top");
+const wrap=document.getElementById("hsCakeWrap");
 const stage=document.getElementById("storyCake");
+const heroCopy=document.getElementById("heroCopy");
+const heroGlow=document.getElementById("heroGlow");
+const sparks=document.getElementById("hsSparks");
+const scrollHint=document.getElementById("scrollHint");
 const glow=document.getElementById("storyGlow");
 const tiers=[...stage.querySelectorAll(".tier")];
 const topper=stage.querySelector(".topper");
 const cuts=[...stage.querySelectorAll(".cut")];
 const cyl=[...stage.querySelectorAll("linearGradient.cyl")];
 const beats=[...document.querySelectorAll(".beat")];
-const dots=[...document.querySelectorAll(".story-dots i")];
+const dotsWrap=document.getElementById("storyDots");
+const dots=[...dotsWrap.querySelectorAll("i")];
 const navProgress=document.getElementById("navProgress");
 const LIFT=[0,-58,-118], TOP_LIFT=-196;
+const HERO_FRACTION=100/640;   // one viewport-height of "glide" out of the 640vh sequence
 let lastScene=-1;
 
 function update(){
-  const r=story.getBoundingClientRect();
-  const total=story.offsetHeight-window.innerHeight;
+  const r=hs.getBoundingClientRect();
+  const total=hs.offsetHeight-window.innerHeight;
   const p=clamp(-r.top/total);
 
-  const E=seg(p,.20,.34)-seg(p,.78,.90);          // explode 0→1→0
-  const C=seg(p,.48,.60)-seg(p,.74,.82);          // cut face 0→1→0
-  const base=window.innerWidth<=1100?1.06:1.2;
+  const heroP=seg(p,0,HERO_FRACTION);
+  const storyP=seg(p,HERO_FRACTION,1);
+  const mobile=window.innerWidth<=1000;
+
+  /* ---- hero copy fades & lifts away as the cake starts to glide ---- */
+  heroCopy.style.opacity=f(1-clamp(heroP*1.6));
+  heroCopy.style.transform=mobile
+    ? `translateY(${f(-24*heroP)}px)`
+    : `translateY(calc(-50% - ${f(18*heroP)}px))`;
+  heroCopy.style.pointerEvents=heroP>.4?"none":"auto";
+  scrollHint.style.opacity=f(Math.max(0,1-heroP*3));
+  heroGlow.style.setProperty("--hero-glow",f(1-heroP));
+  sparks.style.setProperty("--hero-glow",f(Math.max(0,1-heroP*1.4)));
+
+  /* ---- the cake: hero pose → centre stage pose ---- */
+  const heroX = mobile ? 0 : window.innerWidth*.205;
+  const heroY = mobile ? window.innerHeight*.17 : 0;
+  const heroScale = mobile ? .64 : .58;
+  const hx=f(heroX*(1-ease(heroP)));
+  const hy=f(heroY*(1-ease(heroP)));
+  const poseScale=f(heroScale+(1-heroScale)*ease(heroP));
+
+  const E=seg(storyP,.20,.34)-seg(storyP,.78,.90);          // explode 0→1→0
+  const C=seg(storyP,.48,.60)-seg(storyP,.74,.82);          // cut face 0→1→0
+  const base=mobile?1.06:1.2;
 
   tiers.forEach((t,i)=>t.setAttribute("transform",`translate(0 ${f(LIFT[i]*E)})`));
   topper.setAttribute("transform",`translate(0 ${f(TOP_LIFT*E)})`);
@@ -1160,16 +1179,18 @@ function update(){
     c.setAttribute("opacity",C>.02?1:0);
   });
 
-  const scale=base-(base-.98)*E+seg(p,0,.2)*.04;
-  stage.style.transform=`scale(${f(scale)}) translateY(${f(-(1-E)*4)}%)`;
+  const explodeScale=base-(base-.98)*E+seg(storyP,0,.2)*.04;
+  wrap.style.transform=
+    `translate(-50%,-50%) translate(${hx}px,${hy}px) scale(${poseScale}) scale(${f(explodeScale)}) translateY(${f(-(1-E)*4)}%)`;
 
   // light travelling round the cylinders as you scroll
-  const sway=Math.sin(p*Math.PI*2)*.22;
+  const sway=Math.sin(storyP*Math.PI*2)*.22;
   cyl.forEach(g=>g.setAttribute("gradientTransform",`translate(${f(sway)} 0)`));
 
-  glow.style.setProperty("--glow",f(.35+.65*seg(p,.8,1)+.25*E));
+  glow.style.setProperty("--glow",f(.15+.35*ease(heroP)+.65*seg(storyP,.8,1)+.25*E));
 
-  const scene=Math.min(3,Math.floor(p*4));
+  dotsWrap.classList.toggle("on",storyP>.01);
+  const scene=storyP>.01?Math.min(3,Math.floor(storyP*4)):-1;
   if(scene!==lastScene){
     beats.forEach((b,i)=>b.classList.toggle("on",i===scene));
     dots.forEach((d,i)=>d.classList.toggle("on",i===scene));
