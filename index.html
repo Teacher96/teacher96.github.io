@@ -428,14 +428,126 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
 .final p{margin:24px auto 0;max-width:30em;font-size:18px;color:rgba(246,238,227,.72)}
 .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:38px}
 .contact:empty{display:none}
-.footer{
-  background:var(--wine);border-top:1px solid rgba(216,184,120,.16);
-  padding:44px 6vw calc(36px + env(safe-area-inset-bottom));
-  display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:space-between;
-  font-size:15px;color:rgba(246,238,227,.6);
+/* =========================================================
+   FOOTER
+========================================================= */
+.site-footer{
+  background:linear-gradient(180deg,var(--plum) 0%,#1a0810 100%);
+  color:rgba(246,238,227,.8);
 }
-.footer .brand-mark{width:38px;height:38px}
-.footer .brand{color:var(--ivory)}
+
+/* newsletter strip */
+.footer-newsletter{
+  max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,72px) 6vw;
+  display:flex;flex-wrap:wrap;gap:24px 60px;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(216,184,120,.16);
+}
+.nl-text h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,3vw,36px);color:var(--ivory)}
+.nl-text p{margin-top:8px;font-size:15px;color:rgba(246,238,227,.6);max-width:36em}
+.nl-form{display:flex;gap:12px;flex-wrap:wrap;flex:none}
+.nl-form input{
+  width:min(280px,60vw);padding:14px 18px;border-radius:999px;
+  border:1px solid rgba(216,184,120,.35);background:rgba(246,238,227,.06);
+  color:var(--ivory);font:inherit;font-size:15px;
+}
+.nl-form input::placeholder{color:rgba(246,238,227,.42)}
+.nl-form input:focus{outline:none;border-color:var(--gold)}
+.nl-form button{
+  font:inherit;font-size:15px;letter-spacing:.02em;cursor:pointer;border:0;white-space:nowrap;
+  padding:14px 26px;border-radius:999px;color:#2a1720;
+  background:linear-gradient(135deg,#f0dba8,#cfa762);transition:transform .25s,opacity .25s;
+}
+.nl-form button:hover{transform:translateY(-2px)}
+.nl-form button:disabled{opacity:.75;transform:none;cursor:default}
+
+/* main columns */
+.footer-main{
+  max-width:1280px;margin:0 auto;padding:clamp(52px,7vw,76px) 6vw;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+}
+.footer-col h4{
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  color:var(--gold-hi);margin-bottom:20px;
+}
+.footer-col a{display:block;text-decoration:none;color:rgba(246,238,227,.7);
+  font-size:15px;padding:6px 0;transition:color .25s}
+.footer-col a:hover{color:var(--gold-hi)}
+.footer-brand .brand{display:inline-flex;text-decoration:none}
+.footer-brand .brand-mark{width:40px;height:40px}
+.footer-brand .brand-name{color:var(--ivory);font-family:var(--display);font-weight:600;font-size:23px}
+.footer-brand p{margin:18px 0 22px;font-size:15px;line-height:1.7;color:rgba(246,238,227,.6);max-width:34em}
+.footer-social{display:flex;gap:10px}
+.footer-social a{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(216,184,120,.4);color:var(--gold-hi);transition:background .25s,color .25s;
+}
+.footer-social a:hover{background:var(--gold);color:#2a1720}
+
+.footer-contact{display:flex;flex-direction:column;gap:4px}
+.footer-contact a,.fc-static{
+  display:flex;align-items:flex-start;gap:10px;text-decoration:none;
+  color:rgba(246,238,227,.7);font-size:15px;padding:7px 0;transition:color .25s;
+}
+.footer-contact a:hover{color:var(--gold-hi)}
+.footer-contact svg{flex:none;margin-top:2px;color:var(--gold)}
+.fc-empty{font-size:14px;color:rgba(246,238,227,.5);line-height:1.6}
+
+.footer-hours{display:flex;flex-direction:column}
+.fh-row{
+  display:flex;justify-content:space-between;gap:16px;
+  padding:10px 0;border-bottom:1px solid rgba(246,238,227,.1);font-size:14px;
+}
+.fh-row:first-child{padding-top:0}
+.fh-row span:first-child{color:rgba(246,238,227,.55)}
+.fh-row span:last-child{color:rgba(246,238,227,.85);text-align:right}
+
+/* bottom bar */
+.footer-bottom{
+  max-width:1280px;margin:0 auto;padding:22px 6vw calc(26px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(216,184,120,.12);
+  display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+  font-size:13px;color:rgba(246,238,227,.5);
+}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{color:rgba(246,238,227,.55);text-decoration:none}
+.footer-legal a:hover{color:var(--gold-hi)}
+.footer-legal:empty{display:none}
+
+@media (max-width:900px){
+  .footer-newsletter{flex-direction:column;align-items:flex-start}
+  .nl-form{width:100%}
+  .nl-form input{flex:1;width:auto}
+  .footer-main{grid-template-columns:1fr 1fr;gap:36px 24px}
+  .footer-brand{grid-column:1/-1}
+}
+@media (max-width:560px){
+  .footer-main{grid-template-columns:1fr;gap:34px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* floating buttons */
+.back-to-top,.wa-float{
+  position:fixed;right:22px;z-index:60;width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.5);
+  text-decoration:none;
+}
+.back-to-top{
+  bottom:22px;border:0;cursor:pointer;color:#2a1720;
+  background:linear-gradient(135deg,#f0dba8,#cfa762);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .3s,transform .3s;
+}
+.back-to-top.show{opacity:1;transform:none;pointer-events:auto}
+.wa-float{
+  bottom:82px;background:var(--wine);border:1.5px solid var(--gold);color:var(--gold-hi);
+  transition:transform .25s,background .25s;
+}
+.wa-float:hover{transform:translateY(-2px);background:#3a1a2c}
+@media (max-width:600px){
+  .back-to-top,.wa-float{right:16px;width:44px;height:44px}
+  .back-to-top{bottom:calc(16px + env(safe-area-inset-bottom))}
+  .wa-float{bottom:calc(70px + env(safe-area-inset-bottom))}
+}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -471,6 +583,15 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
       <circle cx="44.5" cy="43.5" r=".9"/>
     </g>
   </symbol>
+
+  <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5l8 6.2 8-6.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.4 7-12.6A7 7 0 1 0 5 9.4C5 14.6 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9.3" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V12l3.2 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.1" cy="6.9" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="ic-fb" viewBox="0 0 24 24"><path d="M14.5 21v-7.6h2.6l.4-3h-3v-1.9c0-.9.2-1.5 1.5-1.5h1.6V4.3C17.3 4.2 16.3 4 15.2 4c-2.4 0-4.1 1.5-4.1 4.2v2.2H8.5v3h2.6V21z" fill="currentColor"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24"><path d="M12 3.5A8.5 8.5 0 0 0 4.3 16l-1.1 4 4.1-1.1A8.5 8.5 0 1 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.7 8.4c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .6.4.2.5.6 1.5.7 1.6.1.1.1.3 0 .5-.1.2-.2.3-.3.4l-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.4.4 0 .5-.1 1.1-.4 1.5-.3.4-1.1.8-1.6.8-1.2.1-2.6-.4-4.4-1.9-2.2-1.8-3.4-3.7-3.5-4-.1-.2-.7-1.1-.7-2.1s.5-1.5.7-1.7z" fill="currentColor"/></symbol>
+  <symbol id="ic-arrow-up" viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <noscript><p style="padding:100px 24px;text-align:center">Please enable JavaScript to see Laiba's Cakery.</p></noscript>
@@ -623,24 +744,88 @@ section[id]{scroll-margin-top:calc(var(--nav-h) - 1px)}
   <div class="contact" id="contactLinks"></div>
 </section>
 
-<footer class="footer">
-  <a class="brand" href="#top" aria-label="Back to top">
-    <svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>
-    <span class="brand-name">Laiba's Cakery</span>
-  </a>
-  <span>A handcrafted bakery, made with imagination, patience and love.</span>
-  <span>© 2026 Laiba's Cakery. All rights reserved.</span>
+<footer class="site-footer">
+  <div class="footer-newsletter">
+    <div class="nl-text">
+      <h3>Stay in the loop</h3>
+      <p>New flavours, seasonal specials and the odd behind-the-scenes bake — straight to your inbox.</p>
+    </div>
+    <form class="nl-form" id="newsletterForm">
+      <input type="email" id="nlEmail" placeholder="Your email address" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-col footer-brand">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" aria-hidden="true"><use href="#logo"/></svg>
+        <span class="brand-name">Laiba's Cakery</span>
+      </a>
+      <p>A handcrafted bakery, made with imagination, patience and love. Every cake is baked to order — nothing sits on a shelf waiting for you.</p>
+      <div class="footer-social" id="footerSocial"></div>
+    </div>
+
+    <nav class="footer-col" aria-label="Footer">
+      <h4>Explore</h4>
+      <a href="#top">Home</a>
+      <a href="#collection">Signature Collection</a>
+      <a href="#craft">Craftsmanship</a>
+      <a href="#story">Our Story</a>
+    </nav>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <div class="footer-contact" id="footerContact"></div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Opening Hours</h4>
+      <div class="footer-hours" id="footerHours"></div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Laiba's Cakery. All rights reserved.</span>
+    <div class="footer-legal" id="footerLegal"></div>
+  </div>
 </footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18"><use href="#ic-arrow-up"/></svg>
+</button>
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg width="26" height="26"><use href="#ic-wa"/></svg>
+</a>
 
 
 <script>
 /* =========================================================
-   ★ EDIT ME — your contact details (leave "" to hide)
+   ★ EDIT ME — your contact details (leave "" to hide any line)
    instagram: your handle without @   e.g. "laibascakery"
+   facebook : your page name/id      e.g. "laibascakery"
    whatsapp : number with country code, digits only  e.g. "923001234567"
+   phone    : shown as-is, e.g. "+92 300 1234567"
    email    : e.g. "hello@example.com"
+   address  : shown as-is, e.g. "Shop 4, Main Boulevard, Lahore"
 ========================================================= */
-const CONTACT = { instagram:"", whatsapp:"", email:"" };
+const CONTACT = { instagram:"", facebook:"", whatsapp:"", phone:"", email:"", address:"" };
+
+/* =========================================================
+   ★ EDIT ME — opening hours shown in the footer.
+   Add, remove or edit rows freely.
+========================================================= */
+const HOURS = [
+  { label:"Monday – Thursday", time:"11:00 AM – 8:00 PM" },
+  { label:"Friday",            time:"2:00 PM – 9:00 PM" },
+  { label:"Saturday – Sunday", time:"10:00 AM – 9:00 PM" }
+];
+
+/* =========================================================
+   ★ EDIT ME — legal page links for the footer (leave "" to
+   hide). Point these at real pages once you've written them.
+========================================================= */
+const LEGAL = { terms:"", privacy:"" };
 
 /* =========================================================
    ★ EDIT ME — the Signature Collection
@@ -1084,7 +1269,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 })();
 
 /* =========================================================
-   CONTACT LINKS (only shown if filled in above)
+   CONTACT LINKS + FOOTER (built from CONTACT / HOURS / LEGAL)
 ========================================================= */
 (function(){
   const box=document.getElementById("contactLinks"), out=[];
@@ -1093,7 +1278,68 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
   if(CONTACT.email)     out.push(`<a class="btn" href="mailto:${esc(CONTACT.email)}">Email</a>`);
   box.innerHTML=out.join("");
   if(!out.length) document.querySelector(".final p").textContent="Every cake is made with care, for the moments that matter most.";
+
+  // footer — social icons
+  const social=document.getElementById("footerSocial"), sIcons=[];
+  if(CONTACT.instagram) sIcons.push(["ic-ig",`https://instagram.com/${encodeURIComponent(CONTACT.instagram)}`,"Instagram"]);
+  if(CONTACT.facebook)  sIcons.push(["ic-fb",`https://facebook.com/${encodeURIComponent(CONTACT.facebook)}`,"Facebook"]);
+  if(CONTACT.whatsapp)  sIcons.push(["ic-wa",`https://wa.me/${encodeURIComponent(CONTACT.whatsapp)}`,"WhatsApp"]);
+  social.innerHTML=sIcons.map(([icon,href,label])=>
+    `<a href="${href}" target="_blank" rel="noopener" aria-label="${label}"><svg width="17" height="17"><use href="#${icon}"/></svg></a>`
+  ).join("");
+
+  // footer — contact details
+  const fc=document.getElementById("footerContact"), cRows=[];
+  if(CONTACT.phone)   cRows.push(["ic-phone",`tel:${CONTACT.phone.replace(/[^\d+]/g,"")}`,esc(CONTACT.phone)]);
+  if(CONTACT.whatsapp)cRows.push(["ic-wa",`https://wa.me/${encodeURIComponent(CONTACT.whatsapp)}`,"WhatsApp us"]);
+  if(CONTACT.email)   cRows.push(["ic-mail",`mailto:${esc(CONTACT.email)}`,esc(CONTACT.email)]);
+  if(CONTACT.address) cRows.push(["ic-pin",null,esc(CONTACT.address)]);
+  fc.innerHTML=cRows.length ? cRows.map(([icon,href,text])=>
+    href ? `<a href="${href}" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#${icon}"/></svg><span>${text}</span></a>`
+         : `<span class="fc-static"><svg width="16" height="16"><use href="#${icon}"/></svg><span>${text}</span></span>`
+  ).join("") : `<p class="fc-empty">Contact details coming soon.</p>`;
+
+  // footer — opening hours
+  document.getElementById("footerHours").innerHTML=HOURS.map(h=>
+    `<div class="fh-row"><span>${esc(h.label)}</span><span>${esc(h.time)}</span></div>`
+  ).join("");
+
+  // footer — legal links
+  const legal=document.getElementById("footerLegal"), lLinks=[];
+  if(LEGAL.terms)   lLinks.push(`<a href="${esc(LEGAL.terms)}">Terms &amp; Conditions</a>`);
+  if(LEGAL.privacy) lLinks.push(`<a href="${esc(LEGAL.privacy)}">Privacy Policy</a>`);
+  legal.innerHTML=lLinks.join("");
+
+  // WhatsApp floating bubble
+  const wa=document.getElementById("waFloat");
+  if(CONTACT.whatsapp) wa.href=`https://wa.me/${encodeURIComponent(CONTACT.whatsapp)}`;
+  else wa.remove();
 })();
+
+/* =========================================================
+   NEWSLETTER FORM
+   This only confirms in-page — no email service is connected.
+   To actually collect addresses, point this form's action at a
+   service like Mailchimp, Brevo or Formspree and remove the
+   preventDefault below (or follow that service's own snippet).
+========================================================= */
+document.getElementById("newsletterForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const input=document.getElementById("nlEmail"), btn=this.querySelector("button");
+  const original=btn.textContent;
+  btn.textContent="Thank you!";
+  btn.disabled=true;
+  setTimeout(()=>{btn.textContent=original;btn.disabled=false;input.value="";},2600);
+});
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+const backToTop=document.getElementById("backToTop");
+window.addEventListener("scroll",()=>{
+  backToTop.classList.toggle("show",window.scrollY>window.innerHeight*.8);
+},{passive:true});
+backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
 /* =========================================================
    MOBILE MENU
